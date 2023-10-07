@@ -1,0 +1,18 @@
+/* Print styles of the theme */
+@media print { body { background: white; color: black; margin: 0; }
+  body.single-tour .top-bar, body.single-tour .main-menu-wrap, body.single-tour .tour-review, body.single-tour .similar-tours-wrap, body.single-tour .site-footer, body.single-tour #sidebar-tour-detail { display: none !important; }
+  body.single-tour #site-banner { padding: 1rem; }
+  body.single-tour #site-banner .banner-content h1 { color: #000; }
+  body.single-tour #site-banner .banner-content #inspiry_breadcrumbs { display: none; }
+  body.single-tour .tour-meta-bar .tour-tags .tag-review { display: none; }
+  body.single-tour .tour-meta-bar .tour-tags .tag-price { color: #000; display: block; text-align: center; }
+  body.single-tour .tour-meta-bar ul { margin-top: 1rem; border-top: 1px solid #e2e7ea !important; }
+  body.single-tour .tour-meta-bar ul li { color: #000; }
+  body.single-tour .tour-meta-bar ul li i { color: #000; }
+  body.single-tour #content-wrapper { padding-top: 5rem; }
+  body.single-tour .tour-tabs { display: none; }
+  body.single-tour .post-content { box-shadow: none; padding: 0; }
+  body.single-tour .post-content > div { display: block !important; border-bottom: 5px solid #e2e7ea; margin-bottom: 2.5rem; padding-bottom: 0; }
+  body.single-tour .post-content > div#tour-location, body.single-tour .post-content > div#tour-gallery { display: none !important; }
+  body.single-tour .post-content > div .btn-inspiry-download { display: none; }
+  body.single-tour .tour-itinerary .itinerary-step { border: none !important; } }
