@@ -7,7 +7,7 @@
                 <div class="col-md-3 col-sm-6">
                     <section id="inspiry_address_widget-2" class="widget clearfix inspiry_address_widget">
                         <h3 class="widget-title">About Company</h3>
-                        <p><img src="/toor-and-travel/assets/wp-content/uploads/2020/04/logo.png" alt="Company Logo" width="75%" style="    background-color: #fff; border: 2px solid #fca300;"></p>
+                        <p><img src="assets/wp-content/uploads/2020/04/logo.png" alt="Company Logo" width="75%" style="    background-color: #fff; border: 2px solid #fca300;"></p>
                         <p class="address">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non autem tempore corrupti ducimus, nulla ipsum est..<a href="#">Know More</a></p>
                     </section>
                 </div>
@@ -90,13 +90,13 @@
                         </div>
                         <div class="col-sm-6">
                             <figure class="credit-cards clearfix">
-                                <img src="/toor-and-travel/assets/wp-content/themes/img/payment-icons/visa.svg"
+                                <img src="assets/wp-content/themes/img/payment-icons/visa.svg"
                                     alt="visa">
-                                    <img src="/toor-and-travel/assets/wp-content/themes/img/payment-icons/amex.svg"
+                                    <img src="assets/wp-content/themes/img/payment-icons/amex.svg"
                                     alt="amex">
-                                    <img src="/toor-and-travel/assets/wp-content/themes/img/payment-icons/paypal.svg"
+                                    <img src="assets/wp-content/themes/img/payment-icons/paypal.svg"
                                     alt="paypal">
-                                    <img src="/toor-and-travel/assets/wp-content/themes/img/payment-icons/mastercard.svg"
+                                    <img src="assets/wp-content/themes/img/payment-icons/mastercard.svg"
                                     alt="mastercard">
                             </figure>
                         </div>
@@ -125,10 +125,10 @@
     };
 </script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-content/plugins/flying-pages/flying-pages.min2f91.js?ver=2.4.6'
+    src='assets/wp-content/plugins/flying-pages/flying-pages.min2f91.js?ver=2.4.6'
     id='flying-pages-js' defer></script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.minf111.js?ver=2.7.0-wc.8.1.1'
+    src='assets/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.minf111.js?ver=2.7.0-wc.8.1.1'
     id='jquery-blockui-js'></script>
 <script type='text/javascript' id='wc-add-to-cart-js-extra'>
     /* <![CDATA[ */
@@ -136,10 +136,10 @@
     /* ]]> */
 </script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min12c8.js?ver=8.1.1'
+    src='assets/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min12c8.js?ver=8.1.1'
     id='wc-add-to-cart-js'></script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min956a.js?ver=2.1.4-wc.8.1.1'
+    src='assets/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min956a.js?ver=2.1.4-wc.8.1.1'
     id='js-cookie-js'></script>
 <script type='text/javascript' id='woocommerce-js-extra'>
     /* <![CDATA[ */
@@ -147,42 +147,42 @@
     /* ]]> */
 </script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min12c8.js?ver=8.1.1'
+    src='assets/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min12c8.js?ver=8.1.1'
     id='woocommerce-js'></script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-content/plugins/woocommerce/assets/js/flexslider/jquery.flexslider.min513c.js?ver=2.7.2-wc.8.1.1'
+    src='assets/wp-content/plugins/woocommerce/assets/js/flexslider/jquery.flexslider.min513c.js?ver=2.7.2-wc.8.1.1'
     id='flexslider-js'></script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-content/themes/js/owl-carousel/owl.carousel.min77e6.js?ver=2.2.1'
+    src='assets/wp-content/themes/js/owl-carousel/owl.carousel.min77e6.js?ver=2.2.1'
     id='owl-carousel-js'></script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-content/themes/js/meanmenu/jquery.meanmenu.mina7f4.js?ver=2.0.8'
+    src='assets/wp-content/themes/js/meanmenu/jquery.meanmenu.mina7f4.js?ver=2.0.8'
     id='meanmenu-js'></script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-content/themes/js/tether.min6f3e.js?ver=1.3.0'
+    src='assets/wp-content/themes/js/tether.min6f3e.js?ver=1.3.0'
     id='tether-js'></script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-content/themes/js/bootstrap.mincce7.js?ver=4.0.0'
+    src='assets/wp-content/themes/js/bootstrap.mincce7.js?ver=4.0.0'
     id='bootstrap-js'></script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-content/themes/js/jquery.nice-select.min5152.js?ver=1.0'
+    src='assets/wp-content/themes/js/jquery.nice-select.min5152.js?ver=1.0'
     id='nice-select-js'></script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-content/themes/js/barrating/jquery.barrating.min1576.js?ver=1.2.1'
+    src='assets/wp-content/themes/js/barrating/jquery.barrating.min1576.js?ver=1.2.1'
     id='bar-rating-js'></script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-content/themes/js/magnific/jquery.magnific-popup.minf488.js?ver=1.1.0'
+    src='assets/wp-content/themes/js/magnific/jquery.magnific-popup.minf488.js?ver=1.1.0'
     id='magnific-popup-js'></script>
-<script type='text/javascript' src='/toor-and-travel/assets/wp-includes/js/jquery/ui/core.min3f14.js?ver=1.13.2'
+<script type='text/javascript' src='assets/wp-includes/js/jquery/ui/core.min3f14.js?ver=1.13.2'
     id='jquery-ui-core-js'></script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-includes/js/jquery/ui/datepicker.min3f14.js?ver=1.13.2'
+    src='assets/wp-includes/js/jquery/ui/datepicker.min3f14.js?ver=1.13.2'
     id='jquery-ui-datepicker-js'></script>
 <script type='text/javascript' id='jquery-ui-datepicker-js-after'>
     jQuery(function (jQuery) { jQuery.datepicker.setDefaults({ "closeText": "Close", "currentText": "Today", "monthNames": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "monthNamesShort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], "nextText": "Next", "prevText": "Previous", "dayNames": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "dayNamesShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], "dayNamesMin": ["S", "M", "T", "W", "T", "F", "S"], "dateFormat": "MM d, yy", "firstDay": 1, "isRTL": false }); });
 </script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-content/themes/js/isotope.min7c45.js?ver=3.0.6'
+    src='assets/wp-content/themes/js/isotope.min7c45.js?ver=3.0.6'
     id='isotope-js'></script>
 <script type='text/javascript' id='tourpress-js-extra'>
     /* <![CDATA[ */
@@ -190,7 +190,7 @@
     /* ]]> */
 </script>
 <script type='text/javascript'
-    src='/toor-and-travel/assets/wp-content/themes/js/tourpress5a2c.js?ver=1.1.7'
+    src='assets/wp-content/themes/js/tourpress5a2c.js?ver=1.1.7'
     id='tourpress-js'></script>
 <script type='text/javascript' id='tourpress-js-after'>
     if (jQuery().fakeLoader) {

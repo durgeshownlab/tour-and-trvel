@@ -346,7 +346,7 @@
 								<div>
 									<div class="tour-post clearfix tour-post-full-width">
 										<figure>
-											<a href="tour/fabulous-mumbai/index.php"><img width="720" height="560"
+											<a href="tour.php"><img width="720" height="560"
 													src="assets/wp-content/uploads/2017/11/bangaluru-720x560.jpg"
 													class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 													alt="" decoding="async" loading="lazy"

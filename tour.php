@@ -1,7 +1,7 @@
-<?php include('../../header.php'); ?>
+<?php include('header.php'); ?>
 
 		<div id="site-banner"
-			style="background-image: url(../../assets/wp-content/uploads/2017/11/dubai-banner.jpg);">
+			style="background-image: url(../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/dubai-banner.jpg);">
 			<div class="banner-content">
 				<h1>Fabulous Dubai</h1>
 				<ul id="inspiry_breadcrumbs" class="inspiry_breadcrumbs">
@@ -321,7 +321,7 @@
 										</ul>
 									</div>
 									<a class="btn btn-inspiry-download"
-										href="../../assets/wp-content/uploads/2017/11/Brochure.pdf"
+										href="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/Brochure.pdf"
 										download="Brochure.pdf">
 										<i class="fa fa-download" aria-hidden="true"></i>
 										Download pdf brochure </a>
@@ -373,7 +373,7 @@
 											blogger Travel pretty. Adventure fun traveling theme WordPress blogger
 											webdesign design.</p>
 									</section> <a class="btn btn-inspiry-download"
-										href="../../assets/wp-content/uploads/2017/11/Brochure.pdf"
+										href="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/Brochure.pdf"
 										download="Brochure.pdf">
 										<i class="fa fa-download" aria-hidden="true"></i>
 										Download pdf brochure </a>
@@ -384,7 +384,7 @@
 										</div>
 									</section>
 									<a class="btn btn-inspiry-download"
-										href="../../assets/wp-content/uploads/2017/11/Brochure.pdf"
+										href="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/Brochure.pdf"
 										download="Brochure.pdf">
 										<i class="fa fa-download" aria-hidden="true"></i>
 										Download pdf brochure </a>
@@ -393,100 +393,100 @@
 									<section>
 										<ul class="gallery-images inspiry-popup clearfix">
 											<li>
-												<img src="../../assets/wp-content/uploads/2017/11/dubai-01-440x312.jpg"
+												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/dubai-01-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../assets/wp-content/uploads/2017/11/dubai-01.jpg">
+													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/dubai-01.jpg">
 													<div class="overlay">
-														<img src="../../assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../assets/wp-content/uploads/2017/11/dubai-02-440x312.jpg"
+												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/dubai-02-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../assets/wp-content/uploads/2017/11/dubai-02.jpg">
+													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/dubai-02.jpg">
 													<div class="overlay">
-														<img src="../../assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../assets/wp-content/uploads/2017/11/zaid-440x312.jpg"
+												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/zaid-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../assets/wp-content/uploads/2017/11/zaid.jpg">
+													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/zaid.jpg">
 													<div class="overlay">
-														<img src="../../assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../assets/wp-content/uploads/2017/11/alessandro-spataro-355696-440x312.jpg"
+												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/alessandro-spataro-355696-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../assets/wp-content/uploads/2017/11/alessandro-spataro-355696.jpg">
+													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/alessandro-spataro-355696.jpg">
 													<div class="overlay">
-														<img src="../../assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../assets/wp-content/uploads/2017/11/rktkn-440x312.jpg"
+												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/rktkn-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../assets/wp-content/uploads/2017/11/rktkn.jpg">
+													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/rktkn.jpg">
 													<div class="overlay">
-														<img src="../../assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../assets/wp-content/uploads/2017/11/night-burj-440x312.jpg"
+												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/night-burj-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../assets/wp-content/uploads/2017/11/night-burj.jpg">
+													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/night-burj.jpg">
 													<div class="overlay">
-														<img src="../../assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../assets/wp-content/uploads/2017/11/valeria-andersson-360231-440x312.jpg"
+												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/valeria-andersson-360231-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../assets/wp-content/uploads/2017/11/valeria-andersson-360231.jpg">
+													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/valeria-andersson-360231.jpg">
 													<div class="overlay">
-														<img src="../../assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../assets/wp-content/uploads/2017/11/zoo-440x312.jpg"
+												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/zoo-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../assets/wp-content/uploads/2017/11/zoo.jpg">
+													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/zoo.jpg">
 													<div class="overlay">
-														<img src="../../assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../assets/wp-content/uploads/2017/11/desert-440x312.jpg"
+												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/desert-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../assets/wp-content/uploads/2017/11/desert.jpg">
+													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/desert.jpg">
 													<div class="overlay">
-														<img src="../../assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
@@ -494,7 +494,7 @@
 										</ul>
 									</section>
 									<a class="btn btn-inspiry-download"
-										href="../../assets/wp-content/uploads/2017/11/Brochure.pdf"
+										href="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/Brochure.pdf"
 										download="Brochure.pdf">
 										<i class="fa fa-download" aria-hidden="true"></i>
 										Download pdf brochure </a>
@@ -781,10 +781,10 @@
 									<a href="../historic-istanbul/index.html">
 										<figure>
 											<img width="720" height="560"
-												src="../../assets/wp-content/uploads/2017/11/istanbul-featured-720x560.jpg"
+												src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured-720x560.jpg"
 												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 												alt="" decoding="async" loading="lazy"
-												srcset="../../assets/wp-content/uploads/2017/11/istanbul-featured-720x560.jpg 720w, ../../assets/wp-content/uploads/2017/11/istanbul-featured-300x233.jpg 300w, ../../assets/wp-content/uploads/2017/11/istanbul-featured-768x598.jpg 768w, ../../assets/wp-content/uploads/2017/11/istanbul-featured-600x467.jpg 600w, ../../assets/wp-content/uploads/2017/11/istanbul-featured.jpg 1000w"
+												srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured-720x560.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured-300x233.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured-768x598.jpg 768w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured-600x467.jpg 600w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured.jpg 1000w"
 												sizes="(max-width: 720px) 100vw, 720px" /><span
 												class="offer-price"><i>$1,200</i>$990</span>
 											<div class="content">
@@ -802,7 +802,7 @@
 									<a href="../magical-maldives/index.html">
 										<figure>
 											<img width="720" height="560"
-												src="../../assets/wp-content/uploads/2017/11/maldives-featured-720x560.jpg"
+												src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/maldives-featured-720x560.jpg"
 												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 												alt="" decoding="async" loading="lazy" /><span
 												class="offer-price">$900</span>
@@ -834,10 +834,10 @@
 								<div class="tour-post clearfix tour-post-full-width">
 									<figure>
 										<a href="../luxurious-london/index.html"><img width="720" height="560"
-												src="../../assets/wp-content/uploads/2017/11/london-featured-720x560.jpg"
+												src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/london-featured-720x560.jpg"
 												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 												alt="" decoding="async" loading="lazy"
-												srcset="../../assets/wp-content/uploads/2017/11/london-featured.jpg 720w, ../../assets/wp-content/uploads/2017/11/london-featured-300x233.jpg 300w, ../../assets/wp-content/uploads/2017/11/london-featured-600x467.jpg 600w"
+												srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/london-featured.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/london-featured-300x233.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/london-featured-600x467.jpg 600w"
 												sizes="(max-width: 720px) 100vw, 720px" /></a><span class="tour-meta">
 											<span class="tour-meta-icon">
 												<span>May - Jun - Jul</span>
@@ -948,10 +948,10 @@
 								<div class="tour-post clearfix tour-post-full-width">
 									<figure>
 										<a href="../modern-sydney/index.html"><img width="720" height="560"
-												src="../../assets/wp-content/uploads/2017/11/sydney-featured-720x560.jpg"
+												src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured-720x560.jpg"
 												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 												alt="" decoding="async" loading="lazy"
-												srcset="../../assets/wp-content/uploads/2017/11/sydney-featured-720x560.jpg 720w, ../../assets/wp-content/uploads/2017/11/sydney-featured-300x233.jpg 300w, ../../assets/wp-content/uploads/2017/11/sydney-featured-768x598.jpg 768w, ../../assets/wp-content/uploads/2017/11/sydney-featured-600x467.jpg 600w, ../../assets/wp-content/uploads/2017/11/sydney-featured.jpg 1000w"
+												srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured-720x560.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured-300x233.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured-768x598.jpg 768w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured-600x467.jpg 600w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured.jpg 1000w"
 												sizes="(max-width: 720px) 100vw, 720px" /></a><span class="tour-meta">
 											<span class="tour-meta-icon">
 												<span>Jan - Feb - Dec</span>
@@ -1061,10 +1061,10 @@
 								<div class="tour-post clearfix tour-post-full-width">
 									<figure>
 										<a href="../rio-de-janeiro/index.html"><img width="720" height="560"
-												src="../../assets/wp-content/uploads/2017/11/rio-featured-720x560.jpg"
+												src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured-720x560.jpg"
 												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 												alt="" decoding="async" loading="lazy"
-												srcset="../../assets/wp-content/uploads/2017/11/rio-featured-720x560.jpg 720w, ../../assets/wp-content/uploads/2017/11/rio-featured-300x233.jpg 300w, ../../assets/wp-content/uploads/2017/11/rio-featured-768x598.jpg 768w, ../../assets/wp-content/uploads/2017/11/rio-featured-600x467.jpg 600w, ../../assets/wp-content/uploads/2017/11/rio-featured.jpg 1000w"
+												srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured-720x560.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured-300x233.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured-768x598.jpg 768w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured-600x467.jpg 600w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured.jpg 1000w"
 												sizes="(max-width: 720px) 100vw, 720px" /></a><span class="tour-meta">
 											<span class="tour-meta-icon">
 												<span>Apr - May</span>
@@ -1178,4 +1178,4 @@
 		</div>
 	</div> <!-- #site-wrapper -->
 
-<?php include('../../footer.php'); ?>
+<?php include('footer.php'); ?>

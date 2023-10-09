@@ -32,7 +32,7 @@
 		}
 	</style>
 	<link rel='stylesheet' id='wp-block-library-css'
-		href='/toor-and-travel/assets/wp-includes/css/dist/block-library/style.min3781.css?ver=6.2.2' type='text/css'
+		href='assets/wp-includes/css/dist/block-library/style.min3781.css?ver=6.2.2' type='text/css'
 		media='all' />
 	<style id='wp-block-library-theme-inline-css' type='text/css'>
 		.wp-block-audio figcaption {
@@ -223,13 +223,13 @@
 		}
 	</style>
 	<link rel='stylesheet' id='wc-blocks-vendors-style-css'
-		href='/toor-and-travel/assets/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-vendors-style71f0.css?ver=10.9.3'
+		href='assets/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-vendors-style71f0.css?ver=10.9.3'
 		type='text/css' media='all' />
 	<link rel='stylesheet' id='wc-all-blocks-style-css'
-		href='/toor-and-travel/assets/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/wc-all-blocks-style71f0.css?ver=10.9.3'
+		href='assets/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/wc-all-blocks-style71f0.css?ver=10.9.3'
 		type='text/css' media='all' />
 	<link rel='stylesheet' id='classic-theme-styles-css'
-		href='/toor-and-travel/assets/wp-includes/css/classic-themes.min3781.css?ver=6.2.2' type='text/css'
+		href='assets/wp-includes/css/classic-themes.min3781.css?ver=6.2.2' type='text/css'
 		media='all' />
 	<style id='global-styles-inline-css' type='text/css'>
 		body {
@@ -570,13 +570,13 @@
 		}
 	</style>
 	<link rel='stylesheet' id='woocommerce-layout-css'
-		href='/toor-and-travel/assets/wp-content/plugins/woocommerce/assets/css/woocommerce-layout12c8.css?ver=8.1.1'
+		href='assets/wp-content/plugins/woocommerce/assets/css/woocommerce-layout12c8.css?ver=8.1.1'
 		type='text/css' media='all' />
 	<link rel='stylesheet' id='woocommerce-smallscreen-css'
-		href='/toor-and-travel/assets/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen12c8.css?ver=8.1.1'
+		href='assets/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen12c8.css?ver=8.1.1'
 		type='text/css' media='only screen and (max-width: 768px)' />
 	<link rel='stylesheet' id='woocommerce-general-css'
-		href='/toor-and-travel/assets/wp-content/plugins/woocommerce/assets/css/woocommerce12c8.css?ver=8.1.1'
+		href='assets/wp-content/plugins/woocommerce/assets/css/woocommerce12c8.css?ver=8.1.1'
 		type='text/css' media='all' />
 	<style id='woocommerce-inline-inline-css' type='text/css'>
 		.woocommerce form .form-row .required {
@@ -587,37 +587,37 @@
 		href='http://fonts.googleapis.com/css?family=Rubik%3A300%2C400%2C500%2C700&amp;subset=latin%2Clatin-ext&amp;ver=1.1.7'
 		type='text/css' media='all' />
 	<link rel='stylesheet' id='bootstrap-css'
-		href='/toor-and-travel/assets/wp-content/themes/css/bootstrap.css'
+		href='assets/wp-content/themes/css/bootstrap.css'
 		type='text/css' media='all' />
 	<link rel='stylesheet' id='fontawesome-css'
-		href='/toor-and-travel/assets/wp-content/themes/css/font-awesome.min.css'
+		href='assets/wp-content/themes/css/font-awesome.min.css'
 		type='text/css' media='all' />
 	<link rel='stylesheet' id='meanmenu-css'
-		href='/toor-and-travel/assets/wp-content/themes/js/meanmenu/meanmenu.mina7f4.css?ver=2.0.8'
+		href='assets/wp-content/themes/js/meanmenu/meanmenu.mina7f4.css?ver=2.0.8'
 		type='text/css' media='all' />
 	<link rel='stylesheet' id='flexslider-css'
-		href='/toor-and-travel/assets/wp-content/themes/js/flexslider/flexslidereed8.css?ver=2.7.2'
+		href='assets/wp-content/themes/js/flexslider/flexslidereed8.css?ver=2.7.2'
 		type='text/css' media='all' />
 	<link rel='stylesheet' id='owl-carousel-css'
-		href='/toor-and-travel/assets/wp-content/themes/js/owl-carousel/owl.carousel.min77e6.css?ver=2.2.1'
+		href='assets/wp-content/themes/js/owl-carousel/owl.carousel.min77e6.css?ver=2.2.1'
 		type='text/css' media='all' />
 	<link rel='stylesheet' id='bar-rating-theme-css'
-		href='/toor-and-travel/assets/wp-content/themes/js/barrating/fontawesome-stars6fca.css?ver=2.6.3'
+		href='assets/wp-content/themes/js/barrating/fontawesome-stars6fca.css?ver=2.6.3'
 		type='text/css' media='all' />
 	<link rel='stylesheet' id='magnific-popup-css'
-		href='/toor-and-travel/assets/wp-content/themes/js/magnific/magnific-popupf488.css?ver=1.1.0'
+		href='assets/wp-content/themes/js/magnific/magnific-popupf488.css?ver=1.1.0'
 		type='text/css' media='all' />
 	<link rel='stylesheet' id='jquery-ui-css'
-		href='/toor-and-travel/assets/wp-content/themes/js/jquery-ui/jquery-ui.min35d0.css?ver=1.12.1'
+		href='assets/wp-content/themes/js/jquery-ui/jquery-ui.min35d0.css?ver=1.12.1'
 		type='text/css' media='all' />
 	<link rel='stylesheet' id='inspiry-main-css'
-		href='/toor-and-travel/assets/wp-content/themes/css/main.css' type='text/css'
+		href='assets/wp-content/themes/css/main.css' type='text/css'
 		media='all' />
 	<link rel='stylesheet' id='tourpress-print-style-css'
-		href='/toor-and-travel/assets/wp-content/themes/css/print.css' type='text/css'
+		href='assets/wp-content/themes/css/print.css' type='text/css'
 		media='all' />
 	<link rel='stylesheet' id='parent-custom-css'
-		href='/toor-and-travel/assets/wp-content/themes/css/custom.css' type='text/css'
+		href='assets/wp-content/themes/css/custom.css' type='text/css'
 		media='all' />
 	<style id='parent-custom-inline-css' type='text/css'>
 		#site-banner {
@@ -627,12 +627,12 @@
 		}
 	</style>
 	<link rel='stylesheet' id='tourpress-style-css'
-		href='/toor-and-travel/assets/wp-content/themes/style.css' type='text/css'
+		href='assets/wp-content/themes/style.css' type='text/css'
 		media='all' />
-	<script type='text/javascript' src='/toor-and-travel/assets/wp-includes/js/jquery/jquery.min5aed.js?ver=3.6.4'
+	<script type='text/javascript' src='assets/wp-includes/js/jquery/jquery.min5aed.js?ver=3.6.4'
 		id='jquery-core-js'></script>
 	<script type='text/javascript'
-		src='/toor-and-travel/assets/wp-includes/js/jquery/jquery-migrate.min6b00.js?ver=3.4.0'
+		src='assets/wp-includes/js/jquery/jquery-migrate.min6b00.js?ver=3.4.0'
 		id='jquery-migrate-js'></script>
 	<link rel="https://api.w.org/" href="wp-json/index.php" />
 	<link rel="alternate" type="application/json" href="wp-json/wp/v2/pages/54.json" />
@@ -855,8 +855,8 @@
 							<div class="logo-wrap">
 								<a href="index.php" class="site-logo" title="PreetHoliday">
 									<img alt="PreetHoliday"
-										src="/toor-and-travel/assets/wp-content/uploads/2020/04/logo.png"
-										srcset="/toor-and-travel/assets/wp-content/uploads/2020/04/logo.png, /toor-and-travel/assets/wp-content/uploads/2020/04/logo.png 2x" width="36%">
+										src="assets/wp-content/uploads/2020/04/logo.png"
+										srcset="assets/wp-content/uploads/2020/04/logo.png, assets/wp-content/uploads/2020/04/logo.png 2x" width="36%">
 								</a>
 							</div>
 						</div>
