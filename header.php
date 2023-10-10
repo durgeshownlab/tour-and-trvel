@@ -610,21 +610,18 @@
 	<link rel='stylesheet' id='jquery-ui-css'
 		href='assets/wp-content/themes/js/jquery-ui/jquery-ui.min35d0.css?ver=1.12.1'
 		type='text/css' media='all' />
-	<link rel='stylesheet' id='inspiry-main-css'
-		href='assets/wp-content/themes/css/main.css' type='text/css'
-		media='all' />
-	<link rel='stylesheet' id='tourpress-print-style-css'
+		<link rel='stylesheet' id='tourpress-print-style-css'
 		href='assets/wp-content/themes/css/print.css' type='text/css'
 		media='all' />
-	<link rel='stylesheet' id='parent-custom-css'
+		<link rel='stylesheet' id='parent-custom-css'
 		href='assets/wp-content/themes/css/custom.css' type='text/css'
 		media='all' />
-	<style id='parent-custom-inline-css' type='text/css'>
-		#site-banner {
-			background-repeat: no-repeat;
-			background-size: cover;
-			background-position: center center;
-		}
+		<style id='parent-custom-inline-css' type='text/css'>
+			#site-banner {
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center center;
+			}
 	</style>
 	<link rel='stylesheet' id='tourpress-style-css'
 		href='assets/wp-content/themes/style.css' type='text/css'
@@ -644,21 +641,22 @@
 	<link rel="canonical" href="index.php" />
 	<link rel='shortlink' href='index.php' />
 	<link rel="alternate" type="application/json+oembed"
-		href="wp-json/oembed/1.0/embed6d55.json?url=https%3A%2F%2Ftourpress.inspirythemes.com%2F" />
+	href="wp-json/oembed/1.0/embed6d55.json?url=https%3A%2F%2Ftourpress.inspirythemes.com%2F" />
 	<link rel="alternate" type="text/xml+oembed"
-		href="wp-json/oembed/1.0/embedadc0?url=https%3A%2F%2Ftourpress.inspirythemes.com%2F&amp;format=xml" />
+	href="wp-json/oembed/1.0/embedadc0?url=https%3A%2F%2Ftourpress.inspirythemes.com%2F&amp;format=xml" />
 	<noscript>
 		<style>
 			.woocommerce-product-gallery {
 				opacity: 1 !important;
 			}
-		</style>
+			</style>
 	</noscript>
 	<style type="text/css" id="wp-custom-css">
 		#scroll-top {
 			display: none !important;
 		}
-	</style>
+		</style>
+<link rel='stylesheet' href='assets/wp-content/themes/css/main.css' type='text/css'/>
 
 </head>
 
@@ -669,7 +667,7 @@
 <body data-rsssl=1
 	class="home page-template page-template-page-templates page-template-home page-template-page-templateshome-php page page-id-54 wp-embed-responsive theme woocommerce-no-js">
 	<svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+	style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
 		<defs>
 			<filter id="wp-duotone-dark-grayscale">
 				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
@@ -928,21 +926,73 @@
 							<nav class="main-menu-wrap">
 								<ul id="menu-header-menu" class="main-menu clearfix">
 									<li id="menu-item-884"
-										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-54 current_page_item menu-item-884">
+										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-54 
+										
+										<?php 
+
+											$currentScriptPath = $_SERVER['SCRIPT_NAME'];  // Get the current script's path
+											$fileName = basename($currentScriptPath);  // Extract the file name
+											if($fileName=='index.php')
+											{
+												// echo $fileName;
+												echo ' current_page_item ';
+											}
+										?>
+										
+										 menu-item-884">
 										<a href="index.php" aria-current="page">Home</a>
 									</li>
 									<li id="menu-item-907"
-										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-907">
+										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-907 
+										
+										<?php 
+
+											$currentScriptPath = $_SERVER['SCRIPT_NAME'];  // Get the current script's path
+											$fileName = basename($currentScriptPath);  // Extract the file name
+											if($fileName=='tours.php')
+											{
+												// echo $fileName;
+												echo ' current_page_item ';
+											}
+										?>
+										
+										">
 										<a href="tours.php">Tours</a>
 									</li>
 									<li id="menu-item-885"
-										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-885">
+										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-885 
+										
+										<?php 
+
+											$currentScriptPath = $_SERVER['SCRIPT_NAME'];  // Get the current script's path
+											$fileName = basename($currentScriptPath);  // Extract the file name
+											if($fileName=='blogs.php')
+											{
+												// echo $fileName;
+												echo ' current_page_item ';
+											}
+										?>
+
+										">
 										<a href="blogs.php">Blogs</a>
 									</li>
 									<li id="menu-item-855"
-										class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-855">
-										<a href="#">Pages</a>
-										<ul class="sub-menu">
+										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-885
+										
+										<?php 
+
+											$currentScriptPath = $_SERVER['SCRIPT_NAME'];  // Get the current script's path
+											$fileName = basename($currentScriptPath);  // Extract the file name
+											if($fileName=='team.php')
+											{
+												// echo $fileName;
+												echo ' current_page_item ';
+											}
+										?>
+										
+										">
+										<a href="team.php">Our Team</a>
+										<!-- <ul class="sub-menu">
 											<li id="menu-item-874"
 												class="menu-item menu-item-type-taxonomy menu-item-object-tour-type menu-item-874">
 												<a href="blog/tour-type/adventure/index.php">Adventure</a>
@@ -965,27 +1015,40 @@
 													</li>
 												</ul>
 											</li>
-										</ul>
+										</ul> -->
 									</li>
 									<li id="menu-item-886"
-										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-886">
+										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-886
+										
+										<?php 
+
+											$currentScriptPath = $_SERVER['SCRIPT_NAME'];  // Get the current script's path
+											$fileName = basename($currentScriptPath);  // Extract the file name
+											if($fileName=='contact.php')
+											{
+												// echo $fileName;
+												echo ' current_page_item ';
+											}
+										?>
+										
+										">
 										<a href="contact.php">Contact</a>
 									</li>
                                     <li id="menu-item-892"
 										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-892">
-										<a href="shop/index.php"><i class="fa fa-user"></i> User</a>
+										<a href="#"><i class="fa fa-user"></i> User</a>
 										<ul class="sub-menu">
 											<li id="menu-item-894"
 												class="menu-item menu-item-type-post_type menu-item-object-page menu-item-894">
-												<a href="my-account/index.php">My account</a>
+												<a href="#">My account</a>
 											</li>
 											<li id="menu-item-898"
 												class="menu-item menu-item-type-post_type menu-item-object-page menu-item-898">
-												<a href="cart/index.php">Cart</a>
+												<a href="#">Cart</a>
 											</li>
 											<li id="menu-item-896"
 												class="menu-item menu-item-type-post_type menu-item-object-page menu-item-896">
-												<a href="checkout/index.php">Checkout</a>
+												<a href="#">Checkout</a>
 											</li>
 										</ul>
 									</li>

@@ -4,7 +4,7 @@
 	<div class="banner-content">
 		<h1>Contact</h1>
 		<ul id="inspiry_breadcrumbs" class="inspiry_breadcrumbs">
-			<li class="breadcrumb-item"><a href="../index.html" title="Home">Home</a></li>
+			<li class="breadcrumb-item"><a href="index.php" title="Home">Home</a></li>
 			<li>&gt;</li>
 			<li class="breadcrumb-item active item-current item-46"><span class="bread-current bread-46"> Contact</span>
 			</li>
@@ -21,7 +21,7 @@
 					<div class="contact-form">
 						<p>You are so important to us, simply complete the enquiry form &amp; we will respond as soon as
 							we can.</p>
-						<form action="https://tourpress.inspirythemes.com/wp-admin/admin-ajax.php" id="contact-form"
+						<form action="#" id="contact-form"
 							method="post">
 							<input type="text" name="fname" placeholder="First Name"
 								title="* Please enter your first name." class="required">
@@ -51,22 +51,22 @@
 						<h3>Stay Social</h3>
 						<ul class="social-buttons clearfix">
 							<li class="facebook">
-								<a href="https://facebook.com/" target="_blank">
+								<a href="https://www.facebook.com/preetholiday" target="_blank">
 									<i class="fa fa-facebook" aria-hidden="true"></i>
 								</a>
 							</li>
 							<li class="twitter">
-								<a href="https://twitter.com/" target="_blank">
-									<i class="fa fa-twitter" aria-hidden="true"></i>
+								<a href="https://youtube.com/@PreetHolidays?si=scfRKg5XJ-yflJt6" target="_blank">
+									<i class="fa fa-youtube-play" aria-hidden="true"></i>
 								</a>
 							</li>
 							<li class="instagram">
-								<a href="https://instagram.com/" target="_blank">
+								<a href="https://www.instagram.com/preetholidays/" target="_blank">
 									<i class="fa fa-instagram" aria-hidden="true"></i>
 								</a>
 							</li>
 							<li class="pinterest">
-								<a href="https://pinterest.com/" target="_blank">
+								<a href="https://in.pinterest.com/preetholidays1/" target="_blank">
 									<i class="fa fa-pinterest-p" aria-hidden="true"></i>
 								</a>
 							</li>
@@ -86,8 +86,8 @@
 										<h4>Dubai</h4>
 										<address>ACICO Business Park Port Saeed Deira Dubai</address>
 										<div class="number">
-											<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-												xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px"
+											<svg version="1.1" xmlns=""
+												xmlns:xlink="" x="0px" y="0px" width="30px"
 												height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30"
 												xml:space="preserve">
 												<path d="M22.875,16.377c-0.12,0.126-0.291,0.199-0.468,0.199c-0.176,0-0.346-0.073-0.468-0.199
@@ -175,8 +175,8 @@
 										<h4>Dubai</h4>
 										<address>ACICO Business Park Port Saeed Deira Dubai</address>
 										<div class="number">
-											<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-												xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px"
+											<svg version="1.1" xmlns=""
+												xmlns:xlink="" x="0px" y="0px" width="30px"
 												height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30"
 												xml:space="preserve">
 												<path d="M22.875,16.377c-0.12,0.126-0.291,0.199-0.468,0.199c-0.176,0-0.346-0.073-0.468-0.199
@@ -249,8 +249,8 @@
 										<h4>Singapore</h4>
 										<address>Magazine Road Central Mall Office Tower Singapore</address>
 										<div class="number">
-											<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-												xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px"
+											<svg version="1.1" xmlns=""
+												xmlns:xlink="" x="0px" y="0px" width="30px"
 												height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30"
 												xml:space="preserve">
 												<path d="M22.875,16.377c-0.12,0.126-0.291,0.199-0.468,0.199c-0.176,0-0.346-0.073-0.468-0.199
@@ -324,8 +324,8 @@
 										<h4>London</h4>
 										<address>111 Harrow Road, Wembley, UK</address>
 										<div class="number">
-											<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-												xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px"
+											<svg version="1.1" xmlns=""
+												xmlns:xlink="" x="0px" y="0px" width="30px"
 												height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30"
 												xml:space="preserve">
 												<path d="M22.875,16.377c-0.12,0.126-0.291,0.199-0.468,0.199c-0.176,0-0.346-0.073-0.468-0.199
@@ -398,12 +398,12 @@
 					</div>
 				</section>
 				<!--google map-->
-				<section class="contact-section inspiry-box-shadow map-wrap white-bg">
+				<!-- <section class="contact-section inspiry-box-shadow map-wrap white-bg">
 					<div class="google-map">
 						<div id="contact-map">
 						</div>
 					</div>
-				</section>
+				</section> -->
 			</div>
 			<div class="col-sm-12 col-md-4 col-sidebar">
 				<aside id="sidebar-contact" class="sidebar widget-area">
@@ -414,8 +414,8 @@
 								class="clearfix">
 
 								<p class="form-field tour-destination">
-									<svg version="1.1" class="icon-map-pin" xmlns="http://www.w3.org/2000/svg"
-										xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px"
+									<svg version="1.1" class="icon-map-pin" xmlns=""
+										xmlns:xlink="" x="0px" y="0px" width="24px"
 										height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24"
 										xml:space="preserve">
 										<path fill-rule="evenodd" clip-rule="evenodd"
@@ -436,8 +436,8 @@
 								</p>
 
 								<p class="form-field tour-type">
-									<svg version="1.1" class="icon-type-list" xmlns="http://www.w3.org/2000/svg"
-										xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px"
+									<svg version="1.1" class="icon-type-list" xmlns=""
+										xmlns:xlink="" x="0px" y="0px" width="24px"
 										height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24"
 										xml:space="preserve">
 										<path d="M19,8H8.999C8.447,8,8,7.554,8,7c0-0.552,0.447-1,0.999-1H19c0.552,0,0.999,0.448,0.999,1C19.999,7.554,19.552,8,19,8L19,8z
@@ -460,8 +460,8 @@
 								</p>
 
 								<p class="form-field tour-month">
-									<svg version="1.1" class="icon-calendar" xmlns="http://www.w3.org/2000/svg"
-										xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px"
+									<svg version="1.1" class="icon-calendar" xmlns=""
+										xmlns:xlink="" x="0px" y="0px" width="24px"
 										height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24"
 										xml:space="preserve">
 										<path fill-rule="evenodd" clip-rule="evenodd" d="M19.334,22.5H4.666C3.194,22.5,2,21.325,2,19.876V4.124
@@ -509,7 +509,7 @@
 					<section id="inspiry_tours_widget-3" class="widget clearfix inspiry_tours_widget">
 						<h2 class="widget-title">Popular Tours</h2>
 						<div class="tour-destination">
-							<a href="../blog/tour/multicultural-singapore/index.html">
+							<a href="#">
 								<figure>
 									<img width="720" height="560"
 										src="assets/wp-content/uploads/2017/11/singapore-featured-720x560.jpg"
@@ -528,7 +528,7 @@
 							</a>
 						</div>
 						<div class="tour-destination">
-							<a href="../blog/tour/luxurious-london/index.html">
+							<a href="#">
 								<figure>
 									<img width="720" height="560"
 										src="assets/wp-content/uploads/2017/11/london-featured-720x560.jpg"
@@ -547,7 +547,7 @@
 							</a>
 						</div>
 						<div class="tour-destination">
-							<a href="../blog/tour/mysterious-goreme/index.html">
+							<a href="#">
 								<figure>
 									<img width="720" height="560"
 										src="assets/wp-content/uploads/2017/10/cappadocia-featured-720x560.jpg"
@@ -565,62 +565,6 @@
 								</figure>
 							</a>
 						</div>
-					</section>
-					<section id="inspiry_recent_posts_widget-5" class="widget clearfix inspiry_recent_posts_widget">
-						<h2 class="widget-title">Recent Posts</h2>
-						<ul>
-							<li class="clearfix">
-								<div class="content">
-									<h4><a href="../blog/try-living-a-simple-life/index.html">Try Living A Simple
-											Life</a></h4>
-									<span class="entry-date"><i class="fa fa-calendar-check-o"></i> <time
-											datetime="2017-12-11">December 11, 2017</time></span>
-								</div>
-								<figure>
-									<a href="../blog/try-living-a-simple-life/index.html">
-										<img width="70" height="70"
-											src="assets/wp-content/uploads/2017/10/patrick-hendry-150x150.jpg"
-											class="attachment-78x70 size-78x70 wp-post-image" alt="" decoding="async"
-											loading="lazy"
-											srcset="assets/wp-content/uploads/2017/10/patrick-hendry-150x150.jpg 150w, assets/wp-content/uploads/2017/10/patrick-hendry-300x300.jpg 300w, assets/wp-content/uploads/2017/10/patrick-hendry-100x100.jpg 100w"
-											sizes="(max-width: 70px) 100vw, 70px" /> </a>
-								</figure>
-							</li>
-							<li class="clearfix">
-								<div class="content">
-									<h4><a href="../blog/start-writing-a-journal/index.html">Start Writing A Journal</a>
-									</h4>
-									<span class="entry-date"><i class="fa fa-calendar-check-o"></i> <time
-											datetime="2017-12-10">December 10, 2017</time></span>
-								</div>
-								<figure>
-									<a href="../blog/start-writing-a-journal/index.html">
-										<img width="70" height="70"
-											src="assets/wp-content/uploads/2017/10/cathryn-lavery-67851-150x150.jpg"
-											class="attachment-78x70 size-78x70 wp-post-image" alt="" decoding="async"
-											loading="lazy"
-											srcset="assets/wp-content/uploads/2017/10/cathryn-lavery-67851-150x150.jpg 150w, assets/wp-content/uploads/2017/10/cathryn-lavery-67851-300x300.jpg 300w, assets/wp-content/uploads/2017/10/cathryn-lavery-67851-100x100.jpg 100w"
-											sizes="(max-width: 70px) 100vw, 70px" /> </a>
-								</figure>
-							</li>
-							<li class="clearfix">
-								<div class="content">
-									<h4><a href="../blog/make-running-a-part-of-life/index.html">Make Running A Part of
-											Life</a></h4>
-									<span class="entry-date"><i class="fa fa-calendar-check-o"></i> <time
-											datetime="2017-12-09">December 9, 2017</time></span>
-								</div>
-								<figure>
-									<a href="../blog/make-running-a-part-of-life/index.html">
-										<img width="70" height="70"
-											src="assets/wp-content/uploads/2017/10/jenny-hill-150x150.jpg"
-											class="attachment-78x70 size-78x70 wp-post-image" alt="" decoding="async"
-											loading="lazy"
-											srcset="assets/wp-content/uploads/2017/10/jenny-hill-150x150.jpg 150w, assets/wp-content/uploads/2017/10/jenny-hill-300x300.jpg 300w, assets/wp-content/uploads/2017/10/jenny-hill-100x100.jpg 100w"
-											sizes="(max-width: 70px) 100vw, 70px" /> </a>
-								</figure>
-							</li>
-						</ul>
 					</section>
 				</aside>
 			</div><!-- col-md-4 -->

@@ -42,12 +42,12 @@
 											src="assets/wp-content/uploads/2017/11/dubai-featured-720x560.jpg"
 											class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 											alt="" decoding="async" loading="lazy"
-											srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/dubai-featured-720x560.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/dubai-featured-300x234.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/dubai-featured-600x468.jpg 600w"
+											srcset="assets/wp-content/uploads/2017/11/dubai-featured-720x560.jpg 720w, assets/wp-content/uploads/2017/11/dubai-featured-300x234.jpg 300w, assets/wp-content/uploads/2017/11/dubai-featured-600x468.jpg 600w"
 											sizes="(max-width: 720px) 100vw, 720px" />
 									</figure>
 									<div class="item-content">
 										<h3>
-											<a href="../blog/tour/fabulous-dubai/index.html">Fabulous Dubai</a>
+											<a href="tour.php">Fabulous Mumbai</a>
 										</h3>
 									</div>
 								</div>
@@ -59,12 +59,12 @@
 											src="assets/wp-content/uploads/2017/11/london-featured-720x560.jpg"
 											class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 											alt="" decoding="async" loading="lazy"
-											srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/london-featured.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/london-featured-300x233.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/london-featured-600x467.jpg 600w"
+											srcset="assets/wp-content/uploads/2017/11/london-featured.jpg 720w, assets/wp-content/uploads/2017/11/london-featured-300x233.jpg 300w, assets/wp-content/uploads/2017/11/london-featured-600x467.jpg 600w"
 											sizes="(max-width: 720px) 100vw, 720px" />
 									</figure>
 									<div class="item-content">
 										<h3>
-											<a href="../blog/tour/luxurious-london/index.html">Luxurious London</a>
+											<a href="tour.php">Luxurious London</a>
 										</h3>
 									</div>
 								</div>
@@ -76,12 +76,12 @@
 											src="assets/wp-content/uploads/2017/11/sydney-featured-720x560.jpg"
 											class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 											alt="" decoding="async" loading="lazy"
-											srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured-720x560.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured-300x233.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured-768x598.jpg 768w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured-600x467.jpg 600w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured.jpg 1000w"
+											srcset="assets/wp-content/uploads/2017/11/sydney-featured-720x560.jpg 720w, assets/wp-content/uploads/2017/11/sydney-featured-300x233.jpg 300w, assets/wp-content/uploads/2017/11/sydney-featured-768x598.jpg 768w, assets/wp-content/uploads/2017/11/sydney-featured-600x467.jpg 600w, assets/wp-content/uploads/2017/11/sydney-featured.jpg 1000w"
 											sizes="(max-width: 720px) 100vw, 720px" />
 									</figure>
 									<div class="item-content">
 										<h3>
-											<a href="../blog/tour/modern-sydney/index.html">Modern Sydney</a>
+											<a href="tour.php">Modern Sydney</a>
 										</h3>
 									</div>
 								</div>
@@ -93,12 +93,12 @@
 											src="assets/wp-content/uploads/2017/11/rio-featured-720x560.jpg"
 											class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 											alt="" decoding="async" loading="lazy"
-											srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured-720x560.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured-300x233.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured-768x598.jpg 768w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured-600x467.jpg 600w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured.jpg 1000w"
+											srcset="assets/wp-content/uploads/2017/11/rio-featured-720x560.jpg 720w, assets/wp-content/uploads/2017/11/rio-featured-300x233.jpg 300w, assets/wp-content/uploads/2017/11/rio-featured-768x598.jpg 768w, assets/wp-content/uploads/2017/11/rio-featured-600x467.jpg 600w, assets/wp-content/uploads/2017/11/rio-featured.jpg 1000w"
 											sizes="(max-width: 720px) 100vw, 720px" />
 									</figure>
 									<div class="item-content">
 										<h3>
-											<a href="../blog/tour/rio-de-janeiro/index.html">Rio De Janeiro</a>
+											<a href="tour.php">Rio De Janeiro</a>
 										</h3>
 									</div>
 								</div>
@@ -113,7 +113,7 @@
 									</figure>
 									<div class="item-content">
 										<h3>
-											<a href="../blog/tour/magical-maldives/index.html">Magical Maldives</a>
+											<a href="tour.php">Magical Maldives</a>
 										</h3>
 									</div>
 								</div>
@@ -125,12 +125,12 @@
 											src="assets/wp-content/uploads/2017/11/istanbul-featured-720x560.jpg"
 											class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 											alt="" decoding="async" loading="lazy"
-											srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured-720x560.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured-300x233.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured-768x598.jpg 768w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured-600x467.jpg 600w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured.jpg 1000w"
+											srcset="assets/wp-content/uploads/2017/11/istanbul-featured-720x560.jpg 720w, assets/wp-content/uploads/2017/11/istanbul-featured-300x233.jpg 300w, assets/wp-content/uploads/2017/11/istanbul-featured-768x598.jpg 768w, assets/wp-content/uploads/2017/11/istanbul-featured-600x467.jpg 600w, assets/wp-content/uploads/2017/11/istanbul-featured.jpg 1000w"
 											sizes="(max-width: 720px) 100vw, 720px" />
 									</figure>
 									<div class="item-content">
 										<h3>
-											<a href="../blog/tour/historic-istanbul/index.html">Historic Istanbul</a>
+											<a href="tour.php">Historic Istanbul</a>
 										</h3>
 									</div>
 								</div>
@@ -142,12 +142,12 @@
 											src="assets/wp-content/uploads/2017/11/singapore-featured-720x560.jpg"
 											class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 											alt="" decoding="async" loading="lazy"
-											srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/singapore-featured-720x560.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/singapore-featured-300x233.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/singapore-featured-768x598.jpg 768w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/singapore-featured-600x467.jpg 600w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/singapore-featured.jpg 1000w"
+											srcset="assets/wp-content/uploads/2017/11/singapore-featured-720x560.jpg 720w, assets/wp-content/uploads/2017/11/singapore-featured-300x233.jpg 300w, assets/wp-content/uploads/2017/11/singapore-featured-768x598.jpg 768w, assets/wp-content/uploads/2017/11/singapore-featured-600x467.jpg 600w, assets/wp-content/uploads/2017/11/singapore-featured.jpg 1000w"
 											sizes="(max-width: 720px) 100vw, 720px" />
 									</figure>
 									<div class="item-content">
 										<h3>
-											<a href="../blog/tour/multicultural-singapore/index.html">Multicultural
+											<a href="tour.php">Multicultural
 												Singapore</a>
 										</h3>
 									</div>
@@ -160,12 +160,12 @@
 											src="assets/wp-content/uploads/2017/11/venice-featured-720x560.jpg"
 											class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 											alt="" decoding="async" loading="lazy"
-											srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/venice-featured-720x560.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/venice-featured-300x233.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/venice-featured-768x598.jpg 768w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/venice-featured-600x467.jpg 600w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/venice-featured.jpg 1000w"
+											srcset="assets/wp-content/uploads/2017/11/venice-featured-720x560.jpg 720w, assets/wp-content/uploads/2017/11/venice-featured-300x233.jpg 300w, assets/wp-content/uploads/2017/11/venice-featured-768x598.jpg 768w, assets/wp-content/uploads/2017/11/venice-featured-600x467.jpg 600w, assets/wp-content/uploads/2017/11/venice-featured.jpg 1000w"
 											sizes="(max-width: 720px) 100vw, 720px" />
 									</figure>
 									<div class="item-content">
 										<h3>
-											<a href="../blog/tour/venice-the-city-of-water/index.html">Venice The City
+											<a href="tour.php">Venice The City
 												of Water</a>
 										</h3>
 									</div>
@@ -178,12 +178,12 @@
 											src="assets/wp-content/uploads/2017/10/cappadocia-featured-720x560.jpg"
 											class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 											alt="" decoding="async" loading="lazy"
-											srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/10/cappadocia-featured-720x560.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/10/cappadocia-featured-300x233.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/10/cappadocia-featured-768x598.jpg 768w, https://tourpress.b-cdn.net/wp-content/uploads/2017/10/cappadocia-featured-600x467.jpg 600w, https://tourpress.b-cdn.net/wp-content/uploads/2017/10/cappadocia-featured.jpg 1000w"
+											srcset="assets/wp-content/uploads/2017/10/cappadocia-featured-720x560.jpg 720w, assets/wp-content/uploads/2017/10/cappadocia-featured-300x233.jpg 300w, assets/wp-content/uploads/2017/10/cappadocia-featured-768x598.jpg 768w, assets/wp-content/uploads/2017/10/cappadocia-featured-600x467.jpg 600w, assets/wp-content/uploads/2017/10/cappadocia-featured.jpg 1000w"
 											sizes="(max-width: 720px) 100vw, 720px" />
 									</figure>
 									<div class="item-content">
 										<h3>
-											<a href="../blog/tour/mysterious-goreme/index.html">Mysterious Goreme</a>
+											<a href="tour.php">Mysterious Goreme</a>
 										</h3>
 									</div>
 								</div>

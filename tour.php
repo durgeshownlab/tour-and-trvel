@@ -1,272 +1,273 @@
 <?php include('header.php'); ?>
-
+<div class="single-tour">
 		<div id="site-banner"
-			style="background-image: url(../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/dubai-banner.jpg);">
+			style="background-image: url(assets/wp-content/uploads/2017/11/dubai-banner.jpg);">
 			<div class="banner-content">
 				<h1>Fabulous Dubai</h1>
 				<ul id="inspiry_breadcrumbs" class="inspiry_breadcrumbs">
-					<li class="breadcrumb-item"><a href="../../../index.html" title="Home">Home</a></li>
+					<li class="breadcrumb-item"><a href="index.php" title="Home">Home</a></li>
 					<li>&gt;</li>
 					<li class="breadcrumb-item item-cat item-custom-post-type-tour"><a
-							class="bread-cat bread-custom-post-type-tour" href="../index.html" title="Tours">Tours</a>
+							class="bread-cat bread-custom-post-type-tour" href="tours.php" title="Tours">Tours</a>
 					</li>
 					<li>&gt;</li>
 					<li class="breadcrumb-item active item-current item-323"><span class="bread-current bread-323"
-							title="Fabulous Dubai">Fabulous Dubai</span></li>
+							title="Fabulous Dubai">Fabulous Mumbai</span></li>
 				</ul>
 			</div>
 		</div>
-		<div class="tour-meta-bar">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="tour-tags clearfix">
-							<div class="tag-review">
-								<span class="rating"><i class="fa fa-star-o rated"></i><i
-										class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i><i
-										class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i></span><a
-									id="reviews-hash" href="#respond">(2 Reviews)</a>
+		
+			<div class="tour-meta-bar">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="tour-tags clearfix">
+								<div class="tag-review">
+									<span class="rating"><i class="fa fa-star-o rated"></i><i
+											class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i><i
+											class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i></span><a
+										id="reviews-hash" href="#respond">(2 Reviews)</a>
+								</div>
+								<div class="tag-price">
+									<svg version="1.1" class="tour-price-tag" xmlns=""
+										xmlns:xlink="" x="0px" y="0px" width="34" height="34px"
+										viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+										<g>
+											<path d="M13.104,5.379l-7.609-0.29l0.14,7.488l7.542,7.534l7.329-7.329L13.104,5.379z M6.664,6.287l5.952,0.227l3.989,3.998
+			l-5.7,5.7l-4.128-4.127L6.664,6.287z M11.719,17.025l5.697-5.698l1.455,1.455l-5.694,5.7L11.719,17.025z" />
+											<path d="M10.723,8.113C10.11,7.5,9.117,7.5,8.504,8.112s-0.613,1.605,0,2.218c0.612,0.613,1.605,0.613,2.218,0.001c0,0,0,0,0-0.001
+			C11.335,9.718,11.335,8.726,10.723,8.113z M9.909,9.515c-0.165,0.156-0.423,0.156-0.587,0C9.158,9.353,9.157,9.088,9.319,8.925
+			c0.163-0.163,0.426-0.164,0.589-0.001c0.163,0.162,0.164,0.426,0.002,0.589C9.91,9.514,9.909,9.514,9.909,9.515z" />
+										</g>
+									</svg>
+									<span>
+										$1,450 / Person </span>
+								</div>
 							</div>
-							<div class="tag-price">
-								<svg version="1.1" class="tour-price-tag" xmlns="http://www.w3.org/2000/svg"
-									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="34" height="34px"
-									viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
-									<g>
-										<path d="M13.104,5.379l-7.609-0.29l0.14,7.488l7.542,7.534l7.329-7.329L13.104,5.379z M6.664,6.287l5.952,0.227l3.989,3.998
-		l-5.7,5.7l-4.128-4.127L6.664,6.287z M11.719,17.025l5.697-5.698l1.455,1.455l-5.694,5.7L11.719,17.025z" />
-										<path d="M10.723,8.113C10.11,7.5,9.117,7.5,8.504,8.112s-0.613,1.605,0,2.218c0.612,0.613,1.605,0.613,2.218,0.001c0,0,0,0,0-0.001
-		C11.335,9.718,11.335,8.726,10.723,8.113z M9.909,9.515c-0.165,0.156-0.423,0.156-0.587,0C9.158,9.353,9.157,9.088,9.319,8.925
-		c0.163-0.163,0.426-0.164,0.589-0.001c0.163,0.162,0.164,0.426,0.002,0.589C9.91,9.514,9.909,9.514,9.909,9.515z" />
-									</g>
-								</svg>
-								<span>
-									$1,450 / Person </span>
-							</div>
+	
+							<ul class="clearfix">
+								<li> <span class="tour-meta-icon">
+										<span></span>
+										<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
+											xml:space="preserve" xmlns="">
+											<style type="text/css">
+												.st0 {
+													fill: none;
+													stroke: #000000;
+													stroke-width: 2;
+													stroke-linecap: round;
+													stroke-linejoin: round;
+													stroke-miterlimit: 10;
+												}
+											</style>
+											<polyline class="st0" points="5.9 3.4 1 3.4 1 29 29 29 29 3.4 24.1 3.4" />
+											<rect class="st0" x="5.9" y="1" width="3.7" height="4.9" />
+											<rect class="st0" x="20.5" y="1" width="3.7" height="4.9" />
+											<line class="st0" x1="9.5" x2="20.5" y1="3.4" y2="3.4" />
+											<line class="st0" x1="1" x2="29" y1="9.5" y2="9.5" />
+											<line class="st0" x1="8.3" x2="8.3" y1="12" y2="26.6" />
+											<line class="st0" x1="14.4" x2="14.4" y1="12" y2="26.6" />
+											<line class="st0" x1="20.5" x2="20.5" y1="12" y2="26.6" />
+											<line class="st0" x1="3.4" x2="26.6" y1="14.4" y2="14.4" />
+											<line class="st0" x1="3.4" x2="26.6" y1="19.3" y2="19.3" />
+											<line class="st0" x1="3.4" x2="26.6" y1="24.1" y2="24.1" />
+										</svg>
+									</span>
+									<span class="tour-meta">Jan - Feb</span>
+								</li>
+								<li> <span class="tour-meta-icon">
+										<span></span>
+										<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
+											xml:space="preserve" xmlns="">
+											<style type="text/css">
+												.st0 {
+													fill: none;
+													stroke: #000000;
+													stroke-width: 2;
+													stroke-linecap: round;
+													stroke-linejoin: round;
+													stroke-miterlimit: 10;
+												}
+											</style>
+											<circle class="st0" cx="15" cy="15" r="14" />
+											<polyline class="st0" points="14.4 8.3 14.4 15 21.7 21.7" />
+										</svg>
+									</span>
+									<span class="tour-meta">7 Days</span>
+								</li>
+								<li> <span class="tour-meta-icon">
+										<span></span>
+										<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
+											xml:space="preserve" xmlns="">
+											<style type="text/css">
+												.st0 {
+													fill: none;
+													stroke: #000000;
+													stroke-width: 2;
+													stroke-linecap: round;
+													stroke-linejoin: round;
+													stroke-miterlimit: 10;
+												}
+											</style>
+											<path class="st0"
+												d="M26.6,12H8.3L5.9,9.5H1l3.7,7.3h9.7l-7.3,7.3h6.1l7.3-7.3h6.1c1.3,0,2.4-1.1,2.4-2.4C29,13,27.9,12,26.6,12z" />
+											<polyline class="st0" points="20.5 12 14.4 5.9 9.5 5.9 15.6 12" />
+										</svg>
+									</span>
+									<span class="tour-meta">London</span>
+								</li>
+								<li> <span class="tour-meta-icon">
+										<span></span>
+										<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
+											xml:space="preserve" xmlns="">
+											<style type="text/css">
+												.st0 {
+													fill: none;
+													stroke: #000000;
+													stroke-width: 2;
+													stroke-linecap: round;
+													stroke-linejoin: round;
+													stroke-miterlimit: 10;
+												}
+											</style>
+											<path class="st0"
+												d="m24.1 10.1c0 5-9.1 18.9-9.1 18.9s-9.1-13.8-9.1-18.9c0-5 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1z" />
+											<circle class="st0" cx="15" cy="10.1" r="3.7" />
+										</svg>
+									</span>
+									<span class="tour-meta">United Arab Emirates</span>
+								</li>
+								<li> <span class="tour-meta-icon">
+										<span></span>
+										<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
+											xml:space="preserve" xmlns="">
+											<style type="text/css">
+												.st0 {
+													fill: none;
+													stroke: #000000;
+													stroke-width: 2;
+													stroke-linejoin: round;
+													stroke-miterlimit: 10;
+												}
+											</style>
+											<path class="st0"
+												d="m12.6 18.7s-1.8-0.6-1.8-3.7c-1 0-1-2.4 0-2.4 0-0.4-1.8-4.9 1.2-4.3 0.6-2.4 7.3-2.4 7.9 0 0.4 1.7-0.6 4-0.6 4.3 1 0 1 2.4 0 2.4 0 3-1.8 3.7-1.8 3.7v3c3 1.1 6 2.1 7.5 3.1 2.5-2.5 4-6 4-9.8 0-7.7-6.3-14-14-14s-14 6.3-14 14c0 3.8 1.5 7.3 4 9.8 1.6-1.1 4.8-2.1 7.5-3.1v-3h0.1z" />
+											<path class="st0" d="m5 24.8c2.5 2.6 6.1 4.2 10 4.2s7.4-1.6 10-4.2" />
+										</svg>
+									</span>
+									<span class="tour-meta">18+</span>
+								</li>
+								<li> <span class="tour-meta-icon">
+										<span></span>
+										<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
+											xml:space="preserve" xmlns="">
+											<style type="text/css">
+												.st0 {
+													fill: none;
+													stroke: #000000;
+													stroke-width: 2;
+													stroke-linejoin: round;
+													stroke-miterlimit: 10;
+												}
+	
+												.st1 {
+													fill: none;
+													stroke: #000000;
+													stroke-width: 2;
+													stroke-linecap: round;
+													stroke-linejoin: round;
+													stroke-miterlimit: 10;
+												}
+											</style>
+											<path class="st0"
+												d="m10 25.9h9.2v-5.5c0-0.6-3.7-2.4-6.7-3.7v-2.4s1.2-0.4 1.2-3c0.8 0 1.2-2.4 0-2.4 0-0.3 0.9-1.6 0.6-3-0.6-2.4-6.7-2.4-7.3 0-2.6-0.5-0.6 2.7-0.6 3-1.2 0-0.8 2.4 0 2.4 0 2.6 1.2 3 1.2 3v2.4c-3 1.2-6.7 3-6.7 3.7v5.5h9.1z" />
+											<path class="st1"
+												d="m22.3 25.9h6.7v-5.5c0-0.6-3-1.5-5.5-2.4v-1.8s1.2-0.3 1.2-2.4c0.7 0 0.9-2.4 0-2.4 0-0.2 1-1.3 0.6-2.4-0.6-1.8-5.5-1.8-6.1 0-2.1-0.4-0.6 2.2-0.6 2.4-1 0-0.7 2.4 0 2.4 0 2.1 1.2 2.4 1.2 2.4v1.2" />
+										</svg>
+									</span>
+									<span class="tour-meta">10 Members</span>
+								</li>
+								<li> <span class="tour-meta-icon">
+										<span></span>
+										<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
+											xml:space="preserve" xmlns="">
+											<style type="text/css">
+												.st0 {
+													fill: none;
+													stroke: #000000;
+													stroke-width: 2;
+													stroke-linejoin: round;
+													stroke-miterlimit: 10;
+												}
+	
+												.st1 {
+													fill: none;
+													stroke: #000000;
+													stroke-width: 2;
+													stroke-linecap: round;
+													stroke-linejoin: round;
+													stroke-miterlimit: 10;
+												}
+											</style>
+											<polyline class="st0"
+												points="24.1 5.9 26.6 5.9 29 20.5 1 20.5 3.4 5.9 6.2 5.9" />
+											<path class="st1"
+												d="M29,26c0,1-0.8,1.8-1.8,1.8H2.8C1.8,27.8,1,27,1,26v-5.5h28V26z" />
+											<line class="st1" x1="3" x2="27" y1="10.7" y2="10.7" />
+											<polygon class="st1" points="13.2 8.3 5.9 8.3 6.4 4.7 13.3 4.7" />
+											<polygon class="st1" points="17.1 8.3 24.4 8.3 23.9 4.7 17 4.7" />
+											<path class="st1"
+												d="m3.4 5.9v-3c0-1 0.8-1.8 1.8-1.8h19.5c1 0 1.8 0.8 1.8 1.8v3" />
+											<line class="st1" x1="4.7" x2="4.7" y1="27.8" y2="29" />
+											<line class="st1" x1="25.3" x2="25.3" y1="27.8" y2="29" />
+											<line class="st1" x1="13.3" x2="17" y1="6" y2="6" />
+										</svg>
+									</span>
+									<span class="tour-meta">HOTEL ACCOMMODATION</span>
+								</li>
+								<li> <span class="tour-meta-icon">
+										<span></span>
+										<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
+											xml:space="preserve" xmlns="">
+											<style type="text/css">
+												.st0 {
+													fill: none;
+													stroke: #000000;
+													stroke-width: 2;
+													stroke-linecap: round;
+													stroke-linejoin: round;
+													stroke-miterlimit: 10;
+												}
+											</style>
+											<path
+												d="m9.5 5.3c-0.3 0-0.6 0.3-0.6 0.6s0.3 0.6 0.6 0.6 0.6-0.3 0.6-0.6c0-0.4-0.2-0.6-0.6-0.6z" />
+											<path
+												d="m12 4c-0.3 0-0.6 0.3-0.6 0.6s0.3 0.6 0.6 0.6 0.6-0.3 0.6-0.6-0.3-0.6-0.6-0.6z" />
+											<path
+												d="m18 4c-0.3 0-0.6 0.3-0.6 0.6s0.3 0.6 0.6 0.6 0.6-0.3 0.6-0.6c0.1-0.3-0.2-0.6-0.6-0.6z" />
+											<path
+												d="m15 5.3c-0.3 0-0.6 0.3-0.6 0.6s0.3 0.6 0.6 0.6 0.6-0.3 0.6-0.6c0-0.4-0.3-0.6-0.6-0.6z" />
+											<path
+												d="m20.5 5.3c-0.3 0-0.6 0.3-0.6 0.6s0.3 0.6 0.6 0.6 0.6-0.3 0.6-0.6c0-0.4-0.2-0.6-0.6-0.6z" />
+											<polyline class="st0" points="15 20.5 22.3 24.1 26 20.5" />
+											<path class="st0"
+												d="m29 22.9c0 1.3-1.1 2.4-2.4 2.4h-23.2c-1.3 0-2.4-1.1-2.4-2.4s1.1-2.4 2.4-2.4h23.1c1.4 0 2.5 1.1 2.5 2.4z" />
+											<path class="st0"
+												d="m26.6 15.6c1.3 0 2.4 1.1 2.4 2.4s-1.1 2.4-2.4 2.4h-23.2c-1.3 0.1-2.4-1-2.4-2.4 0-1.3 1.1-2.4 2.4-2.4" />
+											<path class="st0"
+												d="M3.4,25.3v1.2c0,1.3,1.1,2.4,2.4,2.4h18.3c1.3,0,2.4-1.1,2.4-2.4v-1.2H3.4z" />
+											<path class="st0" d="m26.6 12c0-6.4-5.2-11-11.6-11s-11.6 4.6-11.6 11h23.2z" />
+											<path class="st0"
+												d="m3.4 12s-2.4 0.5-2.4 1.8 1.1 1.8 2.4 1.8c0.6 0 1.4-0.2 1.8-0.6 0.6 1.1 1.7 1.8 3 1.8 1.5 0 2.5-0.5 3-1.8 0.6 1.3 2.2 1.8 3.7 1.8s3.1-0.5 3.7-1.8c0.6 1.3 1.5 1.8 3 1.8 1.4 0 2.4-0.7 3-1.8 0.4 0.4 1.2 0.6 1.8 0.6 1.3 0 2.4-0.5 2.4-1.8s-2.4-1.8-2.4-1.8" />
+										</svg>
+									</span>
+									<span class="tour-meta">BREAKFAST</span>
+								</li>
+							</ul>
 						</div>
-
-						<ul class="clearfix">
-							<li> <span class="tour-meta-icon">
-									<span></span>
-									<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-										xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-										<style type="text/css">
-											.st0 {
-												fill: none;
-												stroke: #000000;
-												stroke-width: 2;
-												stroke-linecap: round;
-												stroke-linejoin: round;
-												stroke-miterlimit: 10;
-											}
-										</style>
-										<polyline class="st0" points="5.9 3.4 1 3.4 1 29 29 29 29 3.4 24.1 3.4" />
-										<rect class="st0" x="5.9" y="1" width="3.7" height="4.9" />
-										<rect class="st0" x="20.5" y="1" width="3.7" height="4.9" />
-										<line class="st0" x1="9.5" x2="20.5" y1="3.4" y2="3.4" />
-										<line class="st0" x1="1" x2="29" y1="9.5" y2="9.5" />
-										<line class="st0" x1="8.3" x2="8.3" y1="12" y2="26.6" />
-										<line class="st0" x1="14.4" x2="14.4" y1="12" y2="26.6" />
-										<line class="st0" x1="20.5" x2="20.5" y1="12" y2="26.6" />
-										<line class="st0" x1="3.4" x2="26.6" y1="14.4" y2="14.4" />
-										<line class="st0" x1="3.4" x2="26.6" y1="19.3" y2="19.3" />
-										<line class="st0" x1="3.4" x2="26.6" y1="24.1" y2="24.1" />
-									</svg>
-								</span>
-								<span class="tour-meta">Jan - Feb</span>
-							</li>
-							<li> <span class="tour-meta-icon">
-									<span></span>
-									<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-										xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-										<style type="text/css">
-											.st0 {
-												fill: none;
-												stroke: #000000;
-												stroke-width: 2;
-												stroke-linecap: round;
-												stroke-linejoin: round;
-												stroke-miterlimit: 10;
-											}
-										</style>
-										<circle class="st0" cx="15" cy="15" r="14" />
-										<polyline class="st0" points="14.4 8.3 14.4 15 21.7 21.7" />
-									</svg>
-								</span>
-								<span class="tour-meta">7 Days</span>
-							</li>
-							<li> <span class="tour-meta-icon">
-									<span></span>
-									<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-										xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-										<style type="text/css">
-											.st0 {
-												fill: none;
-												stroke: #000000;
-												stroke-width: 2;
-												stroke-linecap: round;
-												stroke-linejoin: round;
-												stroke-miterlimit: 10;
-											}
-										</style>
-										<path class="st0"
-											d="M26.6,12H8.3L5.9,9.5H1l3.7,7.3h9.7l-7.3,7.3h6.1l7.3-7.3h6.1c1.3,0,2.4-1.1,2.4-2.4C29,13,27.9,12,26.6,12z" />
-										<polyline class="st0" points="20.5 12 14.4 5.9 9.5 5.9 15.6 12" />
-									</svg>
-								</span>
-								<span class="tour-meta">London</span>
-							</li>
-							<li> <span class="tour-meta-icon">
-									<span></span>
-									<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-										xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-										<style type="text/css">
-											.st0 {
-												fill: none;
-												stroke: #000000;
-												stroke-width: 2;
-												stroke-linecap: round;
-												stroke-linejoin: round;
-												stroke-miterlimit: 10;
-											}
-										</style>
-										<path class="st0"
-											d="m24.1 10.1c0 5-9.1 18.9-9.1 18.9s-9.1-13.8-9.1-18.9c0-5 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1z" />
-										<circle class="st0" cx="15" cy="10.1" r="3.7" />
-									</svg>
-								</span>
-								<span class="tour-meta">United Arab Emirates</span>
-							</li>
-							<li> <span class="tour-meta-icon">
-									<span></span>
-									<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-										xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-										<style type="text/css">
-											.st0 {
-												fill: none;
-												stroke: #000000;
-												stroke-width: 2;
-												stroke-linejoin: round;
-												stroke-miterlimit: 10;
-											}
-										</style>
-										<path class="st0"
-											d="m12.6 18.7s-1.8-0.6-1.8-3.7c-1 0-1-2.4 0-2.4 0-0.4-1.8-4.9 1.2-4.3 0.6-2.4 7.3-2.4 7.9 0 0.4 1.7-0.6 4-0.6 4.3 1 0 1 2.4 0 2.4 0 3-1.8 3.7-1.8 3.7v3c3 1.1 6 2.1 7.5 3.1 2.5-2.5 4-6 4-9.8 0-7.7-6.3-14-14-14s-14 6.3-14 14c0 3.8 1.5 7.3 4 9.8 1.6-1.1 4.8-2.1 7.5-3.1v-3h0.1z" />
-										<path class="st0" d="m5 24.8c2.5 2.6 6.1 4.2 10 4.2s7.4-1.6 10-4.2" />
-									</svg>
-								</span>
-								<span class="tour-meta">18+</span>
-							</li>
-							<li> <span class="tour-meta-icon">
-									<span></span>
-									<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-										xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-										<style type="text/css">
-											.st0 {
-												fill: none;
-												stroke: #000000;
-												stroke-width: 2;
-												stroke-linejoin: round;
-												stroke-miterlimit: 10;
-											}
-
-											.st1 {
-												fill: none;
-												stroke: #000000;
-												stroke-width: 2;
-												stroke-linecap: round;
-												stroke-linejoin: round;
-												stroke-miterlimit: 10;
-											}
-										</style>
-										<path class="st0"
-											d="m10 25.9h9.2v-5.5c0-0.6-3.7-2.4-6.7-3.7v-2.4s1.2-0.4 1.2-3c0.8 0 1.2-2.4 0-2.4 0-0.3 0.9-1.6 0.6-3-0.6-2.4-6.7-2.4-7.3 0-2.6-0.5-0.6 2.7-0.6 3-1.2 0-0.8 2.4 0 2.4 0 2.6 1.2 3 1.2 3v2.4c-3 1.2-6.7 3-6.7 3.7v5.5h9.1z" />
-										<path class="st1"
-											d="m22.3 25.9h6.7v-5.5c0-0.6-3-1.5-5.5-2.4v-1.8s1.2-0.3 1.2-2.4c0.7 0 0.9-2.4 0-2.4 0-0.2 1-1.3 0.6-2.4-0.6-1.8-5.5-1.8-6.1 0-2.1-0.4-0.6 2.2-0.6 2.4-1 0-0.7 2.4 0 2.4 0 2.1 1.2 2.4 1.2 2.4v1.2" />
-									</svg>
-								</span>
-								<span class="tour-meta">10 Members</span>
-							</li>
-							<li> <span class="tour-meta-icon">
-									<span></span>
-									<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-										xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-										<style type="text/css">
-											.st0 {
-												fill: none;
-												stroke: #000000;
-												stroke-width: 2;
-												stroke-linejoin: round;
-												stroke-miterlimit: 10;
-											}
-
-											.st1 {
-												fill: none;
-												stroke: #000000;
-												stroke-width: 2;
-												stroke-linecap: round;
-												stroke-linejoin: round;
-												stroke-miterlimit: 10;
-											}
-										</style>
-										<polyline class="st0"
-											points="24.1 5.9 26.6 5.9 29 20.5 1 20.5 3.4 5.9 6.2 5.9" />
-										<path class="st1"
-											d="M29,26c0,1-0.8,1.8-1.8,1.8H2.8C1.8,27.8,1,27,1,26v-5.5h28V26z" />
-										<line class="st1" x1="3" x2="27" y1="10.7" y2="10.7" />
-										<polygon class="st1" points="13.2 8.3 5.9 8.3 6.4 4.7 13.3 4.7" />
-										<polygon class="st1" points="17.1 8.3 24.4 8.3 23.9 4.7 17 4.7" />
-										<path class="st1"
-											d="m3.4 5.9v-3c0-1 0.8-1.8 1.8-1.8h19.5c1 0 1.8 0.8 1.8 1.8v3" />
-										<line class="st1" x1="4.7" x2="4.7" y1="27.8" y2="29" />
-										<line class="st1" x1="25.3" x2="25.3" y1="27.8" y2="29" />
-										<line class="st1" x1="13.3" x2="17" y1="6" y2="6" />
-									</svg>
-								</span>
-								<span class="tour-meta">HOTEL ACCOMMODATION</span>
-							</li>
-							<li> <span class="tour-meta-icon">
-									<span></span>
-									<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-										xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-										<style type="text/css">
-											.st0 {
-												fill: none;
-												stroke: #000000;
-												stroke-width: 2;
-												stroke-linecap: round;
-												stroke-linejoin: round;
-												stroke-miterlimit: 10;
-											}
-										</style>
-										<path
-											d="m9.5 5.3c-0.3 0-0.6 0.3-0.6 0.6s0.3 0.6 0.6 0.6 0.6-0.3 0.6-0.6c0-0.4-0.2-0.6-0.6-0.6z" />
-										<path
-											d="m12 4c-0.3 0-0.6 0.3-0.6 0.6s0.3 0.6 0.6 0.6 0.6-0.3 0.6-0.6-0.3-0.6-0.6-0.6z" />
-										<path
-											d="m18 4c-0.3 0-0.6 0.3-0.6 0.6s0.3 0.6 0.6 0.6 0.6-0.3 0.6-0.6c0.1-0.3-0.2-0.6-0.6-0.6z" />
-										<path
-											d="m15 5.3c-0.3 0-0.6 0.3-0.6 0.6s0.3 0.6 0.6 0.6 0.6-0.3 0.6-0.6c0-0.4-0.3-0.6-0.6-0.6z" />
-										<path
-											d="m20.5 5.3c-0.3 0-0.6 0.3-0.6 0.6s0.3 0.6 0.6 0.6 0.6-0.3 0.6-0.6c0-0.4-0.2-0.6-0.6-0.6z" />
-										<polyline class="st0" points="15 20.5 22.3 24.1 26 20.5" />
-										<path class="st0"
-											d="m29 22.9c0 1.3-1.1 2.4-2.4 2.4h-23.2c-1.3 0-2.4-1.1-2.4-2.4s1.1-2.4 2.4-2.4h23.1c1.4 0 2.5 1.1 2.5 2.4z" />
-										<path class="st0"
-											d="m26.6 15.6c1.3 0 2.4 1.1 2.4 2.4s-1.1 2.4-2.4 2.4h-23.2c-1.3 0.1-2.4-1-2.4-2.4 0-1.3 1.1-2.4 2.4-2.4" />
-										<path class="st0"
-											d="M3.4,25.3v1.2c0,1.3,1.1,2.4,2.4,2.4h18.3c1.3,0,2.4-1.1,2.4-2.4v-1.2H3.4z" />
-										<path class="st0" d="m26.6 12c0-6.4-5.2-11-11.6-11s-11.6 4.6-11.6 11h23.2z" />
-										<path class="st0"
-											d="m3.4 12s-2.4 0.5-2.4 1.8 1.1 1.8 2.4 1.8c0.6 0 1.4-0.2 1.8-0.6 0.6 1.1 1.7 1.8 3 1.8 1.5 0 2.5-0.5 3-1.8 0.6 1.3 2.2 1.8 3.7 1.8s3.1-0.5 3.7-1.8c0.6 1.3 1.5 1.8 3 1.8 1.4 0 2.4-0.7 3-1.8 0.4 0.4 1.2 0.6 1.8 0.6 1.3 0 2.4-0.5 2.4-1.8s-2.4-1.8-2.4-1.8" />
-									</svg>
-								</span>
-								<span class="tour-meta">BREAKFAST</span>
-							</li>
-						</ul>
 					</div>
 				</div>
 			</div>
-		</div> <!-- blog detail page -->
 
 
 		<div id="content-wrapper" class="site-page tour-single ">
@@ -321,7 +322,7 @@
 										</ul>
 									</div>
 									<a class="btn btn-inspiry-download"
-										href="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/Brochure.pdf"
+										href="assets/wp-content/uploads/2017/11/Brochure.pdf"
 										download="Brochure.pdf">
 										<i class="fa fa-download" aria-hidden="true"></i>
 										Download pdf brochure </a>
@@ -373,7 +374,7 @@
 											blogger Travel pretty. Adventure fun traveling theme WordPress blogger
 											webdesign design.</p>
 									</section> <a class="btn btn-inspiry-download"
-										href="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/Brochure.pdf"
+										href="assets/wp-content/uploads/2017/11/Brochure.pdf"
 										download="Brochure.pdf">
 										<i class="fa fa-download" aria-hidden="true"></i>
 										Download pdf brochure </a>
@@ -384,7 +385,7 @@
 										</div>
 									</section>
 									<a class="btn btn-inspiry-download"
-										href="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/Brochure.pdf"
+										href="assets/wp-content/uploads/2017/11/Brochure.pdf"
 										download="Brochure.pdf">
 										<i class="fa fa-download" aria-hidden="true"></i>
 										Download pdf brochure </a>
@@ -393,100 +394,100 @@
 									<section>
 										<ul class="gallery-images inspiry-popup clearfix">
 											<li>
-												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/dubai-01-440x312.jpg"
+												<img src="assets/wp-content/uploads/2017/11/dubai-01-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/dubai-01.jpg">
+													href="assets/wp-content/uploads/2017/11/dubai-01.jpg">
 													<div class="overlay">
-														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/dubai-02-440x312.jpg"
+												<img src="assets/wp-content/uploads/2017/11/dubai-02-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/dubai-02.jpg">
+													href="assets/wp-content/uploads/2017/11/dubai-02.jpg">
 													<div class="overlay">
-														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/zaid-440x312.jpg"
+												<img src="assets/wp-content/uploads/2017/11/zaid-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/zaid.jpg">
+													href="assets/wp-content/uploads/2017/11/zaid.jpg">
 													<div class="overlay">
-														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/alessandro-spataro-355696-440x312.jpg"
+												<img src="assets/wp-content/uploads/2017/11/alessandro-spataro-355696-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/alessandro-spataro-355696.jpg">
+													href="assets/wp-content/uploads/2017/11/alessandro-spataro-355696.jpg">
 													<div class="overlay">
-														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/rktkn-440x312.jpg"
+												<img src="assets/wp-content/uploads/2017/11/rktkn-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/rktkn.jpg">
+													href="assets/wp-content/uploads/2017/11/rktkn.jpg">
 													<div class="overlay">
-														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/night-burj-440x312.jpg"
+												<img src="assets/wp-content/uploads/2017/11/night-burj-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/night-burj.jpg">
+													href="assets/wp-content/uploads/2017/11/night-burj.jpg">
 													<div class="overlay">
-														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/valeria-andersson-360231-440x312.jpg"
+												<img src="assets/wp-content/uploads/2017/11/valeria-andersson-360231-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/valeria-andersson-360231.jpg">
+													href="assets/wp-content/uploads/2017/11/valeria-andersson-360231.jpg">
 													<div class="overlay">
-														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/zoo-440x312.jpg"
+												<img src="assets/wp-content/uploads/2017/11/zoo-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/zoo.jpg">
+													href="assets/wp-content/uploads/2017/11/zoo.jpg">
 													<div class="overlay">
-														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
 											<li>
-												<img src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/desert-440x312.jpg"
+												<img src="assets/wp-content/uploads/2017/11/desert-440x312.jpg"
 													alt="Gallery Thumbnail">
 												<a
-													href="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/desert.jpg">
+													href="assets/wp-content/uploads/2017/11/desert.jpg">
 													<div class="overlay">
-														<img src="../../../../tourpress.b-cdn.net/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
@@ -494,7 +495,7 @@
 										</ul>
 									</section>
 									<a class="btn btn-inspiry-download"
-										href="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/Brochure.pdf"
+										href="assets/wp-content/uploads/2017/11/Brochure.pdf"
 										download="Brochure.pdf">
 										<i class="fa fa-download" aria-hidden="true"></i>
 										Download pdf brochure </a>
@@ -659,8 +660,8 @@
 
 								<header style="
 			background-repeat: no-repeat; background-size: cover; background-position: center center; 				">
-									<span><svg xmlns="http://www.w3.org/2000/svg"
-											xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
+									<span><svg xmlns=""
+											xmlns:xlink="" version="1.1" x="0px" y="0px"
 											viewBox="0 0 216.316 216.316"
 											style="enable-background:new 0 0 216.316 216.316;" xml:space="preserve"
 											width="512px" height="512px">
@@ -670,36 +671,6 @@
 														d="M207.449,8.626C201.89,3.064,194.404,0,186.369,0c-8.557,0-16.676,3.408-22.868,9.598l-30.984,33.115L25.956,10.816    L5.153,31.621c-2.205,2.202-3.417,5.134-3.417,8.251c0.002,3.115,1.215,6.045,3.419,8.247l0.664,0.666l79.943,43.999    l-28.174,30.563c-2.094,2.106-3.941,4.374-5.522,6.781l-34.871-9.025L3.29,135.01c-4.063,4.063-4.063,10.676,0,14.741l0.745,0.747    l39.745,20.16l2.11,2.11l20.163,39.745l0.743,0.743c1.971,1.973,4.589,3.06,7.378,3.06c2.784,0,5.4-1.085,7.368-3.05    l13.905-13.905l-9.201-35.554c2.299-1.537,4.466-3.315,6.481-5.317l30.702-28.306l43.882,79.729l0.452,0.824l0.666,0.664    c2.204,2.206,5.134,3.421,8.251,3.421c3.115,0,6.045-1.215,8.247-3.419l20.805-20.803l-32.11-107.283l32.852-30.738    c5.954-5.952,9.358-13.764,9.587-21.995C216.297,22.214,213.238,14.415,207.449,8.626z M197.281,43.073l-38.68,36.185    l32.198,107.57l-13.605,13.605l-50.312-91.417L83.67,148.851l-0.194,0.187c-2.345,2.348-4.973,4.243-7.81,5.641l-4.828,2.379    l9.911,38.299l-5.685,5.685l-18.331-36.134l-5.09-5.09l-36.127-18.325l5.685-5.687l37.722,9.761l2.352-4.909    c1.399-2.917,3.337-5.626,5.764-8.055l39.888-43.263L16.118,39.361l13.605-13.605l106.852,31.983l36.348-38.858    c3.683-3.646,8.453-5.652,13.444-5.652c4.501,0,8.665,1.686,11.729,4.75c3.19,3.192,4.876,7.536,4.744,12.236    C202.706,35.054,200.676,39.674,197.281,43.073z"
 														fill="#FFFFFF" />
 												</g>
-											</g>
-											<g>
-											</g>
-											<g>
-											</g>
-											<g>
-											</g>
-											<g>
-											</g>
-											<g>
-											</g>
-											<g>
-											</g>
-											<g>
-											</g>
-											<g>
-											</g>
-											<g>
-											</g>
-											<g>
-											</g>
-											<g>
-											</g>
-											<g>
-											</g>
-											<g>
-											</g>
-											<g>
-											</g>
-											<g>
 											</g>
 										</svg>
 									</span>
@@ -781,10 +752,10 @@
 									<a href="../historic-istanbul/index.html">
 										<figure>
 											<img width="720" height="560"
-												src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured-720x560.jpg"
+												src="assets/wp-content/uploads/2017/11/istanbul-featured-720x560.jpg"
 												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 												alt="" decoding="async" loading="lazy"
-												srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured-720x560.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured-300x233.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured-768x598.jpg 768w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured-600x467.jpg 600w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/istanbul-featured.jpg 1000w"
+												srcset="assets/wp-content/uploads/2017/11/istanbul-featured-720x560.jpg 720w, assets/wp-content/uploads/2017/11/istanbul-featured-300x233.jpg 300w, assets/wp-content/uploads/2017/11/istanbul-featured-768x598.jpg 768w, assets/wp-content/uploads/2017/11/istanbul-featured-600x467.jpg 600w, assets/wp-content/uploads/2017/11/istanbul-featured.jpg 1000w"
 												sizes="(max-width: 720px) 100vw, 720px" /><span
 												class="offer-price"><i>$1,200</i>$990</span>
 											<div class="content">
@@ -802,7 +773,7 @@
 									<a href="../magical-maldives/index.html">
 										<figure>
 											<img width="720" height="560"
-												src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/maldives-featured-720x560.jpg"
+												src="assets/wp-content/uploads/2017/11/maldives-featured-720x560.jpg"
 												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 												alt="" decoding="async" loading="lazy" /><span
 												class="offer-price">$900</span>
@@ -833,321 +804,99 @@
 							<div class="col-md-4 col-sm-6">
 								<div class="tour-post clearfix tour-post-full-width">
 									<figure>
-										<a href="../luxurious-london/index.html"><img width="720" height="560"
-												src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/london-featured-720x560.jpg"
+										<a href="tour.php"><img width="720" height="560"
+												src="assets/wp-content/uploads/2017/11/bangaluru-720x560.jpg"
 												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
 												alt="" decoding="async" loading="lazy"
-												srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/london-featured.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/london-featured-300x233.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/london-featured-600x467.jpg 600w"
-												sizes="(max-width: 720px) 100vw, 720px" /></a><span class="tour-meta">
-											<span class="tour-meta-icon">
-												<span>May - Jun - Jul</span>
-												<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-													xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+												srcset="assets/wp-content/uploads/2017/11/bangaluru-720x560.jpg 720w, assets/wp-content/uploads/2017/11/dubai-featured-300x234.jpg 300w, assets/wp-content/uploads/2017/11/bangaluru-720x560.jpg 600w"
+												sizes="(max-width: 720px) 100vw, 720px" /></a><span
+											class="tour-meta"> <span class="tour-meta-icon">
+												<span>Jan - Feb</span>
+												<svg enable-background="new 0 0 32 32" version="1.1"
+													viewBox="0 0 32 32" xml:space="preserve"
+													xmlns="">
 													<style type="text/css">
 														.st0 {
 															fill: none;
 															stroke: #000000;
-															stroke-width: 2;
+															stroke-width: 2.6;
 															stroke-linecap: round;
 															stroke-linejoin: round;
 															stroke-miterlimit: 10;
 														}
 													</style>
 													<polyline class="st0"
-														points="5.9 3.4 1 3.4 1 29 29 29 29 3.4 24.1 3.4" />
-													<rect class="st0" x="5.9" y="1" width="3.7" height="4.9" />
-													<rect class="st0" x="20.5" y="1" width="3.7" height="4.9" />
-													<line class="st0" x1="9.5" x2="20.5" y1="3.4" y2="3.4" />
-													<line class="st0" x1="1" x2="29" y1="9.5" y2="9.5" />
-													<line class="st0" x1="8.3" x2="8.3" y1="12" y2="26.6" />
-													<line class="st0" x1="14.4" x2="14.4" y1="12" y2="26.6" />
-													<line class="st0" x1="20.5" x2="20.5" y1="12" y2="26.6" />
-													<line class="st0" x1="3.4" x2="26.6" y1="14.4" y2="14.4" />
-													<line class="st0" x1="3.4" x2="26.6" y1="19.3" y2="19.3" />
-													<line class="st0" x1="3.4" x2="26.6" y1="24.1" y2="24.1" />
-												</svg>
-											</span>
-											<span class="tour-meta-icon">
-												<span>8 Days</span>
-												<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-													xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<circle class="st0" cx="15" cy="15" r="14" />
-													<polyline class="st0" points="14.4 8.3 14.4 15 21.7 21.7" />
-												</svg>
-											</span>
-											<span class="tour-meta-icon">
-												<span>Singapore</span>
-												<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-													xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<path class="st0"
-														d="M26.6,12H8.3L5.9,9.5H1l3.7,7.3h9.7l-7.3,7.3h6.1l7.3-7.3h6.1c1.3,0,2.4-1.1,2.4-2.4C29,13,27.9,12,26.6,12z" />
-													<polyline class="st0" points="20.5 12 14.4 5.9 9.5 5.9 15.6 12" />
-												</svg>
-											</span>
-											<span class="tour-meta-icon">
-												<span>United Kingdom</span>
-												<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-													xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<path class="st0"
-														d="m24.1 10.1c0 5-9.1 18.9-9.1 18.9s-9.1-13.8-9.1-18.9c0-5 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1z" />
-													<circle class="st0" cx="15" cy="10.1" r="3.7" />
-												</svg>
-											</span>
-										</span>
-										<div class="sunlight">
-											<i class="fa fa-sun-o" aria-hidden="true"></i>
-											<span class="tour-days">8 <i>days</i></span>
-										</div>
-									</figure>
-
-									<div class="offer-content">
-										<h3><a href="../luxurious-london/index.html">Luxurious London</a></h3>
-										<span class="rating"><i class="fa fa-star-o rated"></i><i
-												class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i><i
-												class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i></span>
-										<p>
-											Group tours also mean you will be seeing the world alongside like-minded
-											people, making it... </p>
-										<div class="discount-label">24% <span>Discount</span></div><span
-											class="old-price">$2,500</span><span class="tour-price">$1,900</span> <a
-											href="../luxurious-london/index.html" class="read-more">View More</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-6">
-								<div class="tour-post clearfix tour-post-full-width">
-									<figure>
-										<a href="../modern-sydney/index.html"><img width="720" height="560"
-												src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured-720x560.jpg"
-												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
-												alt="" decoding="async" loading="lazy"
-												srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured-720x560.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured-300x233.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured-768x598.jpg 768w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured-600x467.jpg 600w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/sydney-featured.jpg 1000w"
-												sizes="(max-width: 720px) 100vw, 720px" /></a><span class="tour-meta">
-											<span class="tour-meta-icon">
-												<span>Jan - Feb - Dec</span>
-												<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-													xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<polyline class="st0"
-														points="5.9 3.4 1 3.4 1 29 29 29 29 3.4 24.1 3.4" />
-													<rect class="st0" x="5.9" y="1" width="3.7" height="4.9" />
-													<rect class="st0" x="20.5" y="1" width="3.7" height="4.9" />
-													<line class="st0" x1="9.5" x2="20.5" y1="3.4" y2="3.4" />
-													<line class="st0" x1="1" x2="29" y1="9.5" y2="9.5" />
-													<line class="st0" x1="8.3" x2="8.3" y1="12" y2="26.6" />
-													<line class="st0" x1="14.4" x2="14.4" y1="12" y2="26.6" />
-													<line class="st0" x1="20.5" x2="20.5" y1="12" y2="26.6" />
-													<line class="st0" x1="3.4" x2="26.6" y1="14.4" y2="14.4" />
-													<line class="st0" x1="3.4" x2="26.6" y1="19.3" y2="19.3" />
-													<line class="st0" x1="3.4" x2="26.6" y1="24.1" y2="24.1" />
-												</svg>
-											</span>
-											<span class="tour-meta-icon">
-												<span>5 Days</span>
-												<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-													xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<circle class="st0" cx="15" cy="15" r="14" />
-													<polyline class="st0" points="14.4 8.3 14.4 15 21.7 21.7" />
-												</svg>
-											</span>
-											<span class="tour-meta-icon">
-												<span>Singapore</span>
-												<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-													xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<path class="st0"
-														d="M26.6,12H8.3L5.9,9.5H1l3.7,7.3h9.7l-7.3,7.3h6.1l7.3-7.3h6.1c1.3,0,2.4-1.1,2.4-2.4C29,13,27.9,12,26.6,12z" />
-													<polyline class="st0" points="20.5 12 14.4 5.9 9.5 5.9 15.6 12" />
-												</svg>
-											</span>
-											<span class="tour-meta-icon">
-												<span>Australia</span>
-												<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-													xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<path class="st0"
-														d="m24.1 10.1c0 5-9.1 18.9-9.1 18.9s-9.1-13.8-9.1-18.9c0-5 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1z" />
-													<circle class="st0" cx="15" cy="10.1" r="3.7" />
-												</svg>
-											</span>
-										</span>
-										<div class="sunlight">
-											<i class="fa fa-sun-o" aria-hidden="true"></i>
-											<span class="tour-days">5 <i>days</i></span>
-										</div>
-									</figure>
-
-									<div class="offer-content">
-										<h3><a href="../modern-sydney/index.html">Modern Sydney</a></h3>
-										<span class="rating"><i class="fa fa-star-o rated"></i><i
-												class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i><i
-												class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
-										<p>
-											Sydney, capital of New South Wales and one of Australia's largest cities, is
-											best known... </p>
-										<span class="tour-price">$950</span> <a href="../modern-sydney/index.html"
-											class="read-more">View More</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-6">
-								<div class="tour-post clearfix tour-post-full-width">
-									<figure>
-										<a href="../rio-de-janeiro/index.html"><img width="720" height="560"
-												src="../../../../tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured-720x560.jpg"
-												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
-												alt="" decoding="async" loading="lazy"
-												srcset="https://tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured-720x560.jpg 720w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured-300x233.jpg 300w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured-768x598.jpg 768w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured-600x467.jpg 600w, https://tourpress.b-cdn.net/wp-content/uploads/2017/11/rio-featured.jpg 1000w"
-												sizes="(max-width: 720px) 100vw, 720px" /></a><span class="tour-meta">
-											<span class="tour-meta-icon">
-												<span>Apr - May</span>
-												<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-													xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<polyline class="st0"
-														points="5.9 3.4 1 3.4 1 29 29 29 29 3.4 24.1 3.4" />
-													<rect class="st0" x="5.9" y="1" width="3.7" height="4.9" />
-													<rect class="st0" x="20.5" y="1" width="3.7" height="4.9" />
-													<line class="st0" x1="9.5" x2="20.5" y1="3.4" y2="3.4" />
-													<line class="st0" x1="1" x2="29" y1="9.5" y2="9.5" />
-													<line class="st0" x1="8.3" x2="8.3" y1="12" y2="26.6" />
-													<line class="st0" x1="14.4" x2="14.4" y1="12" y2="26.6" />
-													<line class="st0" x1="20.5" x2="20.5" y1="12" y2="26.6" />
-													<line class="st0" x1="3.4" x2="26.6" y1="14.4" y2="14.4" />
-													<line class="st0" x1="3.4" x2="26.6" y1="19.3" y2="19.3" />
-													<line class="st0" x1="3.4" x2="26.6" y1="24.1" y2="24.1" />
+														points="6.9 4.4 2 4.4 2 30 30 30 30 4.4 25.1 4.4" />
+													<rect class="st0" x="6.9" y="2" width="3.7" height="4.9" />
+													<rect class="st0" x="21.5" y="2" width="3.7" height="4.9" />
+													<line class="st0" x1="10.5" x2="21.5" y1="4.4" y2="4.4" />
+													<line class="st0" x1="2" x2="30" y1="10.5" y2="10.5" />
+													<line class="st0" x1="9.3" x2="9.3" y1="13" y2="27.6" />
+													<line class="st0" x1="15.4" x2="15.4" y1="13" y2="27.6" />
+													<line class="st0" x1="21.5" x2="21.5" y1="13" y2="27.6" />
+													<line class="st0" x1="4.4" x2="27.6" y1="15.4" y2="15.4" />
+													<line class="st0" x1="4.4" x2="27.6" y1="20.3" y2="20.3" />
+													<line class="st0" x1="4.4" x2="27.6" y1="25.1" y2="25.1" />
 												</svg>
 											</span>
 											<span class="tour-meta-icon">
 												<span>7 Days</span>
-												<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-													xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+												<svg enable-background="new 0 0 32 32" version="1.1"
+													viewBox="0 0 32 32" xml:space="preserve"
+													xmlns="">
 													<style type="text/css">
 														.st0 {
 															fill: none;
 															stroke: #000000;
-															stroke-width: 2;
+															stroke-width: 2.6;
 															stroke-linecap: round;
 															stroke-linejoin: round;
 															stroke-miterlimit: 10;
 														}
 													</style>
-													<circle class="st0" cx="15" cy="15" r="14" />
-													<polyline class="st0" points="14.4 8.3 14.4 15 21.7 21.7" />
+													<circle class="st0" cx="16" cy="16" r="13.5" />
+													<polyline class="st0" points="15.4 9.5 15.4 16 22.5 22.5" />
 												</svg>
 											</span>
-											<span class="tour-meta-icon">
-												<span>Singapore</span>
-												<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-													xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+											<!-- <span class="tour-meta-icon">
+												<span>London</span>
+												<svg enable-background="new 0 0 32 32" version="1.1"
+													viewBox="0 0 32 32" xml:space="preserve"
+													xmlns="">
 													<style type="text/css">
 														.st0 {
 															fill: none;
 															stroke: #000000;
-															stroke-width: 2;
+															stroke-width: 2.6;
 															stroke-linecap: round;
 															stroke-linejoin: round;
 															stroke-miterlimit: 10;
 														}
 													</style>
 													<path class="st0"
-														d="M26.6,12H8.3L5.9,9.5H1l3.7,7.3h9.7l-7.3,7.3h6.1l7.3-7.3h6.1c1.3,0,2.4-1.1,2.4-2.4C29,13,27.9,12,26.6,12z" />
-													<polyline class="st0" points="20.5 12 14.4 5.9 9.5 5.9 15.6 12" />
+														d="M27.6,13H9.3l-2.4-2.5H2l3.7,7.3h9.7l-7.3,7.3h6.1l7.3-7.3h6.1c1.3,0,2.4-1.1,2.4-2.4C30,14,28.9,13,27.6,13z" />
+													<polyline class="st0"
+														points="21.5 13 15.4 6.9 10.5 6.9 16.6 13" />
 												</svg>
-											</span>
+											</span> -->
 											<span class="tour-meta-icon">
-												<span>Brazil</span>
-												<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
-													xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+												<span>India, Bangaluru</span>
+												<svg enable-background="new 0 0 32 32" version="1.1"
+													viewBox="0 0 32 32" xml:space="preserve"
+													xmlns="">
 													<style type="text/css">
 														.st0 {
 															fill: none;
 															stroke: #000000;
-															stroke-width: 2;
+															stroke-width: 2.6;
 															stroke-linecap: round;
 															stroke-linejoin: round;
 															stroke-miterlimit: 10;
 														}
 													</style>
 													<path class="st0"
-														d="m24.1 10.1c0 5-9.1 18.9-9.1 18.9s-9.1-13.8-9.1-18.9c0-5 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1z" />
-													<circle class="st0" cx="15" cy="10.1" r="3.7" />
+														d="m25.1 11.1c0 5-9.1 18.9-9.1 18.9s-9.1-13.8-9.1-18.9c0-5 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1z" />
+													<circle class="st0" cx="16" cy="11.1" r="3.7" />
 												</svg>
 											</span>
 										</span>
@@ -1158,16 +907,212 @@
 									</figure>
 
 									<div class="offer-content">
-										<h3><a href="../rio-de-janeiro/index.html">Rio De Janeiro</a></h3>
+										<h3><a href="tour/fabulous-mumbai/index.php">Fabulous Bangaluru</a></h3>
 										<span class="rating"><i class="fa fa-star-o rated"></i><i
 												class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i><i
-												class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i></span>
+												class="fa fa-star-o rated"></i><i
+												class="fa fa-star-o rated"></i></span>
 										<p>
-											Rio de Janeiro is a huge seaside city in Brazil, famed for its Copacabana
-											and... </p>
-										<div class="discount-label">17% <span>Discount</span></div><span
-											class="old-price">$1,400</span><span class="tour-price">$1,150</span> <a
-											href="../rio-de-janeiro/index.html" class="read-more">View More</a>
+											Bengaluru is considered to be one of the fastest-growing global major... </p>
+										<div class="discount-label">25% <span>Discount</span></div><span
+											class="old-price">$1,950</span><span class="tour-price">$1,450</span> <a
+											href="tour/fabulous-mumbai/index.php" class="read-more">View
+											More</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6">
+								<div class="tour-post clearfix tour-post-full-width">
+									<figure>
+										<a href="tour/fabulous-mumbai/index.php"><img width="720" height="560"
+												src="assets/wp-content/uploads/2017/11/rishikesh-720x560.jpg"
+												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
+												alt="" decoding="async" loading="lazy"
+												srcset="assets/wp-content/uploads/2017/11/rishikesh-720x560.jpg  720w, assets/wp-content/uploads/2017/11/rishikesh-720x560.jpg 300w, assets/wp-content/uploads/2017/11/rishikesh-720x560.jpg 768w, assets/wp-content/uploads/2017/11/rishikesh-720x560.jpg 600w, assets/wp-content/uploads/2017/11/sydney-featured.jpg 1000w"
+												sizes="(max-width: 720px) 100vw, 720px" /></a><span
+											class="tour-meta"> <span class="tour-meta-icon">
+												<span>Jan - Feb - Dec</span>
+												<svg enable-background="new 0 0 32 32" version="1.1"
+													viewBox="0 0 32 32" xml:space="preserve"
+													xmlns="">
+													<style type="text/css">
+														.st0 {
+															fill: none;
+															stroke: #000000;
+															stroke-width: 2.6;
+															stroke-linecap: round;
+															stroke-linejoin: round;
+															stroke-miterlimit: 10;
+														}
+													</style>
+													<polyline class="st0"
+														points="6.9 4.4 2 4.4 2 30 30 30 30 4.4 25.1 4.4" />
+													<rect class="st0" x="6.9" y="2" width="3.7" height="4.9" />
+													<rect class="st0" x="21.5" y="2" width="3.7" height="4.9" />
+													<line class="st0" x1="10.5" x2="21.5" y1="4.4" y2="4.4" />
+													<line class="st0" x1="2" x2="30" y1="10.5" y2="10.5" />
+													<line class="st0" x1="9.3" x2="9.3" y1="13" y2="27.6" />
+													<line class="st0" x1="15.4" x2="15.4" y1="13" y2="27.6" />
+													<line class="st0" x1="21.5" x2="21.5" y1="13" y2="27.6" />
+													<line class="st0" x1="4.4" x2="27.6" y1="15.4" y2="15.4" />
+													<line class="st0" x1="4.4" x2="27.6" y1="20.3" y2="20.3" />
+													<line class="st0" x1="4.4" x2="27.6" y1="25.1" y2="25.1" />
+												</svg>
+											</span>
+											<span class="tour-meta-icon">
+												<span>5 Days</span>
+												<svg enable-background="new 0 0 32 32" version="1.1"
+													viewBox="0 0 32 32" xml:space="preserve"
+													xmlns="http://www.w3.org/2000/svg">
+													<style type="text/css">
+														.st0 {
+															fill: none;
+															stroke: #000000;
+															stroke-width: 2.6;
+															stroke-linecap: round;
+															stroke-linejoin: round;
+															stroke-miterlimit: 10;
+														}
+													</style>
+													<circle class="st0" cx="16" cy="16" r="13.5" />
+													<polyline class="st0" points="15.4 9.5 15.4 16 22.5 22.5" />
+												</svg>
+											</span>
+											<span class="tour-meta-icon">
+												<span>India, Rishikesh</span>
+												<svg enable-background="new 0 0 32 32" version="1.1"
+													viewBox="0 0 32 32" xml:space="preserve"
+													xmlns="">
+													<style type="text/css">
+														.st0 {
+															fill: none;
+															stroke: #000000;
+															stroke-width: 2.6;
+															stroke-linecap: round;
+															stroke-linejoin: round;
+															stroke-miterlimit: 10;
+														}
+													</style>
+													<path class="st0"
+														d="m25.1 11.1c0 5-9.1 18.9-9.1 18.9s-9.1-13.8-9.1-18.9c0-5 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1z" />
+													<circle class="st0" cx="16" cy="11.1" r="3.7" />
+												</svg>
+											</span>
+										</span>
+										<div class="sunlight">
+											<i class="fa fa-sun-o" aria-hidden="true"></i>
+											<span class="tour-days">5 <i>days</i></span>
+										</div>
+									</figure>
+
+									<div class="offer-content">
+										<h3><a href="tour/fabulous-mumbai/index.php">Rishikesh Tourism</a></h3>
+										<span class="rating"><i class="fa fa-star-o rated"></i><i
+												class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i><i
+												class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
+										<p>
+											Rishikesh is a small serene town famous for meditation and yoga. It is Gateway... </p>
+										<span class="tour-price">$950</span> <a
+											href="tour/fabulous-mumbai/index.php" class="read-more">View
+											More</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6">
+								<div class="tour-post clearfix tour-post-full-width">
+									<figure>
+										<a href="blog/tour/magical-maldives/index.html"><img width="720"
+												height="560"
+												src="assets/wp-content/uploads/2017/11/goa-beach-720x560.jpg"
+												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
+												alt="" decoding="async" loading="lazy" /></a><span
+											class="tour-meta"> <span class="tour-meta-icon">
+												<span>Apr - May - Jun</span>
+												<svg enable-background="new 0 0 32 32" version="1.1"
+													viewBox="0 0 32 32" xml:space="preserve"
+													xmlns="http://www.w3.org/2000/svg">
+													<style type="text/css">
+														.st0 {
+															fill: none;
+															stroke: #000000;
+															stroke-width: 2.6;
+															stroke-linecap: round;
+															stroke-linejoin: round;
+															stroke-miterlimit: 10;
+														}
+													</style>
+													<polyline class="st0"
+														points="6.9 4.4 2 4.4 2 30 30 30 30 4.4 25.1 4.4" />
+													<rect class="st0" x="6.9" y="2" width="3.7" height="4.9" />
+													<rect class="st0" x="21.5" y="2" width="3.7" height="4.9" />
+													<line class="st0" x1="10.5" x2="21.5" y1="4.4" y2="4.4" />
+													<line class="st0" x1="2" x2="30" y1="10.5" y2="10.5" />
+													<line class="st0" x1="9.3" x2="9.3" y1="13" y2="27.6" />
+													<line class="st0" x1="15.4" x2="15.4" y1="13" y2="27.6" />
+													<line class="st0" x1="21.5" x2="21.5" y1="13" y2="27.6" />
+													<line class="st0" x1="4.4" x2="27.6" y1="15.4" y2="15.4" />
+													<line class="st0" x1="4.4" x2="27.6" y1="20.3" y2="20.3" />
+													<line class="st0" x1="4.4" x2="27.6" y1="25.1" y2="25.1" />
+												</svg>
+											</span>
+											<span class="tour-meta-icon">
+												<span>6 Days</span>
+												<svg enable-background="new 0 0 32 32" version="1.1"
+													viewBox="0 0 32 32" xml:space="preserve"
+													xmlns="">
+													<style type="text/css">
+														.st0 {
+															fill: none;
+															stroke: #000000;
+															stroke-width: 2.6;
+															stroke-linecap: round;
+															stroke-linejoin: round;
+															stroke-miterlimit: 10;
+														}
+													</style>
+													<circle class="st0" cx="16" cy="16" r="13.5" />
+													<polyline class="st0" points="15.4 9.5 15.4 16 22.5 22.5" />
+												</svg>
+											</span>
+											<span class="tour-meta-icon">
+												<span>India, Goa</span>
+												<svg enable-background="new 0 0 32 32" version="1.1"
+													viewBox="0 0 32 32" xml:space="preserve"
+													xmlns="">
+													<style type="text/css">
+														.st0 {
+															fill: none;
+															stroke: #000000;
+															stroke-width: 2.6;
+															stroke-linecap: round;
+															stroke-linejoin: round;
+															stroke-miterlimit: 10;
+														}
+													</style>
+													<path class="st0"
+														d="m25.1 11.1c0 5-9.1 18.9-9.1 18.9s-9.1-13.8-9.1-18.9c0-5 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1z" />
+													<circle class="st0" cx="16" cy="11.1" r="3.7" />
+												</svg>
+											</span>
+										</span>
+										<div class="sunlight">
+											<i class="fa fa-sun-o" aria-hidden="true"></i>
+											<span class="tour-days">6 <i>days</i></span>
+										</div>
+									</figure>
+
+									<div class="offer-content">
+										<h3><a href="blog/tour/magical-maldives/index.html">Magical Goa</a>
+										</h3>
+										<span class="rating"><i class="fa fa-star-o rated"></i><i
+												class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i><i
+												class="fa fa-star-o rated"></i><i
+												class="fa fa-star-o rated"></i></span>
+										<p>
+											Goa is one of the most favorite destination among Indian tourists due to its pristine... </p>
+										<span class="tour-price">$900</span> <a
+											href="blog/tour/magical-maldives/index.html" class="read-more">View
+											More</a>
 									</div>
 								</div>
 							</div>
@@ -1176,6 +1121,7 @@
 				</div>
 			</div>
 		</div>
-	</div> <!-- #site-wrapper -->
+	</div>
+	</div>
 
 <?php include('footer.php'); ?>
