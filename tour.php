@@ -1,9 +1,226 @@
-<?php include('header.php'); ?>
+<?php 
+
+include('header.php'); 
+
+//Import PHPMailer classes into the global namespace
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+if(isset($_GET['package-id']) && !empty($_GET['package-id']))
+{
+	$package_id=htmlspecialchars($_GET['package-id']);
+
+	$sql_package="select * from packages where package_id=$package_id and is_deleted=0";
+	$result_package=mysqli_query($con, $sql_package);
+	if(mysqli_num_rows($result_package)==1)
+	{
+		$row_package=mysqli_fetch_assoc($result_package);
+
+		$sql_image="select * from package_images where package_id={$row_package['package_id']} and is_deleted=0";
+		$result_image=mysqli_query($con, $sql_image);
+		if(mysqli_num_rows($result_image)>0)
+		{
+			$row_image=mysqli_fetch_assoc($result_image);
+		}
+	}
+	else
+	{
+		exit;
+	}
+}
+else
+{
+	exit;
+}
+
+// code for handeling the commment post when user clicked on post commment 
+if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['submit-review']))
+{
+	if(!isset($_POST['rating']) || empty($_POST['rating']))
+	{
+		exit;
+	}
+	else if(!isset($_POST['comment-text']) || empty($_POST['comment-text']))
+	{
+		exit;
+	}
+	else if(!isset($_POST['package-id']) || empty($_POST['package-id']))
+	{
+		exit;
+	}
+	else
+	{
+		$rating=htmlspecialchars($_POST['rating']);
+		$comment_text=htmlspecialchars($_POST['comment-text']);
+		$packageId=htmlspecialchars($_POST['package-id']);
+
+		$sql_rating="INSERT INTO comments (user_id, package_id, comment_text, rating) VALUES({$_SESSION['user_id']}, {$packageId}, '{$comment_text}', {$rating})";
+		if(mysqli_query($con, $sql_rating))
+		{
+			echo '<script>alert("Thanks For Rating Our Package !")</script>';
+			echo '<script>window.location.href = "' . $_SERVER['PHP_SELF'] . '?package-id='.$package_id.'";</script>';
+			// header('Location: '. $_SERVER['PHP_SELF']);
+			exit();
+		}
+		else
+		{
+			echo '<script>alert("Failed To Post The Review, Please Try Again")</script>';
+
+		}
+
+	}
+}
+
+// code for handeling the commment post when user clicked on post commment 
+if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['book-now-button']))
+{
+	if(!isset($_POST['package-id']) || empty($_POST['package-id']))
+	{
+		exit;
+	}
+	else if($_POST['package-id'] != $package_id)
+	{
+		exit();
+	}
+	else if(!isset($_POST['name']) || empty($_POST['name']))
+	{
+		exit;
+	}
+	else if(!isset($_POST['email']) || empty($_POST['email']))
+	{
+		exit;
+	}
+	else if(!isset($_POST['no-person']) || empty($_POST['no-person']) || !is_numeric($_POST['no-person']) || $_POST['no-person']<1)
+	{
+		exit;
+	}
+	else if(!isset($_POST['phone']) || empty($_POST['phone']))
+	{
+		exit;
+	}
+	else if(!isset($_POST['tour-date']) || empty($_POST['tour-date']))
+	{
+		exit;
+	}
+	else
+	{
+		$user_id=mysqli_real_escape_string($con, $_SESSION['user_id']);
+
+		$packageId=mysqli_real_escape_string($con, $_POST['package-id']);
+		$name=mysqli_real_escape_string($con, $_POST['name']);
+		$email=mysqli_real_escape_string($con, $_POST['email']);
+		$no_person=mysqli_real_escape_string($con, $_POST['no-person']);
+		$phone=mysqli_real_escape_string($con, $_POST['phone']);
+		$tour_date=mysqli_real_escape_string($con, $_POST['tour-date']);
+
+		$package_price=mysqli_real_escape_string($con, $row_package['new_price']);
+		$total_price=$no_person*$package_price;
+
+		$payment_type='cod';
+		$payment_status='pending';
+		$order_status='order placed';
+
+
+		$order_id=strtoupper(uniqid('ORDER_'));
+		
+
+		$sql_order="INSERT INTO orders (user_id, package_id, order_id, name, mobile, email, no_person, package_price, total_price, tour_date, payment_type, payment_status, order_status) VALUES({$user_id}, {$packageId}, '{$order_id}', '{$name}', '{$phone}', '{$email}', {$no_person}, {$package_price}, {$total_price}, '{$tour_date}', '{$payment_type}', '{$payment_status}', '{$order_status}')";
+		if(mysqli_query($con, $sql_order))
+		{
+
+			// sending mail to the customer 
+			$to=$email;
+			$subject="Preet Holiday! order has been successfully placed";
+			$body="<div style=\"margin:0px auto; width:100%; background-color:#f3f2f0; padding:0px; padding-top:8px; padding-bottom: 8px;\">
+					<table valign=\"top\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"60%\" align=\"center\" style=\"background-color:#fff; padding: 10px 5px\">
+						<tr><td>Hii, <b style=\"text-transform: capitalize;\">{$name}</b></td></tr>
+						<tr>
+							<td>
+								<center> 
+									<img src=\"https://freepngimg.com/save/18343-success-png-image/1200x1200\" style=\"width: 100px; height: auto;\">
+									<h1>Your order has been successfully placed</h1>
+									<img src=\"../{$row_package['main_image']}\" style=\"width: 150px; height: auto;\"><br/><br/>
+									<a href=\"127.0.0.1/tour-and-travel/tour.php?package-id={$packageId}\" style=\"text-decoration: none; color: blue; font-size: 1.2rem; text-transform: capitalize;\">{$row_package['name']}</a><br/>
+									No. of Person:  {$no_person}<br/>
+									Total Amount: <b> ₹</b>".number_format($row_package['new_price']*$no_person)."<br/><br/>
+								</center>
+							</td>
+						</tr>
+
+						<tr>
+							<td><center>Order ID: {$order_id}</center></td>
+						</tr>
+						<tr>
+							<td><center>Payment Status: {$payment_status}</center><br/><br/></td>
+						</tr>
+						<tr><td><center>
+						<a href=\"127.0.0.1/tour-and-travel/\" style=\"padding: 5px 10px; border: none; background-color: green; border-radius: 5px; text-decoration: none; color: #fff;\">Visit Our Website</a><br/><br/>
+						Thank you for shoping
+						</center>
+						</td>
+						</tr>
+					</table>
+					</div>";
+
+			//Import PHPMailer classes into the global namespace
+			//These must be at the top of your script, not inside a function
+		
+			require 'PHPMailer/Exception.php';
+			require 'PHPMailer/PHPMailer.php';
+			require 'PHPMailer/SMTP.php';
+
+			//Create an instance; passing `true` enables exceptions
+			$mail = new PHPMailer(true);
+
+			try {
+				//Server settings                 //Enable verbose debug output
+				$mail->isSMTP();                                            //Send using SMTP
+				$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+				$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+				$mail->Username   = 'hamarfreefire2021@gmail.com';                     //SMTP username
+				$mail->Password   = 'jlatawobrxvhdjgi';                               //SMTP password
+				$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+				$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+				//Recipients
+				$mail->setFrom('hamarfreefire2021@gmail.com', 'Preet Holiday');
+				$mail->addAddress($to, $name);     //Add a recipient
+
+
+				//Content
+				$mail->isHTML(true);                                  //Set email format to HTML
+				$mail->Subject = $subject;
+				$mail->Body    = $body;
+
+				$mail->send();
+				// echo "<script>console.log('Email successfully sent to {$to}')</script>";
+			} 
+			catch (Exception $e){
+				// echo "<script>console.log('Message could not be sent. Mailer Error: {$mail->ErrorInfo}');";
+			}
+
+
+			echo '<script>alert("Order Place Successfully!")</script>';
+			echo '<script>window.location.href = "' . $_SERVER['PHP_SELF'] . '?package-id='.$package_id.'";</script>';
+			// header('Location: '. $_SERVER['PHP_SELF']);
+			exit();
+		}
+		else
+		{
+			echo '<script>alert("Failed To Post The Review, Please Try Again")</script>';
+
+		}
+
+	}
+}
+
+?>
 <div class="single-tour">
 		<div id="site-banner"
-			style="background-image: url(assets/wp-content/uploads/2017/11/dubai-banner.jpg);">
+			style="background-image: url(images/packages/<?= $row_package['banner_image'] ?>);">
 			<div class="banner-content">
-				<h1>Fabulous Dubai</h1>
+				<h1><?= ucwords($row_package['name']) ?></h1>
 				<ul id="inspiry_breadcrumbs" class="inspiry_breadcrumbs">
 					<li class="breadcrumb-item"><a href="index.php" title="Home">Home</a></li>
 					<li>&gt;</li>
@@ -12,7 +229,7 @@
 					</li>
 					<li>&gt;</li>
 					<li class="breadcrumb-item active item-current item-323"><span class="bread-current bread-323"
-							title="Fabulous Dubai">Fabulous Mumbai</span></li>
+							title="Fabulous Dubai"><?= ucwords($row_package['name']) ?></span></li>
 				</ul>
 			</div>
 		</div>
@@ -22,12 +239,40 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="tour-tags clearfix">
+								<?php 
+
+									$sql_find_rating="select package_id, round(avg(rating)) as rating, count(package_id) as total_rating from comments where package_id={$package_id} and is_deleted=0";
+									$result_find_rating=mysqli_query($con, $sql_find_rating);
+
+									if(mysqli_num_rows($result_find_rating)>0)
+									{
+										$row_find_rating=mysqli_fetch_assoc($result_find_rating);
+
+										if($row_find_rating['total_rating']>0)
+										{
+											
+									
+								?>
 								<div class="tag-review">
-									<span class="rating"><i class="fa fa-star-o rated"></i><i
-											class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i><i
-											class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i></span><a
-										id="reviews-hash" href="#respond">(2 Reviews)</a>
+									<span class="rating">
+										<?php 
+											for($i=0; $i<$row_find_rating['rating']; $i++)
+											{
+												echo '<i class="fa fa-star-o rated"></i>';
+											}
+
+											for ($i=0; $i<5-$row_find_rating['rating']; $i++) { 
+												echo '<i class="fa fa-star-o"></i>';
+											}
+										?>
+									</span>
+									<a id="reviews-hash" href="#respond">(<?= $row_find_rating['total_rating'] ?> Reviews)</a>
 								</div>
+
+								<?php 
+										}
+									}
+								?>
 								<div class="tag-price">
 									<svg version="1.1" class="tour-price-tag" xmlns=""
 										xmlns:xlink="" x="0px" y="0px" width="34" height="34px"
@@ -41,11 +286,15 @@
 										</g>
 									</svg>
 									<span>
-										$1,450 / Person </span>
+									&#8377; <?= $row_package['new_price'] ?> / Person </span>
 								</div>
 							</div>
 	
 							<ul class="clearfix">
+								<?php 
+								if($row_package['best_month']!='')
+								{
+								?>
 								<li> <span class="tour-meta-icon">
 										<span></span>
 										<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
@@ -73,8 +322,16 @@
 											<line class="st0" x1="3.4" x2="26.6" y1="24.1" y2="24.1" />
 										</svg>
 									</span>
-									<span class="tour-meta">Jan - Feb</span>
+									<span class="tour-meta"><?= strtoupper($row_package['best_month']) ?></span>
 								</li>
+								<?php 
+								}
+								?>
+
+								<?php 
+								if($row_package['tour_duration']!='')
+								{
+								?>
 								<li> <span class="tour-meta-icon">
 										<span></span>
 										<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
@@ -93,8 +350,16 @@
 											<polyline class="st0" points="14.4 8.3 14.4 15 21.7 21.7" />
 										</svg>
 									</span>
-									<span class="tour-meta">7 Days</span>
+									<span class="tour-meta"><?= strtoupper($row_package['tour_duration']) ?> Days</span>
 								</li>
+								<?php 
+								}
+								?>
+
+								<?php 
+								if($row_package['country']!='')
+								{
+								?>
 								<li> <span class="tour-meta-icon">
 										<span></span>
 										<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
@@ -114,8 +379,16 @@
 											<polyline class="st0" points="20.5 12 14.4 5.9 9.5 5.9 15.6 12" />
 										</svg>
 									</span>
-									<span class="tour-meta">London</span>
+									<span class="tour-meta"><?= ucwords($row_package['country']) ?></span>
 								</li>
+								<?php 
+								}
+								?>
+
+								<?php 
+								if($row_package['city']!='')
+								{
+								?>
 								<li> <span class="tour-meta-icon">
 										<span></span>
 										<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
@@ -135,8 +408,12 @@
 											<circle class="st0" cx="15" cy="10.1" r="3.7" />
 										</svg>
 									</span>
-									<span class="tour-meta">United Arab Emirates</span>
+									<span class="tour-meta"><?= ucwords($row_package['city']) ?></span>
 								</li>
+								<?php 
+								}
+								?>
+								
 								<li> <span class="tour-meta-icon">
 										<span></span>
 										<svg enable-background="new 0 0 30 30" version="1.1" viewBox="0 0 30 30"
@@ -270,7 +547,7 @@
 			</div>
 
 
-		<div id="content-wrapper" class="site-page tour-single ">
+		<div id="content-wrapper" class="site-page tour-single " style="padding-top: 10rem !important;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-main-content">
@@ -278,7 +555,6 @@
 							class="post-323 tour type-tour status-publish has-post-thumbnail hentry tour-destination-united-arab-emirates tour-type-adventure tour-type-beaches tour-type-cruises tour-month-february tour-month-january">
 							<ul class="tour-tabs clearfix">
 								<li data-tab="tour-detail" class="active">Details</li>
-								<li data-tab="tour-itinerary">Itinerary</li>
 								<li data-tab="tour-location">Location</li>
 								<li data-tab="tour-gallery">Photos</li>
 							</ul>
@@ -286,106 +562,45 @@
 							<div class="post-content entry-content">
 								<div id="tour-detail" class="tour-detail active">
 									<h3 class="detail-title">Tour overview</h3>
-									<p>Dubai is situated on the Persian Gulf coast of the United Arab Emirates and is
-										roughly at sea level (16 m or 52 ft above). The emirate of Dubai shares borders
-										with Abu Dhabi in the south, Sharjah in the northeast, and the Sultanate of Oman
-										in the southeast. Hatta, a minor exclave of the emirate, is surrounded on three
-										sides by Oman and by the emirates of Ajman (in the west) and Ras Al Khaimah (in
-										the north). The Persian Gulf borders the western coast of the emirate. Dubai is
-										positioned at 25.2697°N 55.3095°E and covers an area of 1,588 sq mi (4,110 km2),
-										which represents a significant expansion beyond its initial 1,500 sq mi (3,900
-										km2) designation due to land reclamation from the sea.</p>
-									<p>Dubai lies directly within the Arabian Desert. However, the topography of Dubai
-										is significantly different from that of the southern portion of the UAE in that
-										much of Dubai&#8217;s landscape is highlighted by sandy desert patterns, while
-										gravel deserts dominate much of the southern region of the country.[55] The sand
-										consists mostly of crushed shell and coral and is fine, clean and white. East of
-										the city, the salt-crusted coastal plains, known as sabkha, give way to a
-										north-south running line of dunes. Farther east, the dunes grow larger and are
-										tinged red with iron oxide.</p>
+									<p><?= $row_package['description'] ?></p>
 									<div class="tour-include">
+										<?php
+										if($row_package['included']!='')
+										{
+										?>
 										<h3 class="detail-title">Included</h3>
 										<ul class="clearfix">
-											<li><i class="fa fa-check" aria-hidden="true"></i>Airfare</li>
-											<li><i class="fa fa-check" aria-hidden="true"></i>Local Transportation</li>
-											<li><i class="fa fa-check" aria-hidden="true"></i>Accommodation</li>
-											<li><i class="fa fa-check" aria-hidden="true"></i>Tour Guide</li>
+											<?php 
+											
+												$included= explode(',',$row_package['included']);
+												// echo count($included);
+												for($i=0; $i<count($included); $i++)
+												{
+											?>
+											<li><i class="fa fa-check" aria-hidden="true"></i><?= ucwords($included[$i]) ?></li>
+											<?php 
+												}	
+											?>
 										</ul>
-									</div>
-									<div class="tour-exclude">
-										<h3 class="detail-title">Not Included</h3>
-										<ul class="clearfix">
-											<li><i class="fa fa-times" aria-hidden="true"></i>Entrance Fees</li>
-											<li><i class="fa fa-times" aria-hidden="true"></i>Guide Gratuity</li>
-											<li><i class="fa fa-times" aria-hidden="true"></i>Lunch</li>
-											<li><i class="fa fa-times" aria-hidden="true"></i>Dinner</li>
-										</ul>
+										<?php 
+											}	
+										?>
 									</div>
 									<a class="btn btn-inspiry-download"
-										href="assets/wp-content/uploads/2017/11/Brochure.pdf"
+										href="assets/content/uploads/2017/11/Brochure.pdf"
 										download="Brochure.pdf">
 										<i class="fa fa-download" aria-hidden="true"></i>
 										Download pdf brochure </a>
 								</div>
-								<div id="tour-itinerary" class="tour-itinerary">
-									<section class="itinerary-step step-1">
-										<h3 class="entry-title">Day 1</h3>
-										<p>Clean traveler WordPress fun organized expedition theme. Excursion colorful
-											simple modern cute traveler design design whimsical. Pretty adventure fun
-											travel blogger colorful, traveler website wanderlust clean design website
-											simple.</p>
-									</section>
-									<section class="itinerary-step step-2">
-										<h3 class="entry-title">Day 2</h3>
-										<p>Clean colorful whimsical cute design WordPress simple Travel pretty. Darn
-											adventure adventure fun WordPress webdesign organized expedition, excursion
-											colorful colorful pretty WordPress. Webdesign clean traveler wanderlust cute
-											blogger simple.</p>
-									</section>
-									<section class="itinerary-step step-3">
-										<h3 class="entry-title">Day 3</h3>
-										<p>Adventure design blogger blogger expedition cute wanderlust colorful
-											whimsical, Travel clean travelblogger blogger. Travel adventure design
-											design travel blogger colorful WordPress.</p>
-									</section>
-									<section class="itinerary-step step-4">
-										<h3 class="entry-title">Day 4</h3>
-										<p>Enim a accumsan turpis aliquam fringilla nulla hendrerit leo eget act a
-											suscipit sed eros consequat ac orci semper interdum elit cras magna vivera
-											dictum laoreet ed tincidunt auctor etios justo Nam in justo tempus varius
-											leo amet tristique.</p>
-									</section>
-									<section class="itinerary-step step-5">
-										<h3 class="entry-title">Day 5</h3>
-										<p>Blogger blogger Travel organized traveler traveler expedition pretty. Pretty
-											website traveler organized expedition excursion Travel darn. Darn excursion
-											traveler fun organized cute simple website darn.</p>
-									</section>
-									<section class="itinerary-step step-6">
-										<h3 class="entry-title">Day 6</h3>
-										<p>Cute excursion organized modern, organized expedition travelblogger design
-											traveler WordPress travelblogger organized. Fun wanderlust travelblogger
-											travelblogger WordPress Travel, darn Travel traveler organized.</p>
-									</section>
-									<section class="itinerary-step step-7">
-										<h3 class="entry-title">Day 7</h3>
-										<p>Travelblogger whimsical darn adventure design travelblogger travelblogger,
-											webdesign organized excursion adventure. Clean traveling pretty pretty
-											blogger Travel pretty. Adventure fun traveling theme WordPress blogger
-											webdesign design.</p>
-									</section> <a class="btn btn-inspiry-download"
-										href="assets/wp-content/uploads/2017/11/Brochure.pdf"
-										download="Brochure.pdf">
-										<i class="fa fa-download" aria-hidden="true"></i>
-										Download pdf brochure </a>
-								</div>
+								
 								<div id="tour-location" class="tour-location">
 									<section>
 										<div id="tour-map">
+											<?= $row_package['location_link'] ?>
 										</div>
 									</section>
 									<a class="btn btn-inspiry-download"
-										href="assets/wp-content/uploads/2017/11/Brochure.pdf"
+										href="assets/content/uploads/2017/11/Brochure.pdf"
 										download="Brochure.pdf">
 										<i class="fa fa-download" aria-hidden="true"></i>
 										Download pdf brochure </a>
@@ -393,109 +608,31 @@
 								<div id="tour-gallery" class="tour-gallery">
 									<section>
 										<ul class="gallery-images inspiry-popup clearfix">
+											<?php
+											if(mysqli_num_rows($result_image))
+											{
+												while($row_image=mysqli_fetch_assoc($result_image))
+												{
+											?>
 											<li>
-												<img src="assets/wp-content/uploads/2017/11/dubai-01-440x312.jpg"
+												<img src="images/packages/<?= $row_image['image_path'] ?>"
 													alt="Gallery Thumbnail">
 												<a
-													href="assets/wp-content/uploads/2017/11/dubai-01.jpg">
+													href="images/packages/<?= $row_image['image_path'] ?>">
 													<div class="overlay">
-														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
+														<img src="assets/content/themes/img/tour-gallery-icon.png"
 															alt="Gallery Icon">
 													</div>
 												</a>
 											</li>
-											<li>
-												<img src="assets/wp-content/uploads/2017/11/dubai-02-440x312.jpg"
-													alt="Gallery Thumbnail">
-												<a
-													href="assets/wp-content/uploads/2017/11/dubai-02.jpg">
-													<div class="overlay">
-														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
-															alt="Gallery Icon">
-													</div>
-												</a>
-											</li>
-											<li>
-												<img src="assets/wp-content/uploads/2017/11/zaid-440x312.jpg"
-													alt="Gallery Thumbnail">
-												<a
-													href="assets/wp-content/uploads/2017/11/zaid.jpg">
-													<div class="overlay">
-														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
-															alt="Gallery Icon">
-													</div>
-												</a>
-											</li>
-											<li>
-												<img src="assets/wp-content/uploads/2017/11/alessandro-spataro-355696-440x312.jpg"
-													alt="Gallery Thumbnail">
-												<a
-													href="assets/wp-content/uploads/2017/11/alessandro-spataro-355696.jpg">
-													<div class="overlay">
-														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
-															alt="Gallery Icon">
-													</div>
-												</a>
-											</li>
-											<li>
-												<img src="assets/wp-content/uploads/2017/11/rktkn-440x312.jpg"
-													alt="Gallery Thumbnail">
-												<a
-													href="assets/wp-content/uploads/2017/11/rktkn.jpg">
-													<div class="overlay">
-														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
-															alt="Gallery Icon">
-													</div>
-												</a>
-											</li>
-											<li>
-												<img src="assets/wp-content/uploads/2017/11/night-burj-440x312.jpg"
-													alt="Gallery Thumbnail">
-												<a
-													href="assets/wp-content/uploads/2017/11/night-burj.jpg">
-													<div class="overlay">
-														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
-															alt="Gallery Icon">
-													</div>
-												</a>
-											</li>
-											<li>
-												<img src="assets/wp-content/uploads/2017/11/valeria-andersson-360231-440x312.jpg"
-													alt="Gallery Thumbnail">
-												<a
-													href="assets/wp-content/uploads/2017/11/valeria-andersson-360231.jpg">
-													<div class="overlay">
-														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
-															alt="Gallery Icon">
-													</div>
-												</a>
-											</li>
-											<li>
-												<img src="assets/wp-content/uploads/2017/11/zoo-440x312.jpg"
-													alt="Gallery Thumbnail">
-												<a
-													href="assets/wp-content/uploads/2017/11/zoo.jpg">
-													<div class="overlay">
-														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
-															alt="Gallery Icon">
-													</div>
-												</a>
-											</li>
-											<li>
-												<img src="assets/wp-content/uploads/2017/11/desert-440x312.jpg"
-													alt="Gallery Thumbnail">
-												<a
-													href="assets/wp-content/uploads/2017/11/desert.jpg">
-													<div class="overlay">
-														<img src="assets/wp-content/themes/inspiry-tourpress/img/tour-gallery-icon.png"
-															alt="Gallery Icon">
-													</div>
-												</a>
-											</li>
+											<?php
+												}
+											}
+											?>
 										</ul>
 									</section>
 									<a class="btn btn-inspiry-download"
-										href="assets/wp-content/uploads/2017/11/Brochure.pdf"
+										href="assets/content/uploads/2017/11/Brochure.pdf"
 										download="Brochure.pdf">
 										<i class="fa fa-download" aria-hidden="true"></i>
 										Download pdf brochure </a>
@@ -511,40 +648,59 @@
 								<div id="comments">
 									<ol class="comment-list">
 
+									<?php
+
+										$comments_sql="select comments.package_id as package_id, comments.comment_text as comment_text, comments.rating as rating, comments.timestamp as timestamp, users.name as username, users.user_image as user_image from comments join users on comments.user_id=users.id where comments.package_id={$package_id} and comments.is_deleted=0";
+
+										$result_comments=mysqli_query($con, $comments_sql);
+										if(mysqli_num_rows($result_comments)>0)
+										{
+											while($row_comment=mysqli_fetch_assoc($result_comments))
+											{
+												$formattedDate = date("F j, Y", strtotime($row_comment['timestamp']));
+									?>
+
 										<li class="comment byuser comment-author-mrsaqibtp bypostauthor even thread-even depth-1 clearfix"
 											id="comment-22">
 											<article class="comment-body clearfix">
 
 												<div class="author-photo">
-													<img alt=''
-														src='https://secure.gravatar.com/avatar/46f084aa224f20f3def176438947f3a1?s=114&amp;d=mm&amp;r=g'
-														srcset='https://secure.gravatar.com/avatar/46f084aa224f20f3def176438947f3a1?s=228&#038;d=mm&#038;r=g 2x'
-														class='avatar avatar-114 photo' height='114' width='114'
-														loading='lazy' decoding='async' />
-													<p><span class="rating"><i class="fa fa-star-o rated"></i><i
-																class="fa fa-star-o rated"></i><i
-																class="fa fa-star-o rated"></i><i
-																class="fa fa-star-o rated"></i><i
-																class="fa fa-star-o rated"></i></span></p>
+													<img alt='' src='images/users/<?= $row_comment['user_image'] ?>' srcset='images/users/<?= $row_comment['user_image'] ?>' class='avatar avatar-114 photo' height='114' width='114' loading='lazy' decoding='async' />
+													<p>
+														<span class="rating">
+															<?php 
+															
+															for($i=0; $i<$row_comment['rating']; $i++)
+															{
+																echo '<i class="fa fa-star-o rated"></i>';
+															}
+
+															for ($i=0; $i<5-$row_comment['rating']; $i++) { 
+																echo '<i class="fa fa-star-o"></i>';
+															}
+
+
+															?>
+														</span>
+													</p>
 												</div>
 
 												<div class="comment-wrapper">
-
-
 													<div class="comment-meta clearfix">
 														<div class="comment-author vcard">
-															<h5 class="fn">John Doe</h5>
+															<h5 class="fn"><?= ucwords($row_comment['username']) ?></h5>
 														</div>
 														<div class="comment-metadata">
-															<a href="index.html#comment-22">
-																<span>November 3, 2017</span> </a>
+															<a href="#!">
+																<span><?= $formattedDate ?></span> 
+															</a>
 														</div>
 													</div>
 
 													<div class="comment-content entry-content">
-														<p>We cant thank the staff enough for all they did to make our
-															honeymoon a paradise holiday to remember. Everything was
-															perfect and nothing was too much trouble.</p>
+														<p>
+															<?= ucfirst($row_comment['comment_text']) ?>
+														</p>
 													</div>
 												</div>
 
@@ -552,55 +708,35 @@
 											<!-- end of comment -->
 										</li><!-- #comment-## -->
 
-										<li class="comment odd alt thread-odd thread-alt depth-1 clearfix"
-											id="comment-23">
-											<article class="comment-body clearfix">
+									<?php
 
-												<div class="author-photo">
-													<img alt=''
-														src='https://secure.gravatar.com/avatar/72437d09babba5f052666cc37c91f152?s=114&amp;d=mm&amp;r=g'
-														srcset='https://secure.gravatar.com/avatar/72437d09babba5f052666cc37c91f152?s=228&#038;d=mm&#038;r=g 2x'
-														class='avatar avatar-114 photo' height='114' width='114'
-														loading='lazy' decoding='async' />
-													<p><span class="rating"><i class="fa fa-star-o rated"></i><i
-																class="fa fa-star-o rated"></i><i
-																class="fa fa-star-o rated"></i><i
-																class="fa fa-star-o rated"></i><i
-																class="fa fa-star-o rated"></i></span></p>
-												</div>
+											}
+										}
+									?>
 
-												<div class="comment-wrapper">
-
-
-													<div class="comment-meta clearfix">
-														<div class="comment-author vcard">
-															<h5 class="fn">Inspiry</h5>
-														</div>
-														<div class="comment-metadata">
-															<a href="index.html#comment-23">
-																<span>November 10, 2017</span> </a>
-														</div>
-													</div>
-
-													<div class="comment-content entry-content">
-														<p>The best thing about going back to a place you loved is
-															seeing that everything that was great is still there.</p>
-													</div>
-												</div>
-
-											</article>
-											<!-- end of comment -->
-										</li><!-- #comment-## -->
 									</ol><!-- .comment-list -->
+
+
+									<?php
+									if(isset($_SESSION['user_id']))
+									{
+										$sql_check_comments="select * from comments where user_id={$_SESSION['user_id']} and package_id={$package_id}";
+										$result_check_comments=mysqli_query($con, $sql_check_comments);
+
+										$sql_check_orders="select * from orders where user_id={$_SESSION['user_id']} and package_id={$package_id}";
+										$result_check_orders=mysqli_query($con, $sql_check_orders);
+
+										if(mysqli_num_rows($result_check_comments)==0 && mysqli_num_rows($result_check_orders)>0)
+										{									
+									
+									?>
 
 
 									<div id="respond" class="comment-respond">
 										<h3 id="reply-title" class="comment-reply-title">Leave a Review <small><a
 													rel="nofollow" id="cancel-comment-reply-link"
-													href="index.html#respond" style="display:none;">Cancel
-													reply</a></small></h3>
-										<form action="https://tourpress.inspirythemes.com/wp-comments-post.php"
-											method="post" id="commentform" class="comment-form" novalidate>
+													href="index.html#respond" style="display:none;">Cancel reply</a></small></h3>
+										<form action="" method="post" id="commentform" class="comment-form" novalidate onsubmit="return validateReviewForm()">
 											<div class="inspiry-comment-rating">
 												<div class="rating-box">
 													<select id="rate-it" name="rating">
@@ -612,44 +748,50 @@
 													</select>
 												</div>
 											</div>
-											<p class="comment-notes"><span id="email-notes">Your email address will not
-													be published.</span> <span class="required-field-message">Required
-													fields are marked <span class="required">*</span></span></p>
-											<p class="comment-form-comment"><label for="comment">Comment <span
-														class="required">*</span></label> <textarea
-													autocomplete="new-password" id="f2c544689f" name="f2c544689f"
-													cols="45" rows="8" maxlength="65525" required></textarea><textarea
-													id="comment" aria-label="hp-comment" aria-hidden="true"
-													name="comment" autocomplete="new-password"
-													style="padding:0 !important;clip:rect(1px, 1px, 1px, 1px) !important;position:absolute !important;white-space:nowrap !important;height:1px !important;width:1px !important;overflow:hidden !important;"
-													tabindex="-1"></textarea>
-												<script
-													data-noptimize>document.getElementById("comment").setAttribute("id", "a27c4aea21df3bead9450a3c336dce57"); document.getElementById("f2c544689f").setAttribute("id", "comment");</script>
+
+											<p class="comment-form-comment">
+												<label for="comment">
+													Comment <span class="required">*</span>
+												</label> 
+												<textarea id="comment-text" name="comment-text" cols="45" rows="8" maxlength="65525" placeholder="Write Your Review" required></textarea>
 											</p>
-											<p class="comment-form-author">
-												<input id="author" name="author" type="text" placeholder="Name*"
-													value="" aria-required='true' />
-											</p>
-											<p class="comment-form-email">
-												<input id="email" name="email" type="email" placeholder="Email Address*"
-													value="" aria-required='true' />
-											</p>
-											<p class="comment-form-url">
-												<input id="url" name="url" type="url" placeholder="Website" value="" />
-											</p>
-											<p class="comment-form-cookies-consent"><input
-													id="wp-comment-cookies-consent" name="wp-comment-cookies-consent"
-													type="checkbox" value="yes" /> <label
-													for="wp-comment-cookies-consent">Save my name, email, and website in
-													this browser for the next time I comment.</label></p>
-											<p class="form-submit"><input name="submit" type="submit" id="submit"
-													class="submit" value="Post Comment" /> <input type='hidden'
-													name='comment_post_ID' value='323' id='comment_post_ID' />
-												<input type='hidden' name='comment_parent' id='comment_parent'
-													value='0' />
+											
+											<p class="form-submit">
+												<input type='hidden' name='package-id' value='<?= $package_id ?>' id='package-id' />
+												<input type="submit" name="submit-review" id="submit-review" class="submit" value="Post Comment" /> 
 											</p>
 										</form>
+
+										<script>
+											function validateReviewForm()
+											{
+												let rating=document.getElementById('rate-it').value;
+												let comment=document.getElementById('comment-text').value;
+												let package_id=document.getElementById('package-id').value;
+
+												if(rating=='')
+												{
+													alert('Please Give Some Rating');
+													return false;
+												}
+												else if(comment=='')
+												{
+													alert('Please Write Review');  
+													return false;  
+												}
+												else
+												{
+													console.log(rating, comment, package_id);
+													return true;
+												}
+											}
+										</script>
 									</div><!-- #respond -->
+
+									<?php
+										}
+									}
+									?>
 								</div><!-- #comments -->
 							</div>
 						</div>
@@ -657,9 +799,7 @@
 					<div class="col-md-4 col-sidebar">
 						<aside id="sidebar-tour-detail" class="sidebar widget-area">
 							<section id="inspiry_booking_widget" class="widget inspiry_booking_widget">
-
-								<header style="
-			background-repeat: no-repeat; background-size: cover; background-position: center center; 				">
+								<header style="background-repeat: no-repeat; background-size: cover; background-position: center center;">
 									<span><svg xmlns=""
 											xmlns:xlink="" version="1.1" x="0px" y="0px"
 											viewBox="0 0 216.316 216.316"
@@ -677,117 +817,205 @@
 									<h2 class="widget-title">Book the tour</h2>
 								</header>
 
-								<form action="https://tourpress.inspirythemes.com/wp-admin/admin-ajax.php"
-									class="tour-booking" id="contact-form" method="post">
+								<form action="" class="tour-booking" id="contact-form" method="post" onsubmit="return validateBookingForm()">
 									<p>
-										<input type="text" name="name" placeholder="Name" class="required"
-											title="* Please provide your name.">
+										<input type="hidden" name="package-id" id="package-id" value="<?= $package_id ?>">
+										<input type="text" name="name" id="name" placeholder="Name" class="required" title="* Please provide your name.">
 									</p>
 									<p>
-										<input type="text" name="email" placeholder="Email" class="email required"
-											title="* Please provide your valid email address.">
+										<input type="email" name="email" id="email" placeholder="Email" class="email required" title="* Please provide your valid email address.">
 									</p>
 									<p class="half">
-										<input type="text" name="no_person" placeholder="No. of Person" class="required"
-											title="* Please provide number of persons.">
+										<input type="number" name="no-person" id="no-person"  placeholder="No. of Person" class="required" title="* Please provide number of persons." min="1">
 									</p>
 									<p class="half">
-										<input type="text" name="phone" placeholder="Phone">
+										<input type="text" name="phone" id="phone" placeholder="Phone">
 									</p>
 									<p>
-										<select name="dep_date">
-											<option value="">Departure Month</option>
-											<option value="january">January</option>
-											<option value="february">February</option>
-											<option value="march">March</option>
-											<option value="april">April</option>
-											<option value="may">May</option>
-											<option value="june">June</option>
-											<option value="july">July</option>
-											<option value="august">August</option>
-											<option value="september">September</option>
-											<option value="october">October</option>
-											<option value="november">November</option>
-											<option value="december">December</option>
-										</select>
+										<input type="date" name="tour-date" id="tour-date" placeholder="Phone" min="<?= date('Y-m-d', strtotime('+1 day')) ?>">
 									</p>
 									<div class="submission-area">
-										<input type="hidden" name="action" value="inspiry_booking_request" />
-										<input type="hidden" name="nonce" value="24b8fe7876" />
-										<input type="hidden" name="tour_url" value="index.html">
-										<input type="hidden" name="target"
-											value="ro&#98;&#111;&#116;&#64;&#105;ns&#112;iry&#116;h&#101;mes&#46;&#99;&#111;m">
-										<input type="submit" id="submit-button" value="Book Now">
+										<?php 
+											if(isset($_SESSION['user_id']))
+											{
+												echo '<input type="submit" name="book-now-button" id="book-now-button" value="Book Now">';
+											}
+											else
+											{
+												echo '<a class="btn btn-inspiry-download" href="login.php" style="width: 100%; color: #fff;">Login</a>';
+											}
+										?>
+										
 									</div>
 								</form>
+
+								<!-- script for Book Now form  -->
+								<script>
+									// function for validating the booking form 
+									function validateBookingForm()
+									{
+										let package_id=document.getElementById('package-id').value;
+										let name=document.getElementById('name').value;
+										let email=document.getElementById('email').value;
+										let no_person=document.getElementById('no-person').value;
+										let phone=document.getElementById('phone').value;
+										let tour_date=document.getElementById('tour-date').value;
+
+										if(package_id=='')
+										{
+											alert('Something Went Wrong! Please Refresh The Page');
+											return false;
+										}
+										else if(name=='')
+										{
+											alert('Please Enter Name');
+											return false;
+										}
+										else if(email=='')
+										{
+											alert('Please Enter Email');
+											return false;
+										}
+										else if(!validateEmail(email))
+										{
+											alert('Please Enter Valid Email');
+											return false;
+										}
+										else if(no_person=='')
+										{
+											alert('Please Enter Number of Person');
+											return false;
+										}
+										else if(no_person<1)
+										{
+											alert('Please Enter Valid Number of Person');
+											return false;
+										}
+										else if(phone=='')
+										{
+											alert('Please Enter Phone Number');
+											return false;
+										}
+										else if(!validatePhoneNumber(phone))
+										{
+											alert('Please Enter Valid Phone Number');
+											return false;
+										}
+										
+										else if(tour_date=='')
+										{
+											alert('Please Select Tour Date');
+											return false;
+										}
+										else
+										{
+											console.log(package_id, name, email, no_person, phone, tour_date);
+											return true;
+										}
+
+									}
+
+									// Phone number validation function
+									function validatePhoneNumber(phoneNumber) {
+										const phoneRegex = /^\d{10}$/; // Assumes a 10-digit phone number format
+										return phoneRegex.test(phoneNumber);
+									}
+
+									// Email validation function
+									function validateEmail(email) {
+										const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+										return emailRegex.test(email);
+									}
+
+
+								</script>
 								<div id="error-container"></div>
 								<div id="message-container"></div>
 							</section>
+
 							<section id="inspiry_share_widget-2" class="widget clearfix inspiry_share_widget">
 								<h2 class="widget-title">Share with us</h2>
 								<div class="social-share">
 
 									<ul class="social-buttons clearfix">
 										<li class="facebook">
-											<a href="http://www.facebook.com/sharer.php?u=https://tourpress.inspirythemes.com/blog/tour/fabulous-dubai/&amp;t=Fabulous+Dubai"
-												target="_blank" title="Share on Facebook!">
+											<a href="https://www.facebook.com/preetholiday">
 												<i class="fa fa-facebook" aria-hidden="true"></i> </a>
 										</li>
 										<li class="twitter">
-											<a href="http://twitter.com/home/?status=Fabulous+Dubai+-+https%3A%2F%2Ftourpress.inspirythemes.com%2Fblog%2Ftour%2Ffabulous-dubai%2F"
+											<a href="https://youtube.com/@PreetHolidays?si=scfRKg5XJ-yflJt6"
 												target="_blank" title="Tweet this!">
-												<i class="fa fa-twitter" aria-hidden="true"></i> </a>
+												<i class="fa fa-youtube" aria-hidden="true"></i> </a>
 										</li>
 										<li class="pinterest">
-											<a href="../../../../pinterest.com/pin/create/button/indexd8f9.html?url=https://tourpress.inspirythemes.com/blog/tour/fabulous-dubai/&amp;media=https://tourpress.inspirythemes.com/wp-content/uploads/2017/11/dubai-featured.jpg"
+											<a href="https://in.pinterest.com/preetholidays1/"
 												target="_blank" title="Pin this!">
 												<i class="fa fa-pinterest-p" aria-hidden="true"></i> </a>
 										</li>
 									</ul>
 								</div>
 							</section>
+
 							<section id="inspiry_tours_widget-2" class="widget clearfix inspiry_tours_widget">
 								<h2 class="widget-title">Popular Tours</h2>
-								<div class="tour-destination">
-									<a href="../historic-istanbul/index.html">
-										<figure>
-											<img width="720" height="560"
-												src="assets/wp-content/uploads/2017/11/istanbul-featured-720x560.jpg"
-												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
-												alt="" decoding="async" loading="lazy"
-												srcset="assets/wp-content/uploads/2017/11/istanbul-featured-720x560.jpg 720w, assets/wp-content/uploads/2017/11/istanbul-featured-300x233.jpg 300w, assets/wp-content/uploads/2017/11/istanbul-featured-768x598.jpg 768w, assets/wp-content/uploads/2017/11/istanbul-featured-600x467.jpg 600w, assets/wp-content/uploads/2017/11/istanbul-featured.jpg 1000w"
-												sizes="(max-width: 720px) 100vw, 720px" /><span
-												class="offer-price"><i>$1,200</i>$990</span>
-											<div class="content">
-												<h3>Historic Istanbul</h3>
-												<span class="rating"><i class="fa fa-star-o rated"></i><i
-														class="fa fa-star-o rated"></i><i
-														class="fa fa-star-o rated"></i><i
-														class="fa fa-star-o rated"></i><i
-														class="fa fa-star-o rated"></i></span>
-											</div>
-										</figure>
-									</a>
-								</div>
-								<div class="tour-destination">
-									<a href="../magical-maldives/index.html">
-										<figure>
-											<img width="720" height="560"
-												src="assets/wp-content/uploads/2017/11/maldives-featured-720x560.jpg"
-												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
-												alt="" decoding="async" loading="lazy" /><span
-												class="offer-price">$900</span>
-											<div class="content">
-												<h3>Magical Maldives</h3>
-												<span class="rating"><i class="fa fa-star-o rated"></i><i
-														class="fa fa-star-o rated"></i><i
-														class="fa fa-star-o rated"></i><i
-														class="fa fa-star-o rated"></i><i
-														class="fa fa-star-o rated"></i></span>
-											</div>
-										</figure>
-									</a>
-								</div>
+
+
+								<?php 
+									$most_rated_sql="SELECT package_id, round(avg(rating)) AS avrage_rating, COUNT(package_id) total_rating FROM comments GROUP BY package_id ORDER BY avrage_rating DESC LIMIT 2";
+									$most_rated_result=mysqli_query($con, $most_rated_sql);
+									if(mysqli_num_rows($most_rated_result)>0)
+									{
+										while($row_most_rated=mysqli_fetch_assoc($most_rated_result))
+										{
+											$most_rated_package_sql="select * from packages where package_id={$row_most_rated['package_id']} and is_deleted=0";
+											$most_rated_package_result=mysqli_query($con, $most_rated_package_sql);
+											if(mysqli_num_rows($most_rated_package_result)==1)
+											{
+												$most_rated_package_row=mysqli_fetch_assoc($most_rated_package_result);
+								?>
+									<div class="tour-destination">
+										<a href="tour.php?package-id=<?= $row_most_rated['package_id'] ?>">
+											<figure>
+												<img width="720" height="560"
+													src="images/packages/<?= $most_rated_package_row['main_image'] ?>" class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image" alt="" decoding="async" loading="lazy" srcset="images/packages/<?= $most_rated_package_row['main_image'] ?> 720w, images/packages/<?= $most_rated_package_row['main_image'] ?> 300w, images/packages/<?= $most_rated_package_row['main_image'] ?> 768w, images/packages/<?= $most_rated_package_row['main_image'] ?> 600w, images/packages/<?= $most_rated_package_row['main_image'] ?> 1000w" sizes="(max-width: 720px) 100vw, 720px" />
+													<span class="offer-price">
+														<?php 
+															if($most_rated_package_row['old_price']>$most_rated_package_row['new_price'])
+															{
+														?>
+														<i>&#8377;<?= number_format($most_rated_package_row['old_price']) ?></i>
+														<?php 
+															}
+														?>
+														&#8377;<?= number_format($most_rated_package_row['new_price']) ?>
+													</span>
+												<div class="content">
+													<h3><?= ucwords($most_rated_package_row['name']) ?></h3>
+													<span class="rating">
+
+													<?php 
+														for($i=0; $i<$row_most_rated['avrage_rating']; $i++)
+														{
+															echo '<i class="fa fa-star-o rated"></i>';
+														}
+
+														for ($i=0; $i<5-$row_most_rated['avrage_rating']; $i++) { 
+															echo '<i class="fa fa-star-o"></i>';
+														}
+													?>
+														
+													</span>
+												</div>
+											</figure>
+										</a>
+									</div>
+									
+								<?php
+											}
+										}
+									}
+								?>
+
 							</section>
 						</aside><!-- .sidebar .widget-area -->
 					</div><!-- col-md-4 -->
@@ -801,321 +1029,171 @@
 							</header>
 						</div>
 						<div class="similar-tours tours-listing">
-							<div class="col-md-4 col-sm-6">
-								<div class="tour-post clearfix tour-post-full-width">
-									<figure>
-										<a href="tour.php"><img width="720" height="560"
-												src="assets/wp-content/uploads/2017/11/bangaluru-720x560.jpg"
-												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
-												alt="" decoding="async" loading="lazy"
-												srcset="assets/wp-content/uploads/2017/11/bangaluru-720x560.jpg 720w, assets/wp-content/uploads/2017/11/dubai-featured-300x234.jpg 300w, assets/wp-content/uploads/2017/11/bangaluru-720x560.jpg 600w"
-												sizes="(max-width: 720px) 100vw, 720px" /></a><span
-											class="tour-meta"> <span class="tour-meta-icon">
-												<span>Jan - Feb</span>
-												<svg enable-background="new 0 0 32 32" version="1.1"
-													viewBox="0 0 32 32" xml:space="preserve"
-													xmlns="">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2.6;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<polyline class="st0"
-														points="6.9 4.4 2 4.4 2 30 30 30 30 4.4 25.1 4.4" />
-													<rect class="st0" x="6.9" y="2" width="3.7" height="4.9" />
-													<rect class="st0" x="21.5" y="2" width="3.7" height="4.9" />
-													<line class="st0" x1="10.5" x2="21.5" y1="4.4" y2="4.4" />
-													<line class="st0" x1="2" x2="30" y1="10.5" y2="10.5" />
-													<line class="st0" x1="9.3" x2="9.3" y1="13" y2="27.6" />
-													<line class="st0" x1="15.4" x2="15.4" y1="13" y2="27.6" />
-													<line class="st0" x1="21.5" x2="21.5" y1="13" y2="27.6" />
-													<line class="st0" x1="4.4" x2="27.6" y1="15.4" y2="15.4" />
-													<line class="st0" x1="4.4" x2="27.6" y1="20.3" y2="20.3" />
-													<line class="st0" x1="4.4" x2="27.6" y1="25.1" y2="25.1" />
-												</svg>
-											</span>
-											<span class="tour-meta-icon">
-												<span>7 Days</span>
-												<svg enable-background="new 0 0 32 32" version="1.1"
-													viewBox="0 0 32 32" xml:space="preserve"
-													xmlns="">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2.6;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<circle class="st0" cx="16" cy="16" r="13.5" />
-													<polyline class="st0" points="15.4 9.5 15.4 16 22.5 22.5" />
-												</svg>
-											</span>
-											<!-- <span class="tour-meta-icon">
-												<span>London</span>
-												<svg enable-background="new 0 0 32 32" version="1.1"
-													viewBox="0 0 32 32" xml:space="preserve"
-													xmlns="">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2.6;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<path class="st0"
-														d="M27.6,13H9.3l-2.4-2.5H2l3.7,7.3h9.7l-7.3,7.3h6.1l7.3-7.3h6.1c1.3,0,2.4-1.1,2.4-2.4C30,14,28.9,13,27.6,13z" />
-													<polyline class="st0"
-														points="21.5 13 15.4 6.9 10.5 6.9 16.6 13" />
-												</svg>
-											</span> -->
-											<span class="tour-meta-icon">
-												<span>India, Bangaluru</span>
-												<svg enable-background="new 0 0 32 32" version="1.1"
-													viewBox="0 0 32 32" xml:space="preserve"
-													xmlns="">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2.6;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<path class="st0"
-														d="m25.1 11.1c0 5-9.1 18.9-9.1 18.9s-9.1-13.8-9.1-18.9c0-5 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1z" />
-													<circle class="st0" cx="16" cy="11.1" r="3.7" />
-												</svg>
-											</span>
-										</span>
-										<div class="sunlight">
-											<i class="fa fa-sun-o" aria-hidden="true"></i>
-											<span class="tour-days">7 <i>days</i></span>
-										</div>
-									</figure>
+							
+						<?php
+							$sql_package="select * from packages where package_id!={$package_id} and category_id={$row_package['category_id']} and is_deleted=0 order by timestamp limit 3";
+							$result_package=mysqli_query($con, $sql_package);
 
-									<div class="offer-content">
-										<h3><a href="tour/fabulous-mumbai/index.php">Fabulous Bangaluru</a></h3>
-										<span class="rating"><i class="fa fa-star-o rated"></i><i
-												class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i><i
-												class="fa fa-star-o rated"></i><i
-												class="fa fa-star-o rated"></i></span>
-										<p>
-											Bengaluru is considered to be one of the fastest-growing global major... </p>
-										<div class="discount-label">25% <span>Discount</span></div><span
-											class="old-price">$1,950</span><span class="tour-price">$1,450</span> <a
-											href="tour/fabulous-mumbai/index.php" class="read-more">View
-											More</a>
+							if(mysqli_num_rows($result_package)>0)
+							{
+								while($row_package=mysqli_fetch_assoc($result_package))
+								{
+
+							
+							
+						?>
+						<div class="col-xs-12 col-sm-4">
+							<div class="tour-post clearfix tour-post-full-width">
+								<figure>
+									<a href="tour.php?package-id=<?= $row_package['package_id'] ?>">
+										<img width="720" height="560" src="images/packages/<?= $row_package['main_image'] ?>" class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image" alt="" decoding="async" loading="lazy" srcset="images/packages/<?= $row_package['main_image'] ?> 720w, images/packages/<?= $row_package['main_image'] ?> 300w, images/packages/<?= $row_package['main_image'] ?> 600w" sizes="(max-width: 720px) 100vw, 720px" />
+									</a>
+									<span class="tour-meta"> 
+										<span class="tour-meta-icon">
+											<span><?= strtoupper($row_package['best_month']) ?></span>
+											<svg enable-background="new 0 0 32 32" version="1.1" viewBox="0 0 32 32"
+												xml:space="preserve" xmlns="">
+												<style type="text/css">
+													.st0 {
+														fill: none;
+														stroke: #000000;
+														stroke-width: 2.6;
+														stroke-linecap: round;
+														stroke-linejoin: round;
+														stroke-miterlimit: 10;
+													}
+												</style>
+												<polyline class="st0"
+													points="6.9 4.4 2 4.4 2 30 30 30 30 4.4 25.1 4.4" />
+												<rect class="st0" x="6.9" y="2" width="3.7" height="4.9" />
+												<rect class="st0" x="21.5" y="2" width="3.7" height="4.9" />
+												<line class="st0" x1="10.5" x2="21.5" y1="4.4" y2="4.4" />
+												<line class="st0" x1="2" x2="30" y1="10.5" y2="10.5" />
+												<line class="st0" x1="9.3" x2="9.3" y1="13" y2="27.6" />
+												<line class="st0" x1="15.4" x2="15.4" y1="13" y2="27.6" />
+												<line class="st0" x1="21.5" x2="21.5" y1="13" y2="27.6" />
+												<line class="st0" x1="4.4" x2="27.6" y1="15.4" y2="15.4" />
+												<line class="st0" x1="4.4" x2="27.6" y1="20.3" y2="20.3" />
+												<line class="st0" x1="4.4" x2="27.6" y1="25.1" y2="25.1" />
+											</svg>
+										</span>
+
+										<span class="tour-meta-icon">
+											<span><?= $row_package['tour_duration'] ?> Days</span>
+											<svg enable-background="new 0 0 32 32" version="1.1" viewBox="0 0 32 32"
+												xml:space="preserve" xmlns="">
+												<style type="text/css">
+													.st0 {
+														fill: none;
+														stroke: #000000;
+														stroke-width: 2.6;
+														stroke-linecap: round;
+														stroke-linejoin: round;
+														stroke-miterlimit: 10;
+													}
+												</style>
+												<circle class="st0" cx="16" cy="16" r="13.5" />
+												<polyline class="st0" points="15.4 9.5 15.4 16 22.5 22.5" />
+											</svg>
+										</span>
+									
+										<span class="tour-meta-icon">
+											<span><?= strtoupper($row_package['country']).', '.strtoupper($row_package['city']) ?></span>
+											<svg enable-background="new 0 0 32 32" version="1.1" viewBox="0 0 32 32"
+												xml:space="preserve" xmlns="">
+												<style type="text/css">
+													.st0 {
+														fill: none;
+														stroke: #000000;
+														stroke-width: 2.6;
+														stroke-linecap: round;
+														stroke-linejoin: round;
+														stroke-miterlimit: 10;
+													}
+												</style>
+												<path class="st0"
+													d="m25.1 11.1c0 5-9.1 18.9-9.1 18.9s-9.1-13.8-9.1-18.9c0-5 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1z" />
+												<circle class="st0" cx="16" cy="11.1" r="3.7" />
+											</svg>
+										</span>
+									</span>
+									<div class="sunlight">
+										<i class="fa fa-sun-o" aria-hidden="true"></i>
+										<span class="tour-days"><?= $row_package['tour_duration'] ?> <i>days</i></span>
 									</div>
+								</figure>
+
+								<div class="offer-content">
+									<h3>
+										<a href="tour.php?package-id=<?= $row_package['package_id'] ?>"><?= ucwords($row_package['name']) ?></a>
+									</h3>
+									<span class="rating">
+									<?php 
+
+									$sql_find_rating="select package_id, round(avg(rating)) as rating, count(package_id) as total_rating from comments where package_id={$row_package['package_id']} and is_deleted=0";
+									$result_find_rating=mysqli_query($con, $sql_find_rating);
+
+									if(mysqli_num_rows($result_find_rating)>0)
+									{
+										$row_find_rating=mysqli_fetch_assoc($result_find_rating);
+
+										if($row_find_rating['total_rating']>0)
+										{
+											for($i=0; $i<$row_find_rating['rating']; $i++)
+											{
+												echo '<i class="fa fa-star-o rated"></i>';
+											}
+
+											for ($i=0; $i<5-$row_find_rating['rating']; $i++) { 
+												echo '<i class="fa fa-star-o"></i>';
+											}
+										}
+										else
+										{
+											echo '<i class="fa fa-star-o rated"></i>';
+											echo '<i class="fa fa-star-o rated"></i>';
+											echo '<i class="fa fa-star-o rated"></i>';
+											echo '<i class="fa fa-star-o rated"></i>';
+											echo '<i class="fa fa-star-o rated"></i>';
+										}
+									}
+									?>
+									</span>
+
+									<p class="package-desc"><?= $row_package['description'] ?></p>
+
+									<?php
+										$discount_price=round(100-(($row_package['new_price']*100)/$row_package['old_price']));
+										if($discount_price>0)
+										{
+									?>
+
+									<div class="discount-label">
+										<?= $discount_price ?>% <span>Discount</span>
+									</div>
+
+									<?php } ?>
+
+
+									<?php 
+									
+									if($row_package['old_price']>$row_package['new_price'])
+									{
+									?>
+									<span class="old-price">&#8377;<?= $row_package['old_price'] ?></span>
+									<?php } ?>
+									<span class="tour-price">&#8377;<?= $row_package['new_price'] ?></span> 
+									<a href="tour.php?package-id=<?= $row_package['package_id'] ?>" class="read-more">View More</a>
 								</div>
 							</div>
-							<div class="col-md-4 col-sm-6">
-								<div class="tour-post clearfix tour-post-full-width">
-									<figure>
-										<a href="tour/fabulous-mumbai/index.php"><img width="720" height="560"
-												src="assets/wp-content/uploads/2017/11/rishikesh-720x560.jpg"
-												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
-												alt="" decoding="async" loading="lazy"
-												srcset="assets/wp-content/uploads/2017/11/rishikesh-720x560.jpg  720w, assets/wp-content/uploads/2017/11/rishikesh-720x560.jpg 300w, assets/wp-content/uploads/2017/11/rishikesh-720x560.jpg 768w, assets/wp-content/uploads/2017/11/rishikesh-720x560.jpg 600w, assets/wp-content/uploads/2017/11/sydney-featured.jpg 1000w"
-												sizes="(max-width: 720px) 100vw, 720px" /></a><span
-											class="tour-meta"> <span class="tour-meta-icon">
-												<span>Jan - Feb - Dec</span>
-												<svg enable-background="new 0 0 32 32" version="1.1"
-													viewBox="0 0 32 32" xml:space="preserve"
-													xmlns="">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2.6;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<polyline class="st0"
-														points="6.9 4.4 2 4.4 2 30 30 30 30 4.4 25.1 4.4" />
-													<rect class="st0" x="6.9" y="2" width="3.7" height="4.9" />
-													<rect class="st0" x="21.5" y="2" width="3.7" height="4.9" />
-													<line class="st0" x1="10.5" x2="21.5" y1="4.4" y2="4.4" />
-													<line class="st0" x1="2" x2="30" y1="10.5" y2="10.5" />
-													<line class="st0" x1="9.3" x2="9.3" y1="13" y2="27.6" />
-													<line class="st0" x1="15.4" x2="15.4" y1="13" y2="27.6" />
-													<line class="st0" x1="21.5" x2="21.5" y1="13" y2="27.6" />
-													<line class="st0" x1="4.4" x2="27.6" y1="15.4" y2="15.4" />
-													<line class="st0" x1="4.4" x2="27.6" y1="20.3" y2="20.3" />
-													<line class="st0" x1="4.4" x2="27.6" y1="25.1" y2="25.1" />
-												</svg>
-											</span>
-											<span class="tour-meta-icon">
-												<span>5 Days</span>
-												<svg enable-background="new 0 0 32 32" version="1.1"
-													viewBox="0 0 32 32" xml:space="preserve"
-													xmlns="http://www.w3.org/2000/svg">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2.6;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<circle class="st0" cx="16" cy="16" r="13.5" />
-													<polyline class="st0" points="15.4 9.5 15.4 16 22.5 22.5" />
-												</svg>
-											</span>
-											<span class="tour-meta-icon">
-												<span>India, Rishikesh</span>
-												<svg enable-background="new 0 0 32 32" version="1.1"
-													viewBox="0 0 32 32" xml:space="preserve"
-													xmlns="">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2.6;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<path class="st0"
-														d="m25.1 11.1c0 5-9.1 18.9-9.1 18.9s-9.1-13.8-9.1-18.9c0-5 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1z" />
-													<circle class="st0" cx="16" cy="11.1" r="3.7" />
-												</svg>
-											</span>
-										</span>
-										<div class="sunlight">
-											<i class="fa fa-sun-o" aria-hidden="true"></i>
-											<span class="tour-days">5 <i>days</i></span>
-										</div>
-									</figure>
+						</div>
 
-									<div class="offer-content">
-										<h3><a href="tour/fabulous-mumbai/index.php">Rishikesh Tourism</a></h3>
-										<span class="rating"><i class="fa fa-star-o rated"></i><i
-												class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i><i
-												class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
-										<p>
-											Rishikesh is a small serene town famous for meditation and yoga. It is Gateway... </p>
-										<span class="tour-price">$950</span> <a
-											href="tour/fabulous-mumbai/index.php" class="read-more">View
-											More</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-6">
-								<div class="tour-post clearfix tour-post-full-width">
-									<figure>
-										<a href="blog/tour/magical-maldives/index.html"><img width="720"
-												height="560"
-												src="assets/wp-content/uploads/2017/11/goa-beach-720x560.jpg"
-												class="attachment-inspiry_image_size_720_560 size-inspiry_image_size_720_560 wp-post-image"
-												alt="" decoding="async" loading="lazy" /></a><span
-											class="tour-meta"> <span class="tour-meta-icon">
-												<span>Apr - May - Jun</span>
-												<svg enable-background="new 0 0 32 32" version="1.1"
-													viewBox="0 0 32 32" xml:space="preserve"
-													xmlns="http://www.w3.org/2000/svg">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2.6;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<polyline class="st0"
-														points="6.9 4.4 2 4.4 2 30 30 30 30 4.4 25.1 4.4" />
-													<rect class="st0" x="6.9" y="2" width="3.7" height="4.9" />
-													<rect class="st0" x="21.5" y="2" width="3.7" height="4.9" />
-													<line class="st0" x1="10.5" x2="21.5" y1="4.4" y2="4.4" />
-													<line class="st0" x1="2" x2="30" y1="10.5" y2="10.5" />
-													<line class="st0" x1="9.3" x2="9.3" y1="13" y2="27.6" />
-													<line class="st0" x1="15.4" x2="15.4" y1="13" y2="27.6" />
-													<line class="st0" x1="21.5" x2="21.5" y1="13" y2="27.6" />
-													<line class="st0" x1="4.4" x2="27.6" y1="15.4" y2="15.4" />
-													<line class="st0" x1="4.4" x2="27.6" y1="20.3" y2="20.3" />
-													<line class="st0" x1="4.4" x2="27.6" y1="25.1" y2="25.1" />
-												</svg>
-											</span>
-											<span class="tour-meta-icon">
-												<span>6 Days</span>
-												<svg enable-background="new 0 0 32 32" version="1.1"
-													viewBox="0 0 32 32" xml:space="preserve"
-													xmlns="">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2.6;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<circle class="st0" cx="16" cy="16" r="13.5" />
-													<polyline class="st0" points="15.4 9.5 15.4 16 22.5 22.5" />
-												</svg>
-											</span>
-											<span class="tour-meta-icon">
-												<span>India, Goa</span>
-												<svg enable-background="new 0 0 32 32" version="1.1"
-													viewBox="0 0 32 32" xml:space="preserve"
-													xmlns="">
-													<style type="text/css">
-														.st0 {
-															fill: none;
-															stroke: #000000;
-															stroke-width: 2.6;
-															stroke-linecap: round;
-															stroke-linejoin: round;
-															stroke-miterlimit: 10;
-														}
-													</style>
-													<path class="st0"
-														d="m25.1 11.1c0 5-9.1 18.9-9.1 18.9s-9.1-13.8-9.1-18.9c0-5 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1z" />
-													<circle class="st0" cx="16" cy="11.1" r="3.7" />
-												</svg>
-											</span>
-										</span>
-										<div class="sunlight">
-											<i class="fa fa-sun-o" aria-hidden="true"></i>
-											<span class="tour-days">6 <i>days</i></span>
-										</div>
-									</figure>
+						<?php
+								}
+							}
+						?>
 
-									<div class="offer-content">
-										<h3><a href="blog/tour/magical-maldives/index.html">Magical Goa</a>
-										</h3>
-										<span class="rating"><i class="fa fa-star-o rated"></i><i
-												class="fa fa-star-o rated"></i><i class="fa fa-star-o rated"></i><i
-												class="fa fa-star-o rated"></i><i
-												class="fa fa-star-o rated"></i></span>
-										<p>
-											Goa is one of the most favorite destination among Indian tourists due to its pristine... </p>
-										<span class="tour-price">$900</span> <a
-											href="blog/tour/magical-maldives/index.html" class="read-more">View
-											More</a>
-									</div>
-								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>

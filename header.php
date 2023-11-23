@@ -1,3 +1,92 @@
+<?php
+
+session_start();
+include('config/config.php');
+
+//Import PHPMailer classes into the global namespace
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+if (isset($_POST['p-submit-button']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+	if (isset($_POST['p-fname']) && empty($_POST['p-fname'])) {
+		exit;
+	} else if (isset($_POST['p-phone']) && empty($_POST['p-phone'])) {
+		exit;
+	} else if (isset($_POST['p-email']) && empty($_POST['p-email'])) {
+		exit;
+	} else {
+		$p_fname = mysqli_real_escape_string($con, $_POST['p-fname']);
+		$p_phone = mysqli_real_escape_string($con, $_POST['p-phone']);
+		$p_email = mysqli_real_escape_string($con, $_POST['p-email']);
+		$p_message = mysqli_real_escape_string($con, $_POST['p-message']);
+
+		$sql = "insert into contact_us (name, mobile, email, message) values('{$p_fname}', '{$p_phone}', '{$p_email}', '{$p_message}')";
+		if (mysqli_query($con, $sql)) {
+
+			// sending mail to the customer 
+			$to = 'durgeshkumarraj62@gmail.com';
+			$subject = "Preet Holiday! Enquery";
+			$body = '<div style="padding: 5px; ">
+						<p><b>Name : </b> ' . $p_fname . '</p>
+						<p><b>Email : </b> <a href="mailto: ' . $p_email . '" style="text-decoration: none; color: blue; ">' . $p_email . '</a></p>
+						<p><b>Phone : </b> <a href="tel: ' . $p_phone . '" style="text-decoration: none; color: blue; ">' . $p_phone . '</a></p>
+						<p><b>Message : </b> ' . $p_message . '</p>
+					</div>';
+
+			//Import PHPMailer classes into the global namespace
+			//These must be at the top of your script, not inside a function
+
+			require 'PHPMailer/Exception.php';
+			require 'PHPMailer/PHPMailer.php';
+			require 'PHPMailer/SMTP.php';
+
+			//Create an instance; passing `true` enables exceptions
+			$mail = new PHPMailer(true);
+
+			try {
+				//Server settings                 //Enable verbose debug output
+				$mail->isSMTP();                                            //Send using SMTP
+				$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+				$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+				$mail->Username   = 'hamarfreefire2021@gmail.com';                     //SMTP username
+				$mail->Password   = 'jlatawobrxvhdjgi';                               //SMTP password
+				$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+				$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+				//Recipients
+				$mail->setFrom('hamarfreefire2021@gmail.com', 'Preet Holiday');
+				$mail->addAddress($to);     //Add a recipient
+
+
+				//Content
+				$mail->isHTML(true);                                  //Set email format to HTML
+				$mail->Subject = $subject;
+				$mail->Body    = $body;
+
+				$mail->send();
+				// echo "<script>console.log('Email successfully sent to {$to}')</script>";
+			} catch (Exception $e) {
+				// echo "<script>console.log('Message could not be sent. Mailer Error: {$mail->ErrorInfo}');";
+			}
+
+
+			echo "<script>alert('Enquery Sent Successfully')</script>";
+			echo '<script>window.location.href = "' . $_SERVER['PHP_SELF'] . '";</script>';
+
+			exit();
+		} else {
+			echo "<script>alert('Falied to Sent Enquery, Please Try Again')</script>";
+			echo '<script>window.location.href = "' . $_SERVER['PHP_SELF'] . '";</script>';
+		}
+	}
+}
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en-US">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -10,12 +99,52 @@
 	<meta name='robots' content='max-image-preview:large' />
 	<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
 	<link rel="alternate" type="application/rss+xml" title="PreetHoliday &raquo; Feed" href="feed/index.php" />
-	<link rel="alternate" type="application/rss+xml" title="PreetHoliday &raquo; Comments Feed"
-		href="comments/feed/index.php" />
+	<link rel="alternate" type="application/rss+xml" title="PreetHoliday &raquo; Comments Feed" href="comments/feed/index.php" />
 	<script type="text/javascript">
-		window._wpemojiSettings = { "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/", "ext": ".png", "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/", "svgExt": ".svg", "source": { "concatemoji": "https:\/\/tourpress.inspirythemes.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.2.2" } };
+		window._wpemojiSettings = {
+			"baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/",
+			"ext": ".png",
+			"svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/",
+			"svgExt": ".svg",
+			"source": {
+				"concatemoji": "https:\/\/tourpress.inspirythemes.com\/includes\/js\/wp-emoji-release.min.js"
+			}
+		};
 		/*! This file is auto-generated */
-		!function (e, a, t) { var n, r, o, i = a.createElement("canvas"), p = i.getContext && i.getContext("2d"); function s(e, t) { p.clearRect(0, 0, i.width, i.height), p.fillText(e, 0, 0); e = i.toDataURL(); return p.clearRect(0, 0, i.width, i.height), p.fillText(t, 0, 0), e === i.toDataURL() } function c(e) { var t = a.createElement("script"); t.src = e, t.defer = t.type = "text/javascript", a.getElementsByTagName("head")[0].appendChild(t) } for (o = Array("flag", "emoji"), t.supports = { everything: !0, everythingExceptFlag: !0 }, r = 0; r < o.length; r++)t.supports[o[r]] = function (e) { if (p && p.fillText) switch (p.textBaseline = "top", p.font = "600 32px Arial", e) { case "flag": return s("\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f", "\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f") ? !1 : !s("\ud83c\uddfa\ud83c\uddf3", "\ud83c\uddfa\u200b\ud83c\uddf3") && !s("\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f", "\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f"); case "emoji": return !s("\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff", "\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff") }return !1 }(o[r]), t.supports.everything = t.supports.everything && t.supports[o[r]], "flag" !== o[r] && (t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && t.supports[o[r]]); t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && !t.supports.flag, t.DOMReady = !1, t.readyCallback = function () { t.DOMReady = !0 }, t.supports.everything || (n = function () { t.readyCallback() }, a.addEventListener ? (a.addEventListener("DOMContentLoaded", n, !1), e.addEventListener("load", n, !1)) : (e.attachEvent("onload", n), a.attachEvent("onreadystatechange", function () { "complete" === a.readyState && t.readyCallback() })), (e = t.source || {}).concatemoji ? c(e.concatemoji) : e.wpemoji && e.twemoji && (c(e.twemoji), c(e.wpemoji))) }(window, document, window._wpemojiSettings);
+		! function(e, a, t) {
+			var n, r, o, i = a.createElement("canvas"),
+				p = i.getContext && i.getContext("2d");
+
+			function s(e, t) {
+				p.clearRect(0, 0, i.width, i.height), p.fillText(e, 0, 0);
+				e = i.toDataURL();
+				return p.clearRect(0, 0, i.width, i.height), p.fillText(t, 0, 0), e === i.toDataURL()
+			}
+
+			function c(e) {
+				var t = a.createElement("script");
+				t.src = e, t.defer = t.type = "text/javascript", a.getElementsByTagName("head")[0].appendChild(t)
+			}
+			for (o = Array("flag", "emoji"), t.supports = {
+					everything: !0,
+					everythingExceptFlag: !0
+				}, r = 0; r < o.length; r++) t.supports[o[r]] = function(e) {
+				if (p && p.fillText) switch (p.textBaseline = "top", p.font = "600 32px Arial", e) {
+					case "flag":
+						return s("\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f", "\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f") ? !1 : !s("\ud83c\uddfa\ud83c\uddf3", "\ud83c\uddfa\u200b\ud83c\uddf3") && !s("\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f", "\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");
+					case "emoji":
+						return !s("\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff", "\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff")
+				}
+				return !1
+			}(o[r]), t.supports.everything = t.supports.everything && t.supports[o[r]], "flag" !== o[r] && (t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && t.supports[o[r]]);
+			t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && !t.supports.flag, t.DOMReady = !1, t.readyCallback = function() {
+				t.DOMReady = !0
+			}, t.supports.everything || (n = function() {
+				t.readyCallback()
+			}, a.addEventListener ? (a.addEventListener("DOMContentLoaded", n, !1), e.addEventListener("load", n, !1)) : (e.attachEvent("onload", n), a.attachEvent("onreadystatechange", function() {
+				"complete" === a.readyState && t.readyCallback()
+			})), (e = t.source || {}).concatemoji ? c(e.concatemoji) : e.wpemoji && e.twemoji && (c(e.twemoji), c(e.wpemoji)))
+		}(window, document, window._wpemojiSettings);
 	</script>
 	<style type="text/css">
 		img.wp-smiley,
@@ -31,9 +160,7 @@
 			padding: 0 !important;
 		}
 	</style>
-	<link rel='stylesheet' id='wp-block-library-css'
-		href='assets/wp-includes/css/dist/block-library/style.min3781.css?ver=6.2.2' type='text/css'
-		media='all' />
+	<link rel='stylesheet' id='wp-block-library-css' href='assets/includes/css/dist/block-library/style.min3781.css' type='text/css' media='all' />
 	<style id='wp-block-library-theme-inline-css' type='text/css'>
 		.wp-block-audio figcaption {
 			color: #555;
@@ -222,15 +349,9 @@
 			padding: 1.25em 2.375em
 		}
 	</style>
-	<link rel='stylesheet' id='wc-blocks-vendors-style-css'
-		href='assets/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-vendors-style71f0.css?ver=10.9.3'
-		type='text/css' media='all' />
-	<link rel='stylesheet' id='wc-all-blocks-style-css'
-		href='assets/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/wc-all-blocks-style71f0.css?ver=10.9.3'
-		type='text/css' media='all' />
-	<link rel='stylesheet' id='classic-theme-styles-css'
-		href='assets/wp-includes/css/classic-themes.min3781.css?ver=6.2.2' type='text/css'
-		media='all' />
+	<link rel='stylesheet' id='wc-blocks-vendors-style-css' href='assets/content/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-vendors-style71f0.css?ver=10.9.3' type='text/css' media='all' />
+	<link rel='stylesheet' id='wc-all-blocks-style-css' href='assets/content/plugins/woocommerce/packages/woocommerce-blocks/build/wc-all-blocks-style71f0.css?ver=10.9.3' type='text/css' media='all' />
+	<link rel='stylesheet' id='classic-theme-styles-css' href='assets/includes/css/classic-themes.min3781.css' type='text/css' media='all' />
 	<style id='global-styles-inline-css' type='text/css'>
 		body {
 			--wp--preset--color--black: #000000;
@@ -569,94 +690,63 @@
 			line-height: 1.6;
 		}
 	</style>
-	<link rel='stylesheet' id='woocommerce-layout-css'
-		href='assets/wp-content/plugins/woocommerce/assets/css/woocommerce-layout12c8.css?ver=8.1.1'
-		type='text/css' media='all' />
-	<link rel='stylesheet' id='woocommerce-smallscreen-css'
-		href='assets/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen12c8.css?ver=8.1.1'
-		type='text/css' media='only screen and (max-width: 768px)' />
-	<link rel='stylesheet' id='woocommerce-general-css'
-		href='assets/wp-content/plugins/woocommerce/assets/css/woocommerce12c8.css?ver=8.1.1'
-		type='text/css' media='all' />
+	<!-- Fontawesome CDN -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel='stylesheet' id='woocommerce-layout-css' href='assets/content/plugins/woocommerce/assets/css/woocommerce-layout12c8.css?ver=8.1.1' type='text/css' media='all' />
+	<link rel='stylesheet' id='woocommerce-smallscreen-css' href='assets/content/plugins/woocommerce/assets/css/woocommerce-smallscreen12c8.css?ver=8.1.1' type='text/css' media='only screen and (max-width: 768px)' />
+	<link rel='stylesheet' id='woocommerce-general-css' href='assets/content/plugins/woocommerce/assets/css/woocommerce12c8.css?ver=8.1.1' type='text/css' media='all' />
 	<style id='woocommerce-inline-inline-css' type='text/css'>
 		.woocommerce form .form-row .required {
 			visibility: visible;
 		}
 	</style>
-	<link rel='stylesheet' id='google-rubik-css'
-		href='http://fonts.googleapis.com/css?family=Rubik%3A300%2C400%2C500%2C700&amp;subset=latin%2Clatin-ext&amp;ver=1.1.7'
-		type='text/css' media='all' />
-	<link rel='stylesheet' id='bootstrap-css'
-		href='assets/wp-content/themes/css/bootstrap.css'
-		type='text/css' media='all' />
-	<link rel='stylesheet' id='fontawesome-css'
-		href='assets/wp-content/themes/css/font-awesome.min.css'
-		type='text/css' media='all' />
-	<link rel='stylesheet' id='meanmenu-css'
-		href='assets/wp-content/themes/js/meanmenu/meanmenu.mina7f4.css?ver=2.0.8'
-		type='text/css' media='all' />
-	<link rel='stylesheet' id='flexslider-css'
-		href='assets/wp-content/themes/js/flexslider/flexslidereed8.css?ver=2.7.2'
-		type='text/css' media='all' />
-	<link rel='stylesheet' id='owl-carousel-css'
-		href='assets/wp-content/themes/js/owl-carousel/owl.carousel.min77e6.css?ver=2.2.1'
-		type='text/css' media='all' />
-	<link rel='stylesheet' id='bar-rating-theme-css'
-		href='assets/wp-content/themes/js/barrating/fontawesome-stars6fca.css?ver=2.6.3'
-		type='text/css' media='all' />
-	<link rel='stylesheet' id='magnific-popup-css'
-		href='assets/wp-content/themes/js/magnific/magnific-popupf488.css?ver=1.1.0'
-		type='text/css' media='all' />
-	<link rel='stylesheet' id='jquery-ui-css'
-		href='assets/wp-content/themes/js/jquery-ui/jquery-ui.min35d0.css?ver=1.12.1'
-		type='text/css' media='all' />
-		<link rel='stylesheet' id='tourpress-print-style-css'
-		href='assets/wp-content/themes/css/print.css' type='text/css'
-		media='all' />
-		<link rel='stylesheet' id='parent-custom-css'
-		href='assets/wp-content/themes/css/custom.css' type='text/css'
-		media='all' />
-		<style id='parent-custom-inline-css' type='text/css'>
-			#site-banner {
-				background-repeat: no-repeat;
-				background-size: cover;
-				background-position: center center;
-			}
+	<link rel='stylesheet' id='google-rubik-css' href='http://fonts.googleapis.com/css?family=Rubik%3A300%2C400%2C500%2C700&amp;subset=latin%2Clatin-ext&amp;ver=1.1.7' type='text/css' media='all' />
+	<link rel='stylesheet' id='bootstrap-css' href='assets/content/themes/css/bootstrap.css' type='text/css' media='all' />
+	<link rel='stylesheet' id='fontawesome-css' href='assets/content/themes/css/font-awesome.min.css' type='text/css' media='all' />
+	<link rel='stylesheet' id='meanmenu-css' href='assets/content/themes/js/meanmenu/meanmenu.mina7f4.css?ver=2.0.8' type='text/css' media='all' />
+	<link rel='stylesheet' id='flexslider-css' href='assets/content/themes/js/flexslider/flexslidereed8.css?ver=2.7.2' type='text/css' media='all' />
+	<link rel='stylesheet' id='owl-carousel-css' href='assets/content/themes/js/owl-carousel/owl.carousel.min77e6.css?ver=2.2.1' type='text/css' media='all' />
+	<link rel='stylesheet' id='bar-rating-theme-css' href='assets/content/themes/js/barrating/fontawesome-stars6fca.css?ver=2.6.3' type='text/css' media='all' />
+	<link rel='stylesheet' id='magnific-popup-css' href='assets/content/themes/js/magnific/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+	<link rel='stylesheet' id='jquery-ui-css' href='assets/content/themes/js/jquery-ui/jquery-ui.min35d0.css?ver=1.12.1' type='text/css' media='all' />
+	<link rel='stylesheet' id='tourpress-print-style-css' href='assets/content/themes/css/print.css' type='text/css' media='all' />
+	<link rel='stylesheet' id='parent-custom-css' href='assets/content/themes/css/custom.css' type='text/css' media='all' />
+	<style id='parent-custom-inline-css' type='text/css'>
+		#site-banner {
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center center;
+		}
 	</style>
-	<link rel='stylesheet' id='tourpress-style-css'
-		href='assets/wp-content/themes/style.css' type='text/css'
-		media='all' />
-	<script type='text/javascript' src='assets/wp-includes/js/jquery/jquery.min5aed.js?ver=3.6.4'
-		id='jquery-core-js'></script>
-	<script type='text/javascript'
-		src='assets/wp-includes/js/jquery/jquery-migrate.min6b00.js?ver=3.4.0'
-		id='jquery-migrate-js'></script>
+	<link rel='stylesheet' id='tourpress-style-css' href='assets/content/themes/style.css' type='text/css' media='all' />
+	<script type='text/javascript' src='assets/includes/js/jquery/jquery.min5aed.js?ver=3.6.4' id='jquery-core-js'></script>
+	<script type='text/javascript' src='assets/includes/js/jquery/jquery-migrate.min6b00.js?ver=3.4.0' id='jquery-migrate-js'></script>
 	<link rel="https://api.w.org/" href="wp-json/index.php" />
 	<link rel="alternate" type="application/json" href="wp-json/wp/v2/pages/54.json" />
 	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc0db0.php?rsd" />
-	<link rel="wlwmanifest" type="application/wlwmanifest+xml"
-		href="https://tourpress.b-cdn.net/wp-includes/wlwmanifest.xml" />
+	<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://tourpress.b-cdn.net/includes/wlwmanifest.xml" />
 	<meta name="generator" content="WordPress 6.2.2" />
 	<meta name="generator" content="WooCommerce 8.1.1" />
 	<link rel="canonical" href="index.php" />
 	<link rel='shortlink' href='index.php' />
-	<link rel="alternate" type="application/json+oembed"
-	href="wp-json/oembed/1.0/embed6d55.json?url=https%3A%2F%2Ftourpress.inspirythemes.com%2F" />
-	<link rel="alternate" type="text/xml+oembed"
-	href="wp-json/oembed/1.0/embedadc0?url=https%3A%2F%2Ftourpress.inspirythemes.com%2F&amp;format=xml" />
+	<link rel="alternate" type="application/json+oembed" href="wp-json/oembed/1.0/embed6d55.json?url=https%3A%2F%2Ftourpress.inspirythemes.com%2F" />
+	<link rel="alternate" type="text/xml+oembed" href="wp-json/oembed/1.0/embedadc0?url=https%3A%2F%2Ftourpress.inspirythemes.com%2F&amp;format=xml" />
 	<noscript>
 		<style>
 			.woocommerce-product-gallery {
 				opacity: 1 !important;
 			}
-			</style>
+		</style>
 	</noscript>
 	<style type="text/css" id="wp-custom-css">
 		#scroll-top {
 			display: none !important;
 		}
-		</style>
-<link rel='stylesheet' href='assets/wp-content/themes/css/main.css' type='text/css'/>
+	</style>
+	<link rel='stylesheet' href='assets/content/themes/css/main.css' type='text/css' />
+
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 
 </head>
 
@@ -664,14 +754,132 @@
 
 
 
-<body data-rsssl=1
-	class="home page-template page-template-page-templates page-template-home page-template-page-templateshome-php page page-id-54 wp-embed-responsive theme woocommerce-no-js">
-	<svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
-	style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+<body data-rsssl=1 class="home page-template page-template-page-templates page-template-home page-template-page-templateshome-php page page-id-54 wp-embed-responsive theme woocommerce-no-js">
+
+
+	<div class="modal-container">
+		<div class="modal inspiry-box-shadow">
+			<div class="modal-header">
+				<div class="modal-header-text">
+					<p>Travel Enquiry Form</p>
+				</div>
+				<div class="modal-close-button">
+					<i class='bx bx-x'></i>
+				</div>
+			</div>
+
+			<div class="modal-body">
+
+
+				<div class="modal-image">
+					<img src="images/pop-up/pop-up.jpg" alt="">
+				</div>
+
+				<div class="contact-section">
+					<div class="contact-form" bis_skin_checked="1">
+						<p class="form-line">Our Team Will Contact You Soon... <i class='bx bx-alarm'></i></p>
+						<form action="" id="contact-pop-up-form" method="post" onsubmit="return validatePopUpForm()">
+
+							<div class="input-field">
+								<span>
+									<i class='bx bxs-user'></i>
+								</span>
+								<input type="text" name="p-fname" id="p-fname" placeholder="Full Name" title="* Please enter your full name." class="required">
+							</div>
+
+							<div class="input-field">
+								<span>
+									<i class='bx bx-phone'></i>
+								</span>
+								<input type="text" name="p-phone" id="p-phone" placeholder="Mobile">
+							</div>
+
+
+							<div class="input-field">
+								<span>
+									<i class='bx bx-envelope'></i>
+								</span>
+								<input type="email" name="p-email" id="p-email" placeholder="Email" title="* Please enter your correct email." class="required email">
+							</div>
+
+							<textarea name="p-message" id="p-message" cols="30" rows="2" placeholder="Message" title="* Please enter your message." class="required"></textarea>
+
+
+							<div class="submission-area" bis_skin_checked="1">
+								<p class="note-text">
+									<span>Note <text>*</text> </span>
+									Your trust is valued, and we're committed to safeguarding your information throughout your travel experience.
+								</p>
+								<input type="submit" id="p-submit-button" name="p-submit-button" value="Submit">
+							</div>
+						</form>
+
+						<!-- script for contact us form  -->
+						<script>
+							// function for validating the formm 
+							function validatePopUpForm() {
+								let p_fname = document.getElementById('p-fname').value;
+								let p_phone = document.getElementById('p-phone').value;
+								let p_email = document.getElementById('p-email').value;
+								let p_message = document.getElementById('p-message').value;
+
+								if (p_fname == '') {
+									alert('Please Enter Name');
+									return false;
+								} else if (p_phone == '') {
+									alert('Please Enter Phone Number');
+									return false;
+								} else if (!validatePhoneNumber(p_phone)) {
+									alert('Please Enter Valid Phone Number');
+									return false;
+								} else if (p_email == '') {
+									alert('Please Enter Email');
+									return false;
+								} else if (!validateEmail(p_email)) {
+									alert('Please Enter Valid Email');
+									return false;
+								} else if (p_message == '') {
+									alert('Please Enter Mmessage');
+									return false;
+								} else {
+									console.log(p_fname, p_phone, p_email, p_message);
+									return true;
+								}
+
+							}
+
+							// Phone number validation function
+							function validatePhoneNumber(phoneNumber) {
+								const phoneRegex = /^\d{10}$/; // Assumes a 10-digit phone number format
+								return phoneRegex.test(phoneNumber);
+							}
+
+							// Email validation function
+							function validateEmail(email) {
+								const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+								return emailRegex.test(email);
+							}
+						</script>
+					</div>
+				</div>
+
+			</div>
+
+
+			<div class="modal-footer">
+
+			</div>
+		</div>
+
+
+	</div>
+
+
+
+	<svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
 		<defs>
 			<filter id="wp-duotone-dark-grayscale">
-				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
 				<feComponentTransfer color-interpolation-filters="sRGB">
 					<feFuncR type="table" tableValues="0 0.49803921568627" />
 					<feFuncG type="table" tableValues="0 0.49803921568627" />
@@ -681,12 +889,10 @@
 				<feComposite in2="SourceGraphic" operator="in" />
 			</filter>
 		</defs>
-	</svg><svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+	</svg><svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
 		<defs>
 			<filter id="wp-duotone-grayscale">
-				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
 				<feComponentTransfer color-interpolation-filters="sRGB">
 					<feFuncR type="table" tableValues="0 1" />
 					<feFuncG type="table" tableValues="0 1" />
@@ -696,12 +902,10 @@
 				<feComposite in2="SourceGraphic" operator="in" />
 			</filter>
 		</defs>
-	</svg><svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+	</svg><svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
 		<defs>
 			<filter id="wp-duotone-purple-yellow">
-				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
 				<feComponentTransfer color-interpolation-filters="sRGB">
 					<feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" />
 					<feFuncG type="table" tableValues="0 1" />
@@ -711,12 +915,10 @@
 				<feComposite in2="SourceGraphic" operator="in" />
 			</filter>
 		</defs>
-	</svg><svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+	</svg><svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
 		<defs>
 			<filter id="wp-duotone-blue-red">
-				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
 				<feComponentTransfer color-interpolation-filters="sRGB">
 					<feFuncR type="table" tableValues="0 1" />
 					<feFuncG type="table" tableValues="0 0.27843137254902" />
@@ -726,12 +928,10 @@
 				<feComposite in2="SourceGraphic" operator="in" />
 			</filter>
 		</defs>
-	</svg><svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+	</svg><svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
 		<defs>
 			<filter id="wp-duotone-midnight">
-				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
 				<feComponentTransfer color-interpolation-filters="sRGB">
 					<feFuncR type="table" tableValues="0 0" />
 					<feFuncG type="table" tableValues="0 0.64705882352941" />
@@ -741,12 +941,10 @@
 				<feComposite in2="SourceGraphic" operator="in" />
 			</filter>
 		</defs>
-	</svg><svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+	</svg><svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
 		<defs>
 			<filter id="wp-duotone-magenta-yellow">
-				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
 				<feComponentTransfer color-interpolation-filters="sRGB">
 					<feFuncR type="table" tableValues="0.78039215686275 1" />
 					<feFuncG type="table" tableValues="0 0.94901960784314" />
@@ -756,12 +954,10 @@
 				<feComposite in2="SourceGraphic" operator="in" />
 			</filter>
 		</defs>
-	</svg><svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+	</svg><svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
 		<defs>
 			<filter id="wp-duotone-purple-green">
-				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
 				<feComponentTransfer color-interpolation-filters="sRGB">
 					<feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" />
 					<feFuncG type="table" tableValues="0 1" />
@@ -771,12 +967,10 @@
 				<feComposite in2="SourceGraphic" operator="in" />
 			</filter>
 		</defs>
-	</svg><svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+	</svg><svg xmlns="" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
 		<defs>
 			<filter id="wp-duotone-blue-orange">
-				<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-					values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+				<feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
 				<feComponentTransfer color-interpolation-filters="sRGB">
 					<feFuncR type="table" tableValues="0.098039215686275 1" />
 					<feFuncG type="table" tableValues="0 0.66274509803922" />
@@ -797,50 +991,38 @@
 						<div class="col-md-6">
 							<p class="welcome-note">Welcome to Preet Holiday!</p>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-6 social-mobile">
 							<ul class="smart-social has_item">
-								<li><a target="_blank" href="https://in.pinterest.com/preetholidays1/"><i
-											class="fa fa-pinterest"></i></a></li>
-								<li><a target="_blank" href="https://www.facebook.com/preetholiday"><i
-											class="fa fa-facebook-official"></i></a></li>
-								<li><a target="_blank" href="https://youtube.com/@PreetHolidays?si=scfRKg5XJ-yflJt6"><i
-											class="fa fa-youtube-play"></i></a></li>
-								<li><a target="_blank" href="https://www.instagram.com/preetholidays/"><i
-											class="fa fa-instagram"></i></a></li>
-								<li class="shopping-cart">
-
-									<svg xmlns="" xmlns:xlink=""
-										version="1.1" class="shopping-cart-icon" x="0px" y="0px" width="17px"
-										height="17px" viewBox="0 0 50.613 50.613"
-										style="enable-background:new 0 0 50.613 50.613;" xml:space="preserve">
-										<g>
-											<g>
-												<g>
-													<path
-														d="M49.569,11.145H20.055c-0.961,0-1.508,0.743-1.223,1.661l4.669,13.677c0.23,0.738,1.044,1.336,1.817,1.336h19.35     c0.773,0,1.586-0.598,1.814-1.336l4.069-14C50.783,11.744,50.344,11.145,49.569,11.145z" />
-													<circle cx="22.724" cy="43.575" r="4.415" />
-													<circle cx="41.406" cy="43.63" r="4.415" />
-													<path
-														d="M46.707,32.312H20.886L10.549,2.568H2.5c-1.381,0-2.5,1.119-2.5,2.5s1.119,2.5,2.5,2.5h4.493L17.33,37.312h29.377     c1.381,0,2.5-1.119,2.5-2.5S48.088,32.312,46.707,32.312z" />
-												</g>
-											</g>
-										</g>
-									</svg>
+								<li>
+									<a target="_blank" href="https://in.pinterest.com/preetholidays1/">
+										<i class="fa fa-pinterest"></i>
+									</a>
 								</li>
+
+								<li>
+									<a target="_blank" href="https://www.facebook.com/preetholiday">
+										<i class="fa fa-facebook-official"></i>
+									</a>
+								</li>
+
+								<li>
+									<a target="_blank" href="https://www.youtube.com/@PreetHolidays">
+										<i class="fa fa-youtube-play"></i>
+									</a>
+								</li>
+
+								<li>
+									<a target="_blank" href="https://www.instagram.com/preetholidays/">
+										<i class="fa fa-instagram"></i>
+									</a>
+								</li>
+								
 							</ul>
-							<div class="mini-cart-wrap">
-								<div class="widget_shopping_cart_content">
-
-
-									<p class="woocommerce-mini-cart__empty-message">No products in the cart.</p>
-
-
-								</div>
-							</div>
 							<div class="header-email-wrap">
-								<a href="mailto:i&#110;fo&#64;&#101;x&#97;&#109;&#112;&#108;e.&#99;&#111;&#109;"
-									class="header-email"><i class="fa fa-envelope-o" aria-hidden="true"></i>
-									&#105;&#110;&#102;o&#64;ex&#97;&#109;p&#108;e.co&#109; </a>
+								<a href="mailto:info@preetholiday.com" class="header-email">
+									<i class="fa fa-envelope-o" aria-hidden="true"></i>
+									info@preetholiday.com 	
+								</a>
 							</div>
 						</div>
 					</div>
@@ -852,19 +1034,14 @@
 						<div class="col-md-4">
 							<div class="logo-wrap">
 								<a href="index.php" class="site-logo" title="PreetHoliday">
-									<img alt="PreetHoliday"
-										src="assets/wp-content/uploads/2020/04/logo.png"
-										srcset="assets/wp-content/uploads/2020/04/logo.png, assets/wp-content/uploads/2020/04/logo.png 2x" width="36%">
+									<img alt="PreetHoliday" src="assets/content/uploads/2020/04/logo.png" srcset="assets/content/uploads/2020/04/logo.png, assets/content/uploads/2020/04/logo.png 2x" width="36%">
 								</a>
 							</div>
 						</div>
 						<div class="col-md-8 clearfix" style="margin-top:14px">
 							<div class="header-phone-wrap">
-								<a href="tel:8902345678" class="header-phone">
-									<svg version="1.1" xmlns=""
-										xmlns:xlink="" x="0px" y="0px" width="30px"
-										height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30"
-										xml:space="preserve">
+								<a href="tel:+91 9268393805" class="header-phone">
+									<svg version="1.1" xmlns="" xmlns:xlink="" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
 										<path d="M22.875,16.377c-0.12,0.126-0.291,0.199-0.468,0.199c-0.176,0-0.346-0.073-0.468-0.199
 	c-0.121-0.127-0.192-0.302-0.192-0.485c0-0.184,0.071-0.36,0.192-0.486c0.122-0.126,0.292-0.2,0.468-0.2
 	c0.171,0,0.342,0.069,0.468,0.2c0.121,0.126,0.193,0.303,0.193,0.486C23.068,16.075,22.996,16.25,22.875,16.377L22.875,16.377z
@@ -921,73 +1098,65 @@
 	c1.492,0.755,2.752,1.137,3.958,1.205c0.924,0.051,1.59-0.205,2.117-0.816c0.342-0.399,0.711-0.766,1.063-1.125
 	c0.176-0.178,0.357-0.354,0.527-0.537C23.084,24.086,23.084,23.538,22.595,23.007L22.595,23.007z" />
 									</svg>
-									<span>890 234 5678</span> </a>
+									<span>926 839 3805</span> </a>
 							</div>
 							<nav class="main-menu-wrap">
 								<ul id="menu-header-menu" class="main-menu clearfix">
-									<li id="menu-item-884"
-										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-54 
+									<li id="menu-item-884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-54 
 										
-										<?php 
+										<?php
 
-											$currentScriptPath = $_SERVER['SCRIPT_NAME'];  // Get the current script's path
-											$fileName = basename($currentScriptPath);  // Extract the file name
-											if($fileName=='index.php')
-											{
-												// echo $fileName;
-												echo ' current_page_item ';
-											}
+										$currentScriptPath = $_SERVER['SCRIPT_NAME'];  // Get the current script's path
+										$fileName = basename($currentScriptPath);  // Extract the file name
+										if ($fileName == 'index.php') {
+											// echo $fileName;
+											echo ' current_page_item ';
+										}
 										?>
 										
 										 menu-item-884">
 										<a href="index.php" aria-current="page">Home</a>
 									</li>
-									<li id="menu-item-907"
-										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-907 
+									<li id="menu-item-907" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-907 
 										
-										<?php 
+										<?php
 
-											$currentScriptPath = $_SERVER['SCRIPT_NAME'];  // Get the current script's path
-											$fileName = basename($currentScriptPath);  // Extract the file name
-											if($fileName=='tours.php')
-											{
-												// echo $fileName;
-												echo ' current_page_item ';
-											}
+										$currentScriptPath = $_SERVER['SCRIPT_NAME'];  // Get the current script's path
+										$fileName = basename($currentScriptPath);  // Extract the file name
+										if ($fileName == 'tours.php') {
+											// echo $fileName;
+											echo ' current_page_item ';
+										}
 										?>
 										
 										">
 										<a href="tours.php">Tours</a>
 									</li>
-									<li id="menu-item-885"
-										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-885 
+									<li id="menu-item-885" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-885 
 										
-										<?php 
+										<?php
 
-											$currentScriptPath = $_SERVER['SCRIPT_NAME'];  // Get the current script's path
-											$fileName = basename($currentScriptPath);  // Extract the file name
-											if($fileName=='blogs.php')
-											{
-												// echo $fileName;
-												echo ' current_page_item ';
-											}
+										$currentScriptPath = $_SERVER['SCRIPT_NAME'];  // Get the current script's path
+										$fileName = basename($currentScriptPath);  // Extract the file name
+										if ($fileName == 'blogs.php') {
+											// echo $fileName;
+											echo ' current_page_item ';
+										}
 										?>
 
 										">
 										<a href="blogs.php">Blogs</a>
 									</li>
-									<li id="menu-item-855"
-										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-885
+									<li id="menu-item-855" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-885
 										
-										<?php 
+										<?php
 
-											$currentScriptPath = $_SERVER['SCRIPT_NAME'];  // Get the current script's path
-											$fileName = basename($currentScriptPath);  // Extract the file name
-											if($fileName=='team.php')
-											{
-												// echo $fileName;
-												echo ' current_page_item ';
-											}
+										$currentScriptPath = $_SERVER['SCRIPT_NAME'];  // Get the current script's path
+										$fileName = basename($currentScriptPath);  // Extract the file name
+										if ($fileName == 'team.php') {
+											// echo $fileName;
+											echo ' current_page_item ';
+										}
 										?>
 										
 										">
@@ -1017,41 +1186,51 @@
 											</li>
 										</ul> -->
 									</li>
-									<li id="menu-item-886"
-										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-886
+									<li id="menu-item-886" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-886
 										
-										<?php 
+										<?php
 
-											$currentScriptPath = $_SERVER['SCRIPT_NAME'];  // Get the current script's path
-											$fileName = basename($currentScriptPath);  // Extract the file name
-											if($fileName=='contact.php')
-											{
-												// echo $fileName;
-												echo ' current_page_item ';
-											}
+										$currentScriptPath = $_SERVER['SCRIPT_NAME'];  // Get the current script's path
+										$fileName = basename($currentScriptPath);  // Extract the file name
+										if ($fileName == 'contact.php') {
+											// echo $fileName;
+											echo ' current_page_item ';
+										}
 										?>
 										
 										">
 										<a href="contact.php">Contact</a>
 									</li>
-                                    <li id="menu-item-892"
-										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-892">
-										<a href="#"><i class="fa fa-user"></i> User</a>
-										<ul class="sub-menu">
-											<li id="menu-item-894"
-												class="menu-item menu-item-type-post_type menu-item-object-page menu-item-894">
-												<a href="#">My account</a>
-											</li>
-											<li id="menu-item-898"
-												class="menu-item menu-item-type-post_type menu-item-object-page menu-item-898">
-												<a href="#">Cart</a>
-											</li>
-											<li id="menu-item-896"
-												class="menu-item menu-item-type-post_type menu-item-object-page menu-item-896">
-												<a href="#">Checkout</a>
-											</li>
-										</ul>
-									</li>
+
+									<?php
+
+									if (!isset($_SESSION['user_id']) || !isset($_SESSION['mobile']) || !isset($_SESSION['email']) || !isset($_SESSION['user_type'])) {
+									?>
+										<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-886">
+											<a href="login.php" style="color: #00aeef;">Login</a>
+										</li>
+
+									<?php
+									} else {
+									?>
+
+										<li id="menu-item-892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-892">
+											<a href="#"><i class="fa fa-user"></i> User</a>
+											<ul class="sub-menu">
+												<li id="menu-item-894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-894">
+													<a href="account.php">My account</a>
+												</li>
+												<li id="menu-item-894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-894">
+													<a href="account.php">My Orders</a>
+												</li>
+												<li id="menu-item-896" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-896">
+													<a href="logout.php">Logout</a>
+												</li>
+											</ul>
+										</li>
+									<?php
+									}
+									?>
 								</ul>
 							</nav>
 						</div>
